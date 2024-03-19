@@ -2,10 +2,18 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
-require('dotenv').config();
+const dotenv = require('dotenv').config();
+const connectDB = require('./config/dbConnect');
 
+
+connectDB();
 const PORT = process.env.PORT || 5050;
 const app = express();
+
+// Load environment variables
+if (dotenv.error) {
+  console.error("Error loading .env file:", dotenv.error);
+}
 
 app.use(cors());
 app.use(express.json());
