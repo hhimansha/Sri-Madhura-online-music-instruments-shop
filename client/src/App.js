@@ -1,9 +1,10 @@
 import './App.css';
+import TopNav from './components/topNav';
 
 function App() {
   return (
     <div className="App">
-      <h1 className='text-left'>Hello</h1>
+      <TopNav/>
     </div>
   );
 }
