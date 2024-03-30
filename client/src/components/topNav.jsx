@@ -19,11 +19,10 @@ function TopNav() {
   };
 
   return (
-    <nav className="bg-white border-gray-200 dark:bg-gray-900">
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+    <nav className="bg-white border-gray-200 text-gray-900">
+      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-1">
         <a href="https://flowbite.com/" className="flex items-center space-x-3 rtl:space-x-reverse">
-          <img src="https://flowbite.com/docs/images/logo.svg" className="h-8" alt="Flowbite Logo" />
-          <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>
+          <img src={MainLogo} className="h-10" alt="Flowbite Logo" />
         </a>
         <div className="flex items-center md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse relative">
           <button type="button" className="flex text-sm bg-gray-800 rounded-full md:me-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" onClick={toggleDropdown}>
@@ -67,7 +66,7 @@ function TopNav() {
               <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m1 1 4 4 4-4"/>
             </svg></button>
               <div className={`absolute right-0 mt-1 ${showCompanyDropdown ? 'block' : 'hidden'} bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600`} id="mega-menu-full-dropdown">
-                <div className="grid max-w-screen-xl px-4 py-5 mx-auto text-gray-900 dark:text-white sm:grid-cols-2 md:px-6">
+                <div className="grid max-w-screen-full px-4 py-5 mx-auto text-gray-900 dark:text-white sm:grid-cols-2 md:px-6 ">
                   <ul>
                     <li>
                       <a href="#" className="block p-3 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700">
