@@ -76,7 +76,7 @@ function TopNav() {
                   <ul>
                     <div><button
                         type="button"
-                        className="group inline-flex w-full items-center justify-left rounded-lg bg-primary pl-2 py-4 text-lg font-semibold text-black transition-all duration-200 ease-in-out focus:shadow hover:bg-grey"
+                        className="hover:text-primary  group inline-flex w-full items-center justify-left rounded-lg ry pl-2 py-4 text-lg font-semibold text-black transition-all duration-200 ease-in-out focus:shadow hover:bg-grey"
                       >
                         Western
                         <svg xmlns="http://www.w3.org/2000/svg" className="group-hover:ml-8 ml-4 h-6 w-6 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
@@ -129,7 +129,7 @@ function TopNav() {
                   <ul>
                   <div><button
                         type="button"
-                        className="group inline-flex w-full items-center justify-left rounded-lg bg-primary pl-2 py-4 text-lg font-semibold text-black transition-all duration-200 ease-in-out focus:shadow hover:bg-grey"
+                        className="hover:text-primary group inline-flex w-full items-center justify-left rounded-lg pl-2 py-4 text-lg font-semibold text-black transition-all duration-200 ease-in-out focus:shadow hover:bg-grey"
                       >
                         Eastern
                         <svg xmlns="http://www.w3.org/2000/svg" className="group-hover:ml-8 ml-4 h-6 w-6 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
