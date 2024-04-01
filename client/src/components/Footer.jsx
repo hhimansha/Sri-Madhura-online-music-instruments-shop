@@ -1,10 +1,13 @@
 import React from "react";
-
+import MainLogo from '../components/assets/MainLogoW.png';
 function Footer() { return(
+
+
+
 
 <section>
   <div className="w-screen flex-col bg-black px-6 py-20 text-white lg:flex lg:px-10 xl:px-24"> {/* TOP CONTAINER */} <div className="lg:flex lg:flex-row lg:justify-between"> {/* LOGO DIV */} <div> {/* LOGO */} <a href="#" className="inline-block max-w-full">
-          <img src="https://assets.website-files.com/6357722e2a5f19121d37f84d/6358f89d8088ab28fa7e8f5c_Group%2047874-3.svg" alt="" className="inline-block max-h-10" />
+          <img src={MainLogo} alt="" className="inline-block max-h-10" />
         </a>
         <p className="font-inter mt-4 max-w-[350px] text-base font-light text-gray-500">Lorem ipsum dolor sit amet, consectetur adipiscing elit ut al</p> {/* SOCIAL MEDIA ICONS */} <div className="mb-8 mt-6 flex flex-row">
           <a href="" className="mr-4 transition hover:text-gray-400">
@@ -62,6 +65,7 @@ function Footer() { return(
     </div>
   </div>
 </section>
+
 )};
 
 export default Footer;
