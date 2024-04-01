@@ -108,22 +108,22 @@ function TopNav() {
             {/* user's menu items*/}
             <ul className="py-2 font-medium" aria-labelledby="user-menu-button">
               <li>
-                <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:text-primary">
+                <a href="dash" className="block px-4 py-2 text-sm text-gray-700 hover:text-primary">
                   Dashboard
                 </a>
               </li>
               <li>
-                <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:text-primary">
+                <a href="set" className="block px-4 py-2 text-sm text-gray-700 hover:text-primary">
                   Settings
                 </a>
               </li>
               <li>
-                <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:text-primary">
+                <a href="ear" className="block px-4 py-2 text-sm text-gray-700 hover:text-primary">
                   Earnings
                 </a>
               </li>
               <li>
-                <a href="#" className="block px-4 py-2 text-sm text-red-500 ">
+                <a href="sout" className="block px-4 py-2 text-sm text-red-500 ">
                   Sign out
                 </a>
               </li>
