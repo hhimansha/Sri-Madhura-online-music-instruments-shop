@@ -407,9 +407,7 @@ function TopNav() {
           </ul>
         </div>
       </div>
-      <div className="bg-gray-800">
-        <p className="text-white text-xs p-1 tracking-wider">All in one place</p>
-      </div>
+
     </nav>
   );
 }
