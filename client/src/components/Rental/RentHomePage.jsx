@@ -1,27 +1,38 @@
 import React from "react";
+import wide from '../assets/wideHero.png';
 
 function RentHomePage() {
-  return (
+    return (
+
+        
+<header> {/* Container */} <div className="mx-auto w-full max-w-7xl px-5 py-16 md:px-10 md:py-28 lg:py-28">
+    <div className="mx-auto max-w-3xl text-center"> {/* Title */} <h1 className="mb-6 text-4xl font-bold md:text-6xl">Rent Your Path to<br/>Musical Excellence Today</h1>
+      <p className="mb-6 text-sm text-[#636262] sm:text-xl lg:mb-8">Browse instruments, choose your favorite, and begin your musical journey today with our easy renting process. Start playing now!</p>
+       {/* Button */} 
+       <a href="#" className="mr-6 inline-block items-center rounded-md shadow-[0px_4px_10px_rgba(17,17,26,0.1),_0px_8px_24px_rgba(17,17,26,0.1),_0px_16px_56px_rgba(17,17,26,0.1)] bg-primary px-8 py-4 text-center font-semibold text-white lg:mr-8">Rent Instruments</a>
+    </div> {/* List */} 
+    <div><img src={wide} className="w-fit mx-auto mt-4"></img></div>
+    <ul className="py-10 grid gap-8  sm:grid-cols-3 sm:gap-12 md:grid-cols-5 md:gap-4 shadow-md rounded-3xl">
+      <li className="flex items-center justify-center">
+        <img src="https://assets.website-files.com/6458c625291a94a195e6cf3a/6458c625291a948ffde6cf70_Microsoft%20Logo.svg" alt="" className="inline-block" />
+      </li>
+      <li className="flex justify-center">
+        <img src="https://assets.website-files.com/6458c625291a94a195e6cf3a/6458c625291a94ae44e6cf75_PayPal%20Logo.svg" alt="" className="inline-block" />
+      </li>
+      <li className="flex justify-center">
+        <img src="https://assets.website-files.com/6458c625291a94a195e6cf3a/6458c625291a9467b4e6cf74_Google%20Logo.svg" alt="" className="inline-block" />
+      </li>
+      <li className="flex justify-center">
+        <img src="https://assets.website-files.com/6458c625291a94a195e6cf3a/6458c625291a940c75e6cf67_Chase%20Logo.svg" alt="" className="inline-block" />
+      </li>
+      <li className="flex justify-center">
+        <img src="https://assets.website-files.com/6458c625291a94a195e6cf3a/6458c625291a948d9ce6cf68_Walmart%20Logo.svg" alt="" className="inline-block" />
+      </li>
+    </ul>
     
-		<header> {/* Hero Container */} <div className="mx-auto max-w-7xl px-5 py-16 md:px-10 md:py-24 lg:py-32"> {/* Component */} <div className="mx-auto mb-8 w-full max-w-3xl text-center md:mb-12 lg:mb-16"> {/* Hero Title */} <h1 className="mb-4 text-4xl font-bold md:text-6xl"> The Website You Want Without The Dev Time. </h1>
-        <p className="mx-auto mb-6 max-w-lg text-base text-[#636262] md:mb-10 lg:mb-12"> Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus </p> {/* Hero Button */} <div className="flex items-center justify-center">
-          <a href="#" className="mr-5 flex items-center bg-[#276ef1] px-8 py-4 font-semibold text-white transition [box-shadow:rgb(171,_196,245)-8px_8px] hover:[box-shadow:rgb(171,_196,_245)_0px_0px] md:mr-6 lg:mr-8">
-            <p className="mr-6 font-bold">Get Started</p>
-            <svg fill="currentColor" viewBox="0 0 20 21" xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 flex-none">
-              <title>Arrow Right</title>
-              <polygon points="16.172 9 10.101 2.929 11.515 1.515 20 10 19.293 10.707 11.515 18.485 10.101 17.071 16.172 11 0 11 0 9"></polygon>
-            </svg>
-          </a>
-          <a href="#" className="flex font-bold">
-            <p className="text-black">View Showreel</p>
-            <img src="https://assets.website-files.com/6357722e2a5f19121d37f84d/6357752f71727ed3edf9213b_Vector (5).svg" alt="" className="ml-2 inline-block" />
-          </a>
-        </div>
-      </div> {/* Hero Image */}
-      <img src="https://assets.website-files.com/6357722e2a5f19121d37f84d/635b53f37e968a0517a786f7_Mask group.png" alt="" className="inline-block max-h-[512px] w-full object-cover" />
-    </div>
-  </header>
-  );
+  </div>
+</header>
+    );
 }
 
 export default RentHomePage;
