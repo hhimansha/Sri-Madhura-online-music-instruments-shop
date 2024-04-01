@@ -6,8 +6,8 @@ function Footer() { return(
 
 
 <section>
-  <div className="w-screen flex-col bg-black px-6 py-20 text-white lg:flex lg:px-10 xl:px-24"> {/* TOP CONTAINER */} <div className="lg:flex lg:flex-row lg:justify-between"> {/* LOGO DIV */} <div> {/* LOGO */} <a href="#" className="inline-block max-w-full">
-          <img src={MainLogo} alt="" className="inline-block max-h-10" />
+  <div className="w-screen flex-col bg-gray-900 px-6 py-10 text-white lg:flex lg:px-10 xl:px-24"> {/* TOP CONTAINER */} <div className="lg:flex lg:flex-row lg:justify-between"> {/* LOGO DIV */} <div> {/* LOGO */} <a href="#" className="inline-block max-w-full">
+          <img src={MainLogo} alt="" className="inline-block max-h-20" />
         </a>
         <p className="font-inter mt-4 max-w-[350px] text-base font-light text-gray-500">Lorem ipsum dolor sit amet, consectetur adipiscing elit ut al</p> {/* SOCIAL MEDIA ICONS */} <div className="mb-8 mt-6 flex flex-row">
           <a href="" className="mr-4 transition hover:text-gray-400">
@@ -60,7 +60,7 @@ function Footer() { return(
           <p className="font-inter ml-4">support@devjoy.xyz</p>
         </div>
       </div>
-    </div> {/* DIVIDER */} <div className="mx-auto my-12 w-full border border-[#E4E4E7] lg:my-20"></div> {/* COPYRIGHT TEXT */} <div>
+    </div> {/* DIVIDER */} <div className="mx-auto my-12 w-full border border-[#E4E4E7] "></div> {/* COPYRIGHT TEXT */} <div>
       <p className="font-inter lg: text-center text-sm text-gray-500">© Copyright 2021. All rights reserved.</p>
     </div>
   </div>
