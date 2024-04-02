@@ -12,7 +12,7 @@ function RentHomePage() {
        <a href="#" className="mr-6 inline-block items-center rounded-md shadow-[0px_4px_10px_rgba(17,17,26,0.1),_0px_8px_24px_rgba(17,17,26,0.1),_0px_16px_56px_rgba(17,17,26,0.1)] bg-primary px-8 py-4 text-center font-semibold text-white lg:mr-8">Rent Instruments</a>
     </div> {/* List */} 
     <div><img src={wide} className="w-fit mx-auto mt-4"></img></div>
-    <ul className="py-10 grid gap-8  sm:grid-cols-3 sm:gap-12 md:grid-cols-5 md:gap-4 shadow-md rounded-3xl">
+    <ul className="py-10 grid gap-8  sm:grid-cols-3 sm:gap-12 md:grid-cols-5 md:gap-4 shadow-xl rounded-3xl">
       <li className="flex items-center justify-center">
         <img src="https://assets.website-files.com/6458c625291a94a195e6cf3a/6458c625291a948ffde6cf70_Microsoft%20Logo.svg" alt="" className="inline-block" />
       </li>
