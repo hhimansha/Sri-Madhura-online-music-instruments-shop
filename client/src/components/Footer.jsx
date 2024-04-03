@@ -6,7 +6,7 @@ function Footer() { return(
 
 
 <section>
-  <div className="w-screen flex-col bg-gray-900 px-6 py-10 text-white lg:flex lg:px-10 xl:px-24"> {/* TOP CONTAINER */} <div className="lg:flex lg:flex-row lg:justify-between"> {/* LOGO DIV */} <div> {/* LOGO */} <a href="#" className="inline-block max-w-full">
+  <div className="w-screen flex-col bg-black px-6 py-10 text-white lg:flex lg:px-10 xl:px-24"> {/* TOP CONTAINER */} <div className="lg:flex lg:flex-row lg:justify-between"> {/* LOGO DIV */} <div> {/* LOGO */} <a href="#" className="inline-block max-w-full">
           <img src={MainLogo} alt="" className="inline-block max-h-20" />
         </a>
         <p className="font-inter mt-4 max-w-[350px] text-base font-light text-gray-500">Lorem ipsum dolor sit amet, consectetur adipiscing elit ut al</p> {/* SOCIAL MEDIA ICONS */} <div className="mb-8 mt-6 flex flex-row">
