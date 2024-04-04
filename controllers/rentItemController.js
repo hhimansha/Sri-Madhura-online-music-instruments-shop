@@ -43,7 +43,7 @@ const createRentItem = asyncHandler(async(req,res) => {
 });
 
 //@desc update rentItem
-//@route PUT /api/rentals/rentalcreate
+//@route PUT /api/rentals/rentals/update/:id
 //@access public
 const updateRentItem = asyncHandler(async(req,res) => {
     const rentItem = await RentItem.findById(req.params.id);
@@ -63,5 +63,19 @@ const updateRentItem = asyncHandler(async(req,res) => {
     
 });
 
+//@desc delete rentItem
+//@route PUT /api/rentals/rentals/delete/:id
+//@access public
+const deleteRentItem = asyncHandler(async(req,res) => {
+    const rentItem = await RentItem.findById(req.params.id);
+    if(!rentItem){
+        res.status(404);
+        throw new Error("RentItem not found");
+    }
+    await rentItem.deleteOne();
+    res.status(200).json({message: "RentItem removed"});
+    
+});
 
-module.exports = {createRentItem, getRentals, getRentItem, updateRentItem};
+
+module.exports = {createRentItem, getRentals, getRentItem, updateRentItem, deleteRentItem};
