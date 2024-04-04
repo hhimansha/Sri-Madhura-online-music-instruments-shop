@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
  const rentItemSchema = new Schema({
-    item: {
+    itemName: {
         type: String,
         required: true
     },

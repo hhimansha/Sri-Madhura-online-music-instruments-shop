@@ -31,6 +31,7 @@ function RentHomePage() {
     </ul>
     
   </div>
+  
 </header>
     );
 }

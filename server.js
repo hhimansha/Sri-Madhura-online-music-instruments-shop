@@ -27,6 +27,8 @@ connection.once('open', () => {
   console.log("MongoDB database connection successfull!!!");
 });
 
+app.use("/api/rentals", require("./routes/rentItemsRoute")); 
+
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
 });
