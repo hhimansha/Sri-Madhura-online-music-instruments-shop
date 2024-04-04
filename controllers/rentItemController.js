@@ -42,4 +42,26 @@ const createRentItem = asyncHandler(async(req,res) => {
     res.status(201).json(rentitem);
 });
 
-module.exports = {createRentItem, getRentals, getRentItem};
+//@desc update rentItem
+//@route PUT /api/rentals/rentalcreate
+//@access public
+const updateRentItem = asyncHandler(async(req,res) => {
+    const rentItem = await RentItem.findById(req.params.id);
+    if(!rentItem){
+        res.status(404);
+        throw new Error("RentItem not found");
+    }
+    const updatedRentItem = await RentItem.findByIdAndUpdate(
+        req.params.id,
+        req.body,
+        {
+            new: true,
+            runValidators: true
+        }
+    );
+    res.status(200).json(updatedRentItem);
+    
+});
+
+
+module.exports = {createRentItem, getRentals, getRentItem, updateRentItem};
