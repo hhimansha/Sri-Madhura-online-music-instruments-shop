@@ -8,6 +8,8 @@ const getRentals = asyncHandler(async(req,res) => {
     res.status(200).json(rentals);
 });
 
+
+
 //@desc Create new rentItem
 //@route POST /api/rentitem
 //@access public
