@@ -25,8 +25,8 @@ const getRentItem = asyncHandler(async(req,res) => {
 //@access public
 const createRentItem = asyncHandler(async(req,res) => {
     console.log("This is the body : ", req.body);
-    const {itemName, rentPrice, quantity, rentDate, noOfRentDays} = req.body;
-    if(!itemName || !rentPrice || !quantity || !rentDate || !noOfRentDays){
+    const {itemName, rentPrice, stockQty, rentDate, noOfRentDays} = req.body;
+    if(!itemName || !rentPrice || !stockQty || !rentDate || !noOfRentDays){
         res.status(400);
         throw new Error("All the fields are required!");
     }
@@ -34,7 +34,7 @@ const createRentItem = asyncHandler(async(req,res) => {
     const rentitem = await RentItem.create({
         itemName,
         rentPrice,
-        quantity,
+        stockQty,
         rentDate,
         noOfRentDays
     });

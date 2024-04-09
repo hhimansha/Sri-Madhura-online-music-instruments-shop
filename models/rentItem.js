@@ -10,7 +10,7 @@ const Schema = mongoose.Schema;
         type: Number,
         required: true
     },
-    quantity: {
+    stockQty: {
         type: Number,
         required: true
     },

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import MainLogoW from '../components/assets/MainLogoW.png';
+import { Link } from 'react-router-dom';
+import RentalItemCreate from './Rental/RentalItemCreate';
 
 function AdminDash() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -111,6 +113,7 @@ function AdminDash() {
       <div class="p-4 sm:ml-64">
 
       </div>
+      
     </>
 
   );
