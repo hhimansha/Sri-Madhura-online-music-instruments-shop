@@ -10,6 +10,7 @@ connectDB();
 const PORT = process.env.PORT || 5050;
 const app = express();
 
+
 // Load environment variables
 if (dotenv.error) {
   console.error("Error loading .env file:", dotenv.error);

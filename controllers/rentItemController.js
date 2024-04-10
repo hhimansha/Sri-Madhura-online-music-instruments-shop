@@ -30,17 +30,23 @@ const createRentItem = asyncHandler(async (req, res) => {
         res.status(400);
         throw new Error("All fields are required!");
     }
+    try{
+        const rentItem = await RentItem.create({
+            title,
+            description,
+            category,
+            rentalPrice,
+            stockCount,
+            image
+        });
+        res.status(201).json(rentItem);
+    }catch{
+        res.status(400);
+        throw new Error("Failed to create rental item");
+    }
+    
 
-    const rentItem = await RentItem.create({
-        title,
-        description,
-        category,
-        rentalPrice,
-        stockCount,
-        image
-    });
-
-    res.status(201).json(rentItem);
+    
 });
 
 //@desc Update a rental item by ID
