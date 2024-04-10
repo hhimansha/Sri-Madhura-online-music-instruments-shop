@@ -1,30 +1,35 @@
 const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
- const rentItemSchema = new Schema({
-    itemName: {
+
+const rentItemSchema = new Schema({
+    title: {
         type: String,
         required: true
     },
-    rentPrice: {
+    description: {
+        type: String,
+        required: true
+    },
+    category: {
+        type: String,
+        required: true
+    },
+    rentalPrice: {
         type: Number,
         required: true
     },
-    stockQty: {
+    stockCount: {
         type: Number,
         required: true
     },
-    rentDate : {
-        type: Date,
+    image: {
+        type: String, // Assuming you'll store the image URL
         required: true
     },
-    noOfRentDays: {
-        type: Number,
-        required: true
-    },
-    },{
+    // You can add more fields here if needed
+}, {
     timestamps: true
-    
- });
+});
 
- module.exports = mongoose.model('RentItem', rentItemSchema);
+module.exports = mongoose.model('RentItem', rentItemSchema);

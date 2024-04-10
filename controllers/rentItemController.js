@@ -1,81 +1,78 @@
 const asyncHandler = require('express-async-handler');
 const RentItem = require('../models/rentItem');
-const {error} = require("console");
 
-
-const getRentals = asyncHandler(async(req,res) => {
-    const rentals = await RentItem.find(); 
+//@desc Get all rental items
+//@route GET /api/rentals
+//@access Public
+const getRentals = asyncHandler(async (req, res) => {
+    const rentals = await RentItem.find();
     res.status(200).json(rentals);
 });
 
-//@desc Get a rentalitem
+//@desc Get a rental item by ID
 //@route GET /api/rentals/:id
-//@access public
-const getRentItem = asyncHandler(async(req,res) => {
+//@access Public
+const getRentItem = asyncHandler(async (req, res) => {
     const rentItem = await RentItem.findById(req.params.id);
-    if(!rentItem){
+    if (!rentItem) {
         res.status(404);
         throw new Error("RentItem not found");
     }
     res.status(200).json(rentItem);
 });
 
-//@desc Create new rentItem
-//@route POST /api/rentals/rentalcreate
-//@access public
-const createRentItem = asyncHandler(async(req,res) => {
-    console.log("This is the body : ", req.body);
-    const {itemName, rentPrice, stockQty, rentDate, noOfRentDays} = req.body;
-    if(!itemName || !rentPrice || !stockQty || !rentDate || !noOfRentDays){
+//@desc Create a new rental item
+//@route POST /api/rentals
+//@access Public
+const createRentItem = asyncHandler(async (req, res) => {
+    const { title, description, category, rentalPrice, stockCount, image } = req.body;
+    if (!title || !description || !category || !rentalPrice || !stockCount || !image) {
         res.status(400);
-        throw new Error("All the fields are required!");
+        throw new Error("All fields are required!");
     }
 
-    const rentitem = await RentItem.create({
-        itemName,
-        rentPrice,
-        stockQty,
-        rentDate,
-        noOfRentDays
+    const rentItem = await RentItem.create({
+        title,
+        description,
+        category,
+        rentalPrice,
+        stockCount,
+        image
     });
 
-    res.status(201).json(rentitem);
+    res.status(201).json(rentItem);
 });
 
-//@desc update rentItem
-//@route PUT /api/rentals/rentals/update/:id
-//@access public
-const updateRentItem = asyncHandler(async(req,res) => {
+//@desc Update a rental item by ID
+//@route PUT /api/rentals/:id
+//@access Public
+const updateRentItem = asyncHandler(async (req, res) => {
     const rentItem = await RentItem.findById(req.params.id);
-    if(!rentItem){
+    if (!rentItem) {
         res.status(404);
         throw new Error("RentItem not found");
     }
-    const updatedRentItem = await RentItem.findByIdAndUpdate(
-        req.params.id,
-        req.body,
-        {
-            new: true,
-            runValidators: true
-        }
-    );
+
+    const updatedRentItem = await RentItem.findByIdAndUpdate(req.params.id, req.body, {
+        new: true,
+        runValidators: true
+    });
+
     res.status(200).json(updatedRentItem);
-    
 });
 
-//@desc delete rentItem
-//@route PUT /api/rentals/rentals/delete/:id
-//@access public
-const deleteRentItem = asyncHandler(async(req,res) => {
+//@desc Delete a rental item by ID
+//@route DELETE /api/rentals/:id
+//@access Public
+const deleteRentItem = asyncHandler(async (req, res) => {
     const rentItem = await RentItem.findById(req.params.id);
-    if(!rentItem){
+    if (!rentItem) {
         res.status(404);
         throw new Error("RentItem not found");
     }
-    await rentItem.deleteOne();
-    res.status(200).json({message: "RentItem removed"});
-    
+
+    await rentItem.remove();
+    res.status(200).json({ message: "RentItem removed" });
 });
 
-
-module.exports = {createRentItem, getRentals, getRentItem, updateRentItem, deleteRentItem};
+module.exports = { getRentals, getRentItem, createRentItem, updateRentItem, deleteRentItem };
