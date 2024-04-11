@@ -3,7 +3,7 @@ import TopNav from './components/topNav';
 import Footer from './components/Footer';
 import RentHome from './components/Rental/RentHomePage';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
-import AdminDash from './components/AdminDash';
+import AdminDash from './components/Admin/AdminDash';
 import RentalItemCreate from './components/Rental/RentalItemCreate';
 
 function App() {
