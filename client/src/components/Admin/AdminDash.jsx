@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import MainLogoW from '../components/assets/MainLogoW.png';
 import { Link } from 'react-router-dom';
-import RentalItemCreate from './Rental/RentalItemCreate';
+import RentalItemCreate from '../Rental/RentalItemCreate';
 
 function AdminDash() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
