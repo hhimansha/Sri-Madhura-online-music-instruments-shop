@@ -1,7 +1,7 @@
 const asyncHandler = require('express-async-handler');
 const RentItem = require('../models/rentItem');
 
-//@desc Get all rental itemsredgerger
+//@desc Get all rental itemsredgergersdsd
 //@route GET /api/rentals
 //@access Public
 const getRentals = asyncHandler(async (req, res) => {
