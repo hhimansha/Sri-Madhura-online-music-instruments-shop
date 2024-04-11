@@ -10,6 +10,7 @@ connectDB();
 const PORT = process.env.PORT || 5050;
 const app = express();
 
+
 // Load environment variables
 if (dotenv.error) {
   console.error("Error loading .env file:", dotenv.error);
@@ -26,6 +27,8 @@ const connection = mongoose.connection;
 connection.once('open', () => {
   console.log("MongoDB database connection successfull!!!");
 });
+
+app.use("/api/rentals", require("./routes/rentItemsRoute")); 
 
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);

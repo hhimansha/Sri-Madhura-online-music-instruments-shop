@@ -1,10 +1,13 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import ReactDOM from 'react-dom';
 import App from './App';
+import { RentalItemProvider } from './context/rentalItemContext'; // Import RentalItemProvider
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
+ReactDOM.render(
   <React.StrictMode>
-    <App />
-  </React.StrictMode>
+    <RentalItemProvider> {/* Wrap App with RentalItemProvider */}
+      <App />
+    </RentalItemProvider>
+  </React.StrictMode>,
+  document.getElementById('root')
 );

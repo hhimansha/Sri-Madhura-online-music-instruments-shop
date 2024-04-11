@@ -1,11 +1,29 @@
 import './App.css';
 import TopNav from './components/topNav';
+import Footer from './components/Footer';
+import RentHome from './components/Rental/RentHomePage';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import AdminDash from './components/AdminDash';
+import RentalItemCreate from './components/Rental/RentalItemCreate';
 
 function App() {
   return (
-    <div className="App">
-      <TopNav/>
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route path="/rentalcreate" element={<><AdminDash /><RentalItemCreate /></>} />
+          <Route path="/" element={<><TopNav/><RentHome /><Footer/></>} />
+          <Route
+           path="/admindash"
+            element={<AdminDash />}
+          />
+        </Routes>
+      
+
+      
     </div>
+    </Router>
+    
   );
 }
 
