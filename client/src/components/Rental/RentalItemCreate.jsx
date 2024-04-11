@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { PhotoIcon } from '@heroicons/react/24/solid';
 import { useRentalItemContext } from '../../hooks/useRentalItemContext';
-import axios from 'axios';
 
 export default function RentalItemCreate() {
   const { dispatch } = useRentalItemContext();
