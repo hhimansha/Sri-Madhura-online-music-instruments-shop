@@ -36,7 +36,7 @@ function RentalItemDisplay() {
     <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-5 m-10">
       {rentalItems.map((rentalItem) => (
         <div key={rentalItem._id} className="bg-white shadow-md rounded-md overflow-hidden">
-          <img src={rentalItem.image} alt={rentalItem.title} className="w-full h-64 object-cover" />
+          <img src={`http://localhost:5050/uploads/${rentalItem.image}`}  alt={rentalItem.title} className="w-full h-64 object-cover" />
           <div className="p-4">
             <h2 className="text-lg font-semibold">{rentalItem.title}</h2>
             <p className="text-gray-600">{rentalItem.description}</p>

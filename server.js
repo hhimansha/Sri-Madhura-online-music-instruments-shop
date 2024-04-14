@@ -11,6 +11,7 @@ connectDB();
 const PORT = process.env.PORT || 5050;
 const app = express();
 
+
 // Multer setup
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -46,6 +47,8 @@ connection.once('open', () => {
 // Routes
 const rentItemsRoute = require("./routes/rentItemsRoute");
 app.use("/api", rentItemsRoute); // Change the route to /api
+
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
