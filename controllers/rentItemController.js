@@ -1,6 +1,5 @@
 const asyncHandler = require('express-async-handler');
 const RentItem = require('../models/rentItem');
-const cloudinary = require('../utils/cloudinary');
 
 //@desc Get all rental items
 //@route GET /api/rentals
@@ -26,27 +25,19 @@ const getRentItem = asyncHandler(async (req, res) => {
 //@route POST /api/rentals
 //@access Public
 const createRentItem = asyncHandler(async (req, res) => {
-
     const { title, description, category, rentalPrice, stockCount, image } = req.body;
-
     if (!title || !description || !category || !rentalPrice || !stockCount || !image) {
         res.status(400);
         throw new Error("All fields are required!");
     }
     try{
-        cloudinary.uploader.upload("https://upload.wikimedia.org/wikipedia/commons/a/ae/Olympic_flag.jpg",
-  { public_id: "olympic_flag" }, 
-  function(error, result) {console.log(result); });
         const rentItem = await RentItem.create({
             title,
             description,
             category,
             rentalPrice,
             stockCount,
-            image: {
-                public_id: result.public_id,
-                url: result.secure_url
-            }
+            image
         });
         res.status(201).json(rentItem);
     }catch{

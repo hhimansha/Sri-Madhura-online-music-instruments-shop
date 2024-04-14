@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { PhotoIcon } from '@heroicons/react/24/solid';
 import { useRentalItemContext } from '../../hooks/useRentalItemContext';
-import axios from 'axios';
 
 export default function RentalItemCreate() {
   const { dispatch } = useRentalItemContext();
@@ -16,57 +15,42 @@ export default function RentalItemCreate() {
   const [error, setError] = useState('');
   const [emptyFields, setEmptyFields] = useState(false);
 
-  const uploadFile = async (file) => {
-    const formData = new FormData();
-    formData.append('file', file);
-    formData.append('upload_preset', 'images-preset');
-  
-    try {
-      const cloudName = process.env.REACT_APP_CLOUD_NAME;
-      const api = `https://api.cloudinary.com/v1_1/${cloudName}/image/upload`;
-  
-      const response = await axios.post(api, formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      });
-  
-      const { secure_url } = response.data;
-      return secure_url;
-    } catch (error) {
-      console.error('Error uploading file to Cloudinary:', error);
-      throw new Error('Failed to upload file to Cloudinary');
-    }
-  };
-  
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     if (!title || !description || !category || !rentalPrice || !stockCount || !image) {
       setEmptyFields(true);
       return;
     }
-  
+
+    const rentalItem = {
+      title,
+      description,
+      category,
+      rentalPrice,
+      stockCount,
+      image
+    };
+
     try {
-      const imgUrl = await uploadFile(image);
-      const rentalItem = {
-        title,
-        description,
-        category,
-        rentalPrice,
-        stockCount,
-        image: imgUrl
-      };
-  
-      const response = await axios.post('http://localhost:5050/api/rentals', rentalItem);
-  
+      const response = await fetch('http://localhost:5050/api/rentals/rentalcreate', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(rentalItem)
+      });
+
       if (!response.ok) {
         throw new Error('Failed to create rental item');
       }
-  
-      const createdRentalItem = response.data;
+
+      // Assuming the response is the created rental item object
+      const createdRentalItem = await response.json();
+
+      // Dispatch action to update context state with the created rental item
       dispatch({ type: 'ADD_RENTAL_ITEM', payload: createdRentalItem });
-  
+
       // Clear form fields
       setTitle('');
       setDescription('');
@@ -77,12 +61,10 @@ export default function RentalItemCreate() {
       setImageName('');
       setEmptyFields(false);
       setError('');
-      console.log('Rental item created successfully');
     } catch (error) {
       setError(error.message);
     }
   };
-  
 
   return (
     <form className='max-w-[750px] mx-auto my-10' onSubmit={handleSubmit}>
