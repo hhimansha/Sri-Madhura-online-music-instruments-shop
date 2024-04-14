@@ -8,7 +8,7 @@ function RentalItemDisplay() {
   useEffect(() => {
     const fetchRentalItems = async () => {
       try {
-        const response = await fetch('http://localhost:5050/api/rentals/rentals');
+        const response = await fetch('http://localhost:5050/api/rentals/');
         if (!response.ok) {
           throw new Error('Failed to fetch rental items');
         }
