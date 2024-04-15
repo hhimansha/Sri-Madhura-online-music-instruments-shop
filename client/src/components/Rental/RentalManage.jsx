@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const RentalManage = () => {
     const [rentalItems, setRentalItems] = useState([]);
@@ -58,13 +59,14 @@ const RentalManage = () => {
     }
 
     return (
-        <div className="flex flex-col max-w-fit mx-auto my-6 ml-80">
+        <div className="flex flex-col max-w-fit mx-auto my-6 ml-72">
             <div className="flex mb-10 justify-between">
                 <h1 className="text-2xl font-semibold leading-7 text-dark text-left">Manage Rentals</h1>
-                <button type="button" className="items-center text-sm font-medium rounded-lg text-white bg-primary p-2 flex">Add New Rental<span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 font ml-1">
+                <Link to={'/rentalcreate'}>
+                <button type="button" className="items-center text-sm font-medium rounded-lg text-white bg-primary hover:bg-primaryDark p-2 flex">Add New Rental<span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 font ml-1">
                     <path fill-rule="evenodd" d="M12 3.75a.75.75 0 0 1 .75.75v6.75h6.75a.75.75 0 0 1 0 1.5h-6.75v6.75a.75.75 0 0 1-1.5 0v-6.75H4.5a.75.75 0 0 1 0-1.5h6.75V4.5a.75.75 0 0 1 .75-.75Z" clip-rule="evenodd" />
                 </svg></span>
-                </button>
+                </button></Link>
             </div>
             <div className="-m-1.5 overflow-x-auto">
                 <div className="p-1.5 min-w-full inline-block align-middle">
@@ -94,17 +96,17 @@ const RentalManage = () => {
                                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800"><img src={`http://localhost:5050/uploads/${rentalItem.image}`} alt={rentalItem.title} className="w-12 h-12 object-cover" /></td>
                                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{rentalItem.title}</td>
                                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{rentalItem.stockCount}</td>
-                                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800">${rentalItem.rentalPrice}</td>
+                                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800">Rs.{rentalItem.rentalPrice}.00</td>
                                         <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-    <span className={`px-2 py-1 rounded-full ${rentalItem.stockCount > 5 ? 'bg-green-100 border border-green-600 text-green-600' : rentalItem.stockCount === 0 ? 'bg-red-100 border border-red-600 text-red-600' : rentalItem.stockCount < 5 ? 'bg-yellow-100 border border-yellow-600 text-yellow-600' : 'bg-red-100 border border-red-600 text-red-600'}`}>
-        {rentalItem.stockCount > 5 ? 'Yes' : rentalItem.stockCount === 0 ? 'No' : rentalItem.stockCount < 5 ? 'Low' : 'No'}
-    </span>
-</td>
+                                            <span className={`px-2 py-1 rounded-full ${rentalItem.stockCount > 5 ? 'bg-green-100 border border-green-600 text-green-600' : rentalItem.stockCount === 0 ? 'bg-red-100 border border-red-600 text-red-600' : rentalItem.stockCount < 5 ? 'bg-yellow-100 border border-yellow-600 text-yellow-600' : 'bg-red-100 border border-red-600 text-red-600'}`}>
+                                                {rentalItem.stockCount > 5 ? 'Yes' : rentalItem.stockCount === 0 ? 'No' : rentalItem.stockCount < 5 ? 'Low' : 'No'}
+                                            </span>
+                                        </td>
 
 
                                         <td className="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
-                                            <button type="button" className="inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent text-white bg-dark p-1  disabled:opacity-50 disabled:pointer-events-none mr-4">Update</button>
-                                            <button type="button" className="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-red-500 p-1 text-red-500 hover:text-white hover:bg-red-600" onClick={() => handleDelete(rentalItem._id)}>Delete</button>
+                                            <button type="button" className="inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent text-white bg-dark p-1 px-2 disabled:opacity-50 disabled:pointer-events-none mr-4">Update</button>
+                                            <button type="button" className="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-red-500 p-1 px-2 text-red-500 hover:text-white hover:bg-red-600" onClick={() => handleDelete(rentalItem._id)}>Delete</button>
                                         </td>
                                     </tr>
                                 ))}
