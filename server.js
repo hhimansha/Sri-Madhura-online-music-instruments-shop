@@ -29,6 +29,7 @@ connection.once('open', () => {
 });
 
 app.use("/api/rentals", require("./routes/rentItemsRoute")); 
+app.use("/api/repairs", require ("./routes/repairItemsRoute"));
 
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
