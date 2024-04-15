@@ -105,7 +105,9 @@ const RentalManage = () => {
 
 
                                         <td className="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
+                                            <Link to={`/rentals/update/${rentalItem._id}`}>
                                             <button type="button" className="inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent text-white bg-dark p-1 px-2 disabled:opacity-50 disabled:pointer-events-none mr-4">Update</button>
+                                            </Link>
                                             <button type="button" className="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-red-500 p-1 px-2 text-red-500 hover:text-white hover:bg-red-600" onClick={() => handleDelete(rentalItem._id)}>Delete</button>
                                         </td>
                                     </tr>

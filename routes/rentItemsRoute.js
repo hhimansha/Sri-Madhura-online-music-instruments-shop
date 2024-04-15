@@ -22,7 +22,7 @@ const {createRentItem, getRentals, getRentItem, updateRentItem, deleteRentItem} 
 router.post('/rentalcreate', upload.single('image'), createRentItem);
 router.route('/rentals').get(getRentals);
 router.route('/rentals/:id').get(getRentItem);
-router.route('/rentals/update/:id').put(updateRentItem);
+router.put('/rentals/update/:id', upload.single('image'), updateRentItem);
 router.route('/rentals/delete/:id').delete(deleteRentItem);
 
 

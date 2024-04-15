@@ -7,6 +7,7 @@ import AdminDash from './components/Admin/AdminDash';
 import RentalItemCreate from './components/Rental/RentalItemCreate';
 import RentalItemDisplay from './components/Rental/RentalItemDisplay';
 import RentalManage from './components/Rental/RentalManage';
+import UpdateRental from './components/Rental/UpdateRental';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <div className="App">
         <Routes>
           <Route path="/rentalcreate" element={<><AdminDash /><RentalItemCreate /></>} />
+          <Route path="/rentals/update/:id" element={<><AdminDash /><UpdateRental /></>} />
           <Route path="/rentals" element={<><AdminDash /><RentalManage /></>} />
           <Route path="/" element={<><TopNav/><RentHome /><RentalItemDisplay /><Footer/></>} />
           <Route path="/rentals" element={<><TopNav/><RentalItemDisplay /><Footer/></>} />

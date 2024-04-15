@@ -62,13 +62,40 @@ const updateRentItem = asyncHandler(async (req, res) => {
         throw new Error("RentItem not found");
     }
 
-    const updatedRentItem = await RentItem.findByIdAndUpdate(req.params.id, req.body, {
-        new: true,
-        runValidators: true
-    });
+    // Extract data from the form-data
+    const { title, description, category, rentalPrice, stockCount } = req.body;
+    let image = null; // Initialize image variable
 
-    res.status(200).json(updatedRentItem);
+    // Check if an image is provided in the form-data
+    if (req.file) {
+        image = req.file.filename; // Get the filename if file exists
+    }
+
+    try {
+        // Update the rent item with the extracted data
+        rentItem.title = title;
+        rentItem.description = description;
+        rentItem.category = category;
+        rentItem.rentalPrice = rentalPrice;
+        rentItem.stockCount = stockCount;
+
+        // Update the image only if it's provided
+        if (image) {
+            rentItem.image = image; // Update the image filename or path
+        }
+
+        // Save the updated rent item
+        const updatedRentItem = await rentItem.save();
+
+        res.status(200).json(updatedRentItem);
+    } catch (error) {
+        console.error(error);
+        res.status(400).json({ message: "Failed to update rental item" });
+    }
 });
+
+
+
 
 //@desc Delete a rental item by ID
 //@route DELETE /api/rentals/:id
