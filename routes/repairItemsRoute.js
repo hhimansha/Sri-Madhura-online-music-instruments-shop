@@ -1,5 +1,5 @@
 import express from 'express';
-import { repairs } from '../models/requestModel.js';
+import { repairs } from '../models/repairItem.js';
 
 const router = express.Router();
 
