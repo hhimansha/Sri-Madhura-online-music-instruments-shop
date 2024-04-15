@@ -96,10 +96,12 @@ const RentalManage = () => {
                                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{rentalItem.stockCount}</td>
                                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800">${rentalItem.rentalPrice}</td>
                                         <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                                            <span className={`px-2 py-1 rounded-full ${rentalItem.stockCount > 0 ? 'bg-green-100 border border-green-600 text-green-600' : 'bg-red-100 border border-red-600 text-red-600'}`}>
-                                                {rentalItem.stockCount > 0 ? 'Yes' : 'No'}
-                                            </span>
-                                        </td>
+    <span className={`px-2 py-1 rounded-full ${rentalItem.stockCount > 5 ? 'bg-green-100 border border-green-600 text-green-600' : rentalItem.stockCount === 0 ? 'bg-red-100 border border-red-600 text-red-600' : rentalItem.stockCount < 5 ? 'bg-yellow-100 border border-yellow-600 text-yellow-600' : 'bg-red-100 border border-red-600 text-red-600'}`}>
+        {rentalItem.stockCount > 5 ? 'Yes' : rentalItem.stockCount === 0 ? 'No' : rentalItem.stockCount < 5 ? 'Low' : 'No'}
+    </span>
+</td>
+
+
                                         <td className="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
                                             <button type="button" className="inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent text-white bg-dark p-1  disabled:opacity-50 disabled:pointer-events-none mr-4">Update</button>
                                             <button type="button" className="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-red-500 p-1 text-red-500 hover:text-white hover:bg-red-600" onClick={() => handleDelete(rentalItem._id)}>Delete</button>
