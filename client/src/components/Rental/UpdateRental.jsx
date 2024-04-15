@@ -67,15 +67,19 @@ const UpdateRental = () => {
                 throw new Error(json.message);
             } else {
                 setError('');
-                navigate('/rentals');
+                navigate('/admindash/rentals');
             }
         } catch (error) {
             console.error('Error updating rental item:', error.message);
             setError(error.message);
         }
     };
-    
-    
+
+    const handleImageChange = (e) => {
+        setImage(e.target.files[0]);
+        setImageName(e.target.files[0].name);
+    };
+
 
     return (
         <form className='max-w-[750px] mx-auto my-10' onSubmit={handleSubmit}>
@@ -135,6 +139,23 @@ const UpdateRental = () => {
                                     className="block w-full flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                                     placeholder="Enter category"
                                 />
+                            </div>
+                        </div>
+
+                        <div className="sm:col-span-4">
+                            <label htmlFor="image" className="block text-md font-medium leading-6 text-gray-900 text-left">
+                                Image
+                            </label>
+                            <div className="mt-2 flex items-center gap-x-2">
+                                <input
+                                    type="file"
+                                    id="image"
+                                    name="image"
+                                    accept="image/*"
+                                    onChange={handleImageChange}
+                                    className="block border-gray-300 rounded-md  focus:ring-primary focus:border-primary sm:text-sm"
+                                />
+                                <span className="text-sm text-gray-600">{imageName}</span>
                             </div>
                         </div>
 

@@ -20,15 +20,17 @@ function RentalItemDisplay() {
         }
         const data = await response.json();
         setRentalItems(data);
+        setFilteredItems(data); // Initialize filteredItems with all rental items
         setLoading(false);
       } catch (error) {
         setError(error.message);
         setLoading(false);
       }
     };
-
+  
     fetchRentalItems();
   }, []);
+  
 
   const categories = [...new Set(rentalItems.map(item => item.category))];
 

@@ -14,11 +14,11 @@ function App() {
     <Router>
       <div className="App">
         <Routes>
-          <Route path="/rentalcreate" element={<><AdminDash /><RentalItemCreate /></>} />
-          <Route path="/rentals/update/:id" element={<><AdminDash /><UpdateRental /></>} />
-          <Route path="/rentals" element={<><AdminDash /><RentalManage /></>} />
-          <Route path="/" element={<><TopNav/><RentHome /><RentalItemDisplay /><Footer/></>} />
-          <Route path="/rentals" element={<><TopNav/><RentalItemDisplay /><Footer/></>} />
+          <Route path="/admindash/rentals/rentalcreate" element={<><AdminDash /><RentalItemCreate /></>} />
+          <Route path="/admindash/rentals/update/:id" element={<><AdminDash /><UpdateRental /></>} />
+          <Route path="/admindash/rentals" element={<><AdminDash /><RentalManage /></>} />
+          <Route path="/rentals" element={<><TopNav/><RentHome /><RentalItemDisplay /><Footer/></>} />
+          
           <Route
            path="/admindash"
             element={<AdminDash />}
