@@ -76,7 +76,7 @@ function AdminDash() {
                 <span class="flex-1 ms-3 whitespace-nowrap  text-start">Bulk Orders</span>
               </a>
             </li>
-            <li><Link to = '/rentals'>
+            <li><Link to = '/admindash/rentals'>
               <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100  hover:text-primary dark:hover:bg-gray-800 group">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                   <path stroke-linecap="round" stroke-linejoin="round" d="m21 7.5-9-5.25L3 7.5m18 0-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
