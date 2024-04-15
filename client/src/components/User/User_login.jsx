@@ -3,13 +3,45 @@ import { Link } from "react-router-dom";
 import { Toaster } from 'react-hot-toast';
 import { useFormik } from 'formik';
 import { usernameValidate } from "../../helper/validate";
+import { passwordValidate } from "../../helper/validate";
+import { useState } from 'react';
+import Axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
 
 export default function LoginForm (){
 
+   
+
+    const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+Axios.defaults.withCredentials = true;
+
+const navigate = useNavigate()
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    Axios.post('http://localhost:3000/auth/login', {
+      
+      email,
+      password
+      
+
+    }).then(response => {
+      if(response.data.status){
+        navigate('/profile')
+      }
+      
+    }).catch(err => {
+      console.log(err)
+    })
+  }
+
     const formik = useFormik( {
         initialValues : {
-            username : ''
+            username : '',
+            password : ''
         },
         validate: usernameValidate,
         validateOnBlur: false,
@@ -61,20 +93,20 @@ export default function LoginForm (){
                         <h4 className="mb-2 font-medium text-gray-700 xl:text-xl">Welcome to futurism!</h4>
                         <p className="mb-6 text-gray-500">Please sign-in to access your account</p>
 
-                        <form className="mb-4" action="#" method="POST" onSubmit = {formik.handleSubmit}>
+                        <form className="mb-4" action="#" method="POST" onSubmit={handleSubmit}>
                             <div className="mb-4">
                                 <label htmlFor="email" className="mb-2 inline-block text-xs font-medium uppercase text-gray-700">Email</label>
-                                <input type="text" {...formik.getFieldProps('username')} className="block w-full cursor-text appearance-none rounded-md border border-gray-400 bg--100 py-2 px-3 text-sm outline-none focus:border-indigo-500 focus:bg-white focus:text-gray-600 focus:shadow" id="email" name="username" placeholder="Enter your email" autoFocus />
+                                <input type="text" onChange={(e) => setEmail(e.target.value)}  className="block w-full cursor-text appearance-none rounded-md border border-gray-400 bg--100 py-2 px-3 text-sm outline-none focus:border-indigo-500 focus:bg-white focus:text-gray-600 focus:shadow" id="email" name="username" placeholder="Enter your email" autoFocus />
                             </div>
                             <div className="mb-4">
                                 <div className="flex justify-between">
                                     <label className="mb-2 inline-block text-xs font-medium uppercase text-gray-700" htmlFor="password">Password</label>
-                                    <a href="auth-forgot-password-basic.html" className="cursor-pointer text-indigo-500 no-underline hover:text-indigo-500">
+                                    <Link to="/recover" className="cursor-pointer text-indigo-500 no-underline hover:text-indigo-500">
                                         <small className="">Forgot Password?</small>
-                                    </a>
+                                    </Link>
                                 </div>
                                 <div className="relative flex w-full flex-wrap items-stretch">
-                                    <input type="password" id="password" className="relative block flex-auto cursor-text appearance-none rounded-md border border-gray-400 bg--100 py-2 px-3 text-sm outline-none focus:border-indigo-500 focus:bg-white focus:text-gray-600 focus:shadow" name="password" placeholder="············" />
+                                    <input type="password"  onChange={(e) => setPassword(e.target.value)}  id="password" className="relative block flex-auto cursor-text appearance-none rounded-md border border-gray-400 bg--100 py-2 px-3 text-sm outline-none focus:border-indigo-500 focus:bg-white focus:text-gray-600 focus:shadow" name="password" placeholder="············" />
                                 </div>
                             </div>
                             <div className="mb-4">
@@ -89,7 +121,7 @@ export default function LoginForm (){
                         </form>
 
                         <p className="mb-4 text-center">
-                            New on futurism?
+                            New on Sri Madhura?
                             <Link to="/signup" className="cursor-pointer text-indigo-500 no-underline hover:text-indigo-500"> Create an account </Link>
                         </p>
                     </div>

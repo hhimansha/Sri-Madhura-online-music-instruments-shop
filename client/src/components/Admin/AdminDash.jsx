@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import RentalItemCreate from '../Rental/RentalItemCreate';
 
 function AdminDash() {
+
+  
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {

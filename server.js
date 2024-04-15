@@ -4,7 +4,8 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const dotenv = require('dotenv').config();
 const connectDB = require('./config/dbConnect');
-
+const  UserRouter  = require("./routes/user.js");
+const cookieParser = require('cookie-parser');
 
 connectDB();
 const PORT = process.env.PORT || 5050;
@@ -17,7 +18,14 @@ if (dotenv.error) {
 }
 
 app.use(cors());
+app.use(cookieParser(
+  {
+    origin: ["http://localhost:3000"],
+    Credential: true
+  }
+))
 app.use(express.json());
+app.use('/auth', UserRouter);
 
 // start the Express server
 const URL = process.env.ATLAS_URI;

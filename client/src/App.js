@@ -7,6 +7,9 @@ import AdminDash from './components/Admin/AdminDash';
 import RentalItemCreate from './components/Rental/RentalItemCreate';
 import User_signup from './components/User/User_signup';
 import User_login from './components/User/User_login';
+import Reset from './components/User/Reset';
+import Recovery from './components/User/Recovery';
+import Profile from './components/User/Profile';
 
 function App() {
   return (
@@ -16,6 +19,9 @@ function App() {
           <Route path="/rentalcreate" element={<><AdminDash /><RentalItemCreate /></>} />
           <Route path="/login" element={<User_login />} /> {/* New route for user login */}
           <Route path="/signup" element={<User_signup />} /> {/* New route for user signup */}
+          <Route path="/reset/:token" element={<Reset/>} /> 
+          <Route path="/recover" element={<Recovery/>} />
+          <Route path="/profile" element={<Profile/>} />
           <Route path="/" element={<><TopNav/><RentHome /><Footer/></>} />
           <Route path="/admindash" element={<AdminDash />} />
           
