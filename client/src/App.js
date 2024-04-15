@@ -18,6 +18,7 @@ function App() {
           <Route path="/admindash/rentals/update/:id" element={<><AdminDash /><UpdateRental /></>} />
           <Route path="/admindash/rentals" element={<><AdminDash /><RentalManage /></>} />
           <Route path="/rentals" element={<><TopNav/><RentHome /><RentalItemDisplay /><Footer/></>} />
+          <Route path="/rentals/:id" element={<><TopNav/><RentHome /><Footer/></>} />
           
           <Route
            path="/admindash"

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import FilterBar from './FilterBar';
+import { Link } from 'react-router-dom';
 
 function RentalItemDisplay() {
   const [rentalItems, setRentalItems] = useState([]);
@@ -115,11 +116,13 @@ function RentalItemDisplay() {
               animate="visible"
             >
               <div className="bg-white shadow-xl rounded-xl overflow-hidden">
+              <Link to={`/rentals/${rentalItem._id}`}>
                 <img src={`http://localhost:5050/uploads/${rentalItem.image}`} alt={rentalItem.title} className="w-full h-64 object-cover" />
                 <div className="p-4">
                   <h2 className="text-lg font-semibold text-left">{rentalItem.title}</h2>
                   <p className="mt-2 text-left font-semibold text-primary">${rentalItem.rentalPrice} per day</p>
                 </div>
+                </Link>
               </div>
             </motion.div>
           ))
@@ -134,12 +137,15 @@ function RentalItemDisplay() {
                 animate="visible"
               >
                 <div className="bg-white shadow-xl rounded-xl overflow-hidden">
+                <Link to={`/rentals/${rentalItem._id}`}>
                   <img src={`http://localhost:5050/uploads/${rentalItem.image}`} alt={rentalItem.title} className="w-full h-64 object-cover" />
                   <div className="p-4">
                     <h2 className="text-lg font-semibold">{rentalItem.title}</h2>
                     <p className="text-gray-800 mt-2">${rentalItem.rentalPrice} per day</p>
                   </div>
+                  </Link>
                 </div>
+                
               </motion.div>
             )
           ))

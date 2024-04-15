@@ -65,7 +65,7 @@ const RentalManage = () => {
             
             doc.autoTable({
                 startY: 28,
-                head: [['ID', 'Title', 'Stock Count', 'Category', 'Rental Price']],
+                head: [['ID', 'Item Name', 'Stock Count', 'Category', 'Rental Price']],
                 body: rentalItems.map(({ _id, title, stockCount, category, rentalPrice }) => [_id, title, stockCount, category, rentalPrice]),
                 columnStyles: {
                     0: { cellWidth: 30 },
