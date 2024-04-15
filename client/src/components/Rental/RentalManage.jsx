@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import logoImg from "../assets/MainLogo.png";
+import jsPDF from "jspdf";
+import "jspdf-autotable";
 
 const RentalManage = () => {
     const [rentalItems, setRentalItems] = useState([]);
@@ -50,6 +53,42 @@ const RentalManage = () => {
         }
     };
 
+    const downloadPDF = () => {
+        const doc = new jsPDF();
+    
+        // Add logo
+        const logo = new Image();
+        logo.src = logoImg; // Replace '/path/to/logo.png' with the actual path to your logo image
+        logo.onload = function () {
+            doc.text('Rental Items Details', 15, 18); // Adjust the text position as needed
+            doc.addImage(logo, 'PNG', 160, 10, 30, 11); // Adjust the coordinates (10, 10) and size (40, 40) as needed
+            
+            doc.autoTable({
+                startY: 28,
+                head: [['ID', 'Title', 'Stock Count', 'Category', 'Rental Price']],
+                body: rentalItems.map(({ _id, title, stockCount, category, rentalPrice }) => [_id, title, stockCount, category, rentalPrice]),
+                columnStyles: {
+                    0: { cellWidth: 30 },
+                    1: { cellWidth: 60 },
+                    2: { cellWidth: 30 },
+                    3: { cellWidth: 30 },
+                    4: { cellWidth: 30 }
+                },
+                margin: { top: 50 },
+                styles: {
+                    overflow: 'linebreak'
+                },
+                headStyles: {
+                    fillColor: [255, 165, 0] // Orange color
+                },
+                theme: 'striped'
+            });
+    
+            doc.save('rentalItems.pdf');
+        };
+    };
+    
+
     if (loading) {
         return <div>Loading...</div>;
     }
@@ -67,12 +106,16 @@ const RentalManage = () => {
                     <path fill-rule="evenodd" d="M12 3.75a.75.75 0 0 1 .75.75v6.75h6.75a.75.75 0 0 1 0 1.5h-6.75v6.75a.75.75 0 0 1-1.5 0v-6.75H4.5a.75.75 0 0 1 0-1.5h6.75V4.5a.75.75 0 0 1 .75-.75Z" clip-rule="evenodd" />
                 </svg></span>
                 </button></Link>
+                <button onClick={downloadPDF} className="items-center text-sm font-medium rounded-lg text-white bg-primary hover:bg-primaryDark p-2 flex">Download PDF<span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 font ml-1">
+                    <path fill-rule="evenodd" d="M12 3.75a.75.75 0 0 1 .75.75v6.75h6.75a.75.75 0 0 1 0 1.5h-6.75v6.75a.75.75 0 0 1-1.5 0v-6.75H4.5a.75.75 0 0 1 0-1.5h6.75V4.5a.75.75 0 0 1 .75-.75Z" clip-rule="evenodd" />
+                </svg></span>
+                </button>
             </div>
             <div className="-m-1.5 overflow-x-auto">
                 <div className="p-1.5 min-w-full inline-block align-middle">
 
                     <div className="overflow-hidden">
-                        <table className="min-w-fit divide-y divide-gray-200">
+                        <table id="rental-table" className="min-w-fit divide-y divide-gray-200">
                             <thead className="bg-gray-200 rounded-lg">
                                 <tr>
                                     <th scope="col" className="px-6 py-3 text-start text-xs font-bold text-dark uppercase">ID</th>
