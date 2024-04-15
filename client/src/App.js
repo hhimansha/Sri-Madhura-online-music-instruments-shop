@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import AdminDash from './components/Admin/AdminDash';
 import RentalItemCreate from './components/Rental/RentalItemCreate';
 import RentalItemDisplay from './components/Rental/RentalItemDisplay';
+import RentalManage from './components/Rental/RentalManage';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <div className="App">
         <Routes>
           <Route path="/rentalcreate" element={<><AdminDash /><RentalItemCreate /></>} />
+          <Route path="/rentals" element={<><AdminDash /><RentalManage /></>} />
           <Route path="/" element={<><TopNav/><RentHome /><RentalItemDisplay /><Footer/></>} />
           <Route path="/rentals" element={<><TopNav/><RentalItemDisplay /><Footer/></>} />
           <Route

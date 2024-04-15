@@ -115,9 +115,8 @@ function RentalItemDisplay() {
               <div className="bg-white shadow-xl rounded-xl overflow-hidden">
                 <img src={`http://localhost:5050/uploads/${rentalItem.image}`} alt={rentalItem.title} className="w-full h-64 object-cover" />
                 <div className="p-4">
-                  <h2 className="text-lg font-semibold">{rentalItem.title}</h2>
-                  <p className="text-gray-800 mt-2">${rentalItem.rentalPrice} per day</p>
-                  <p className="text-gray-800">Stock Count: {rentalItem.stockCount}</p>
+                  <h2 className="text-lg font-semibold text-left">{rentalItem.title}</h2>
+                  <p className="mt-2 text-left font-semibold text-primary">${rentalItem.rentalPrice} per day</p>
                 </div>
               </div>
             </motion.div>
@@ -137,7 +136,6 @@ function RentalItemDisplay() {
                   <div className="p-4">
                     <h2 className="text-lg font-semibold">{rentalItem.title}</h2>
                     <p className="text-gray-800 mt-2">${rentalItem.rentalPrice} per day</p>
-                    <p className="text-gray-800">Stock Count: {rentalItem.stockCount}</p>
                   </div>
                 </div>
               </motion.div>
