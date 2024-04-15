@@ -74,14 +74,25 @@ const updateRentItem = asyncHandler(async (req, res) => {
 //@route DELETE /api/rentals/:id
 //@access Public
 const deleteRentItem = asyncHandler(async (req, res) => {
-    const rentItem = await RentItem.findById(req.params.id);
-    if (!rentItem) {
-        res.status(404);
-        throw new Error("RentItem not found");
-    }
+    try {
+        // Find the rent item by ID
+        const rentItem = await RentItem.findById(req.params.id);
 
-    await rentItem.remove();
-    res.status(200).json({ message: "RentItem removed" });
+        // Check if the rent item exists
+        if (!rentItem) {
+            return res.status(404).json({ message: "RentItem not found" });
+        }
+
+        // Attempt to remove the rent item
+        await rentItem.deleteOne();
+        res.status(200).json({ message: "RentItem removed" });
+    } catch (error) {
+        // Handle any errors that occur during removal
+        console.error(error);
+        res.status(500).json({ error: "Error removing RentItem" });
+    }
 });
+
+
 
 module.exports = { getRentals, getRentItem, createRentItem, updateRentItem, deleteRentItem };

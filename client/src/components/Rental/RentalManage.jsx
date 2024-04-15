@@ -28,6 +28,27 @@ const RentalManage = () => {
     navigator.clipboard.writeText(text);
   };
 
+  const handleDelete = async (id) => {
+    // Display confirmation dialog
+    const confirmDelete = window.confirm("Are you sure you want to delete this item?");
+    if (!confirmDelete) return; // Cancel delete if user clicks "Cancel"
+
+    // Perform delete operation if user confirms
+    try {
+      const response = await fetch(`http://localhost:5050/api/rentals/delete/${id}`, {
+        method: 'DELETE',
+      });
+      if (!response.ok) {
+        throw new Error('Failed to delete rental item');
+      }
+      
+      // Update state to reflect deletion
+      setRentalItems(rentalItems.filter(item => item._id !== id));
+    } catch (error) {
+      console.error('Error deleting rental item:', error.message);
+    }
+  };
+
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -57,11 +78,10 @@ const RentalManage = () => {
                 {rentalItems.map((rentalItem) => (
                   <tr key={rentalItem._id}>
                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">{`...${rentalItem._id.substring(rentalItem._id.length - 3)}`}
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 ml-1  cursor-pointer" onClick={() => copyToClipboard(rentalItem._id)}>
-                      <path d="M7 3.5A1.5 1.5 0 0 1 8.5 2h3.879a1.5 1.5 0 0 1 1.06.44l3.122 3.12A1.5 1.5 0 0 1 17 6.622V12.5a1.5 1.5 0 0 1-1.5 1.5h-1v-3.379a3 3 0 0 0-.879-2.121L10.5 5.379A3 3 0 0 0 8.379 4.5H7v-1Z" />
-                        <path d="M4.5 6A1.5 1.5 0 0 0 3 7.5v9A1.5 1.5 0 0 0 4.5 18h7a1.5 1.5 0 0 0 1.5-1.5v-5.879a1.5 1.5 0 0 0-.44-1.06L9.44 6.439A1.5 1.5 0 0 0 8.378 6H4.5Z" />                      </svg>
-
-
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 ml-1 cursor-pointer" onClick={() => copyToClipboard(rentalItem._id)}>
+                        <path d="M7 3.5A1.5 1.5 0 0 1 8.5 2h3.879a1.5 1.5 0 0 1 1.06.44l3.122 3.12A1.5 1.5 0 0 1 17 6.622V12.5a1.5 1.5 0 0 1-1.5 1.5h-1v-3.379a3 3 0 0 0-.879-2.121L10.5 5.379A3 3 0 0 0 8.379 4.5H7v-1Z" />
+                        <path d="M4.5 6A1.5 1.5 0 0 0 3 7.5v9A1.5 1.5 0 0 0 4.5 18h7a1.5 1.5 0 0 0 1.5-1.5v-5.879a1.5 1.5 0 0 0-.44-1.06L9.44 6.439A1.5 1.5 0 0 0 8.378 6H4.5Z" />                      
+                      </svg>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800"><img src={`http://localhost:5050/uploads/${rentalItem.image}`} alt={rentalItem.title} className="w-12 h-12 object-cover" /></td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{rentalItem.title}</td>
@@ -70,7 +90,7 @@ const RentalManage = () => {
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{rentalItem.stockCount > 0 ? 'Yes' : 'No'}</td>
                     <td className="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
                       <button type="button" className="inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent text-white bg-dark p-1  disabled:opacity-50 disabled:pointer-events-none mr-4">Update</button>
-                      <button type="button" className="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-red-500 p-1 text-red-500 hover:text-white hover:bg-red-600  disabled:opacity-50 disabled:pointer-events-none">Delete</button>
+                      <button type="button" className="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-red-500 p-1 text-red-500 hover:text-white hover:bg-red-600" onClick={() => handleDelete(rentalItem._id)}>Delete</button>
                     </td>
                   </tr>
                 ))}
