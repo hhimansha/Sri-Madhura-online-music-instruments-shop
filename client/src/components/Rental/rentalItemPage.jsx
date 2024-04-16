@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import 'react-datepicker/dist/react-datepicker-cssmodules.css';
+import './custom-datepicker.css';
 
 function RentalItemPage() {
   const { id } = useParams();
@@ -89,39 +90,41 @@ function RentalItemPage() {
   return (
     <div className="container mx-auto py-8">
       {rentalItem && (
-        <div className="flex flex-col md:flex-row">
+        <div className="flex flex-col md:flex-row max-w-screen-xl mx-auto my-10">
           <div className="md:w-1/2">
-            <img src={`http://localhost:5050/uploads/${rentalItem.image}`} alt={rentalItem.title} className="w-full h-auto" />
+            <img src={`http://localhost:5050/uploads/${rentalItem.image}`} alt={rentalItem.title} className="w-[600px] h-auto shadow-xl rounded-2xl" />
           </div>
-          <div className="md:w-1/2 mt-4 md:mt-0 md:ml-8">
+          <div className="md:w-1/2 mt-4 md:mt-0 md:ml-40 text-left">
+            <div className='border-b-2 pb-6'>
             <h2 className="text-2xl font-semibold">{rentalItem.title}</h2>
-            <p className="text-lg mt-2">${rentalItem.rentalPrice} per day</p>
-            <p className="mt-4">{rentalItem.description}</p>
-            <div className="mt-4">
-              <label className="block mb-2">Quantity:</label>
-              <input type="number" className="w-20 px-2 py-1 border rounded" value={quantity} onChange={handleQuantityChange} min={1} />
+            
+            <p className="text-md mt-2 text-gray-600">Category : <span className='font-semibold text-gray-600'>{rentalItem.category}</span></p>
             </div>
             <div className="mt-4">
-              <label className="block mb-2">Rental Date:</label>
+              <label className="block mb-2 font-semibold">Quantity :</label>
+              <input type="number" className="w-full px-2 py-1 border rounded bg-gray-100" value={quantity} onChange={handleQuantityChange} min={1} />
+            </div>
+            <div className="mt-4">
+              <label className="block mb-2 font-semibold">Rental Date:</label>
               <DatePicker
                 selected={rentalDate}
                 onChange={handleRentalDateChange}
                 minDate={new Date()}
                 inline
-                className="border rounded px- py-2 mt-2 focus:outline-none focus:border-primary"
               />
             </div>
             <div className="mt-4">
-              <label className="block mb-2">Number of Days:</label>
+              <label className="block mb-2 font-semibold">Number of Days:</label>
               <input
                 type="number"
-                className="w-20 px-2 py-1 border rounded"
+                className="w-full px-2 py-1 border rounded bg-gray-100"
                 value={numberOfDays}
                 onChange={handleNumberOfDaysChange}
                 min={1}
                 max={maxNumberOfDays}
               />
             </div>
+            <p className="text-lg mt-2">Rs.{rentalItem.rentalPrice} per day</p>
             <button className="mt-4 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded" onClick={handleSubmit}>
               Add to Cart
             </button>

@@ -1,0 +1,65 @@
+/* Example styles for customizing the calendar */
+.react-datepicker {
+    font-family: Arial, sans-serif;
+    width: 100%;
+}
+
+.react-datepicker__month-container {
+    width: 100%;
+}
+
+.react-datepicker__header {
+    background-color: #050201;
+    border-bottom: none;
+    width: 100%;
+    text-align: center; /* Center align the date selector */
+}
+
+.react-datepicker__month {
+    width: 100%;
+    margin: 0 auto; /* Center align the month */
+    padding: 0;
+    list-style: none;
+}
+
+.react-datepicker__current-month, .react-datepicker__day-name {
+    color: #fff;
+}
+
+.react-datepicker__day {
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    width: calc(100% / 7); /* Spread days evenly */
+    height: auto;
+    text-align: center; /* Center date text */
+}
+
+.react-datepicker__day-names {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding-inline: 20px;
+}
+
+.react-datepicker__day--selected {
+    background-color: #FA8232;
+    color: #fff;
+    border-radius: 10px; /* Make selected date fully rounded */
+}
+
+.react-datepicker__day--keyboard-selected {
+    background-color: #FA8232;
+    color: #fff;
+    border-radius: 10px; /* Make keyboard-selected date fully rounded */
+}
+
+.react-datepicker__day:hover {
+    background-color: #ebebeb;
+    border-radius: 10px; /* Make hovered date fully rounded */
+}
+
+.react-datepicker__day--disabled {
+    color: #ccc;
+    cursor: not-allowed;
+}
