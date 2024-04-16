@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import 'react-datepicker/dist/react-datepicker-cssmodules.css';
-import './custom-datepicker.css';
+import './custom-datepicker.css'; // Import your custom styles
 
 function RentalItemPage() {
   const { id } = useParams();
@@ -87,6 +86,14 @@ function RentalItemPage() {
 
   const maxNumberOfDays = 7;
 
+  // Function to filter dates before 7 days from today
+  const filterPastDates = (date) => {
+    const today = new Date();
+    const nextWeek = new Date();
+    nextWeek.setDate(today.getDate() + 7); // Set the date 7 days from today
+    return date >= nextWeek; // Disable dates before 7 days from today
+  };
+
   return (
     <div className="container mx-auto py-8">
       {rentalItem && (
@@ -96,9 +103,8 @@ function RentalItemPage() {
           </div>
           <div className="md:w-1/2 mt-4 md:mt-0 md:ml-40 text-left">
             <div className='border-b-2 pb-6'>
-            <h2 className="text-2xl font-semibold">{rentalItem.title}</h2>
-            
-            <p className="text-md mt-2 text-gray-600">Category : <span className='font-semibold text-gray-600'>{rentalItem.category}</span></p>
+              <h2 className="text-2xl font-semibold">{rentalItem.title}</h2>
+              <p className="text-md mt-2 text-gray-600">Category : <span className='font-semibold text-gray-600'>{rentalItem.category}</span></p>
             </div>
             <div className="mt-4">
               <label className="block mb-2 font-semibold">Quantity :</label>
@@ -111,6 +117,7 @@ function RentalItemPage() {
                 onChange={handleRentalDateChange}
                 minDate={new Date()}
                 inline
+                filterDate={filterPastDates} // Apply the filter function
               />
             </div>
             <div className="mt-4">
