@@ -3,11 +3,16 @@ import { Link } from "react-router-dom";
 import logoImg from "../assets/MainLogo.png";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
+import FilterBar from "./FilterBar"; // Import FilterBar component
 
 const RentalManage = () => {
     const [rentalItems, setRentalItems] = useState([]);
+    const [filteredItems, setFilteredItems] = useState([]); // Add state for filtered items
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [selectedCategory, setSelectedCategory] = useState('');
+    const [selectedSort, setSelectedSort] = useState('');
+    const [searchQuery, setSearchQuery] = useState('');
 
     useEffect(() => {
         const fetchRentalItems = async () => {
@@ -18,6 +23,7 @@ const RentalManage = () => {
                 }
                 const data = await response.json();
                 setRentalItems(data);
+                setFilteredItems(data); // Initialize filteredItems with all rental items
                 setLoading(false);
             } catch (error) {
                 setError(error.message);
@@ -27,6 +33,46 @@ const RentalManage = () => {
 
         fetchRentalItems();
     }, []);
+
+    // Define categories array by extracting from rentalItems state
+    const categories = [...new Set(rentalItems.map(item => item.category))];
+
+    // Apply filters function
+    const applyFilters = () => {
+        let filtered = rentalItems;
+
+        // Apply category filter
+        if (selectedCategory !== '') {
+            filtered = filtered.filter(item => item.category === selectedCategory);
+        }
+
+        // Apply search query filter
+        if (searchQuery.trim() !== '') {
+            filtered = filtered.filter(item => (
+                item.title.toLowerCase().includes(searchQuery.toLowerCase()) || // Search by title
+                item._id.toLowerCase().includes(searchQuery.toLowerCase()) // Search by ID
+            ));
+        }
+
+        // Apply sorting
+        if (selectedSort === 'titleAsc') {
+            filtered.sort((a, b) => a.title.toLowerCase().localeCompare(b.title.toLowerCase()));
+        } else if (selectedSort === 'titleDesc') {
+            filtered.sort((a, b) => b.title.toLowerCase().localeCompare(a.title.toLowerCase()));
+        } else if (selectedSort === 'priceAsc') {
+            filtered.sort((a, b) => a.rentalPrice - b.rentalPrice);
+        } else if (selectedSort === 'priceDesc') {
+            filtered.sort((a, b) => b.rentalPrice - a.rentalPrice);
+        }
+
+        setFilteredItems([...filtered]); // Update filtered items state
+    };
+
+    // useEffect to apply filters whenever category, sort, or search query changes
+    useEffect(() => {
+        applyFilters();
+    }, [selectedCategory, selectedSort, searchQuery, rentalItems]);
+
 
     const copyToClipboard = (text) => {
         navigator.clipboard.writeText(text);
@@ -99,6 +145,12 @@ const RentalManage = () => {
 
     return (
         <div className="flex flex-col max-w-[1280px] mx-auto my-6 ml-[280px]">
+            <FilterBar
+                categories={categories}
+                onFilterChange={setSelectedCategory}
+                onSortChange={setSelectedSort}
+                onSearch={setSearchQuery}
+            />
             <div className="flex mb-10 justify-between">
                 <h1 className="text-2xl font-semibold leading-7 text-dark text-left">Manage Rentals</h1>
                 <div className="flex">
