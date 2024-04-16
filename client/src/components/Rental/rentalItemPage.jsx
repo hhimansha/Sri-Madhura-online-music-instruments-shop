@@ -12,6 +12,7 @@ function RentalItemPage() {
   const [quantity, setQuantity] = useState(1);
   const [rentalDate, setRentalDate] = useState(null);
   const [numberOfDays, setNumberOfDays] = useState(1);
+  const [totalPrice, setTotalPrice] = useState(null);
 
   useEffect(() => {
     const fetchRentalItem = async () => {
@@ -34,6 +35,7 @@ function RentalItemPage() {
 
   const handleQuantityChange = (e) => {
     setQuantity(e.target.value);
+    setTotalPrice(parseInt(e.target.value) * rentalItem.rentalPrice * numberOfDays);
   };
 
   const handleRentalDateChange = (date) => {
@@ -42,20 +44,34 @@ function RentalItemPage() {
 
   const handleNumberOfDaysChange = (e) => {
     setNumberOfDays(e.target.value);
+    setTotalPrice(parseInt(e.target.value) * rentalItem.rentalPrice * quantity);
   };
 
   const handleSubmit = async () => {
     try {
+      if (!rentalDate) {
+        throw new Error('Please select a rental date');
+      }
+      if (quantity < 1 || quantity > 7) {
+        throw new Error('Quantity must be between 1 and 7');
+      }
+      if (numberOfDays < 1 || numberOfDays > 7) {
+        throw new Error('Number of days must be between 1 and 7');
+      }
+  
+      const totalPriceValue = parseInt(rentalItem.rentalPrice) * parseInt(numberOfDays);
+      setTotalPrice(totalPriceValue);
+  
       const rentalOrder = {
         rentalItemID: rentalItem._id,
         image: rentalItem.image,
         title: rentalItem.title,
         quantity: parseInt(quantity),
-        totalPrice: parseInt(rentalItem.rentalPrice) * parseInt(numberOfDays),
+        totalPrice: totalPriceValue,
         rentalDate: rentalDate,
         numberOfDays: parseInt(numberOfDays),
       };
-
+  
       const response = await fetch('http://localhost:5050/api/rental-orders/create', {
         method: 'POST',
         headers: {
@@ -63,36 +79,23 @@ function RentalItemPage() {
         },
         body: JSON.stringify(rentalOrder),
       });
-
+  
       if (!response.ok) {
         throw new Error('Failed to create rental order');
       }
-
+  
       setQuantity(1);
       setRentalDate(null);
       setNumberOfDays(1);
     } catch (error) {
-      console.error('Error:', error.message);
+      setError(error.message);
     }
   };
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
+  
 
   const maxNumberOfDays = 7;
 
-  // Function to filter dates before 7 days from today
-  const filterPastDates = (date) => {
-    const today = new Date();
-    const nextWeek = new Date();
-    nextWeek.setDate(today.getDate() + 7); // Set the date 7 days from today
-    return date >= nextWeek; // Disable dates before 7 days from today
-  };
+  const rentalItemPrice = rentalItem ? rentalItem.rentalPrice : null;
 
   return (
     <div className="container mx-auto py-8">
@@ -107,8 +110,9 @@ function RentalItemPage() {
               <p className="text-md mt-2 text-gray-600">Category : <span className='font-semibold text-gray-600'>{rentalItem.category}</span></p>
             </div>
             <div className="mt-4">
+              {error && <div className="text-red-500 mb-2">{error}</div>} {/* Display error message */}
               <label className="block mb-2 font-semibold">Quantity :</label>
-              <input type="number" className="w-full px-2 py-1 border rounded bg-gray-100" value={quantity} onChange={handleQuantityChange} min={1} />
+              <input type="number" className="w-full px-2 py-1 border rounded bg-gray-100" value={quantity} onChange={handleQuantityChange} min={1} max={7}/>
             </div>
             <div className="mt-4">
               <label className="block mb-2 font-semibold">Rental Date:</label>
@@ -117,7 +121,6 @@ function RentalItemPage() {
                 onChange={handleRentalDateChange}
                 minDate={new Date()}
                 inline
-                filterDate={filterPastDates} // Apply the filter function
               />
             </div>
             <div className="mt-4">
@@ -131,7 +134,8 @@ function RentalItemPage() {
                 max={maxNumberOfDays}
               />
             </div>
-            <p className="text-lg mt-2">Rs.{rentalItem.rentalPrice} per day</p>
+            <p className="text-lg mt-2">Rental Item Price: Rs.{rentalItemPrice}</p>
+            {totalPrice && <p className="text-lg">Total Price: Rs.{totalPrice}</p>} {/* Display total price */}
             <button className="mt-4 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded" onClick={handleSubmit}>
               Add to Cart
             </button>
