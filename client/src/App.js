@@ -9,7 +9,6 @@ import RentalItemDisplay from './components/Rental/RentalItemDisplay';
 import RentalManage from './components/Rental/RentalManage';
 import UpdateRental from './components/Rental/UpdateRental';
 import RentalItemPage from './components/Rental/RentalItemPage';
-
 function App() {
   return (
     <Router>
