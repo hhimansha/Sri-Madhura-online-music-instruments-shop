@@ -12,18 +12,18 @@ const RentalOrdersManage = () => {
     useEffect(() => {
         const fetchRentalOrders = async () => {
             try {
-                const response = await fetch('http://localhost:5050/api/rental-orders');
-                if (!response.ok) {
-                    throw new Error('Failed to fetch rental orders');
-                }
-                const data = await response.json();
-                setRentalOrders(data);
-                setLoading(false);
+              const response = await fetch('http://localhost:5050/api/rental-orders');
+              if (!response.ok) {
+                throw new Error('Failed to fetch rental orders');
+              }
+              const data = await response.json();
+              setRentalOrders(data);
+              setLoading(false);
             } catch (error) {
-                setError(error.message);
-                setLoading(false);
+              setError(error.message);
+              setLoading(false);
             }
-        };
+          };
 
         fetchRentalOrders();
     }, []);
@@ -116,6 +116,7 @@ const RentalOrdersManage = () => {
                                 <tr>
                                     <th scope="col" className="px-6 py-3 text-start text-xs font-bold text-dark uppercase">ID</th>
                                     <th scope="col" className="px-6 py-3 text-start text-xs font-bold text-dark uppercase">Rental Item ID</th>
+                                    <th scope="col" className="px-6 py-3 text-start text-xs font-bold text-dark uppercase">Order Date</th>
                                     <th scope="col" className="px-6 py-3 text-start text-xs font-bold text-dark uppercase">Title</th>
                                     <th scope="col" className="px-6 py-3 text-start text-xs font-bold text-dark uppercase">Quantity</th>
                                     <th scope="col" className="px-6 py-3 text-start text-xs font-bold text-dark uppercase">Total Price</th>
@@ -129,6 +130,7 @@ const RentalOrdersManage = () => {
                                     <tr key={rentalOrder._id}>
                                         <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">{`...${rentalOrder._id.substring(rentalOrder._id.length - 3)}`}</td>
                                         <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">{rentalOrder.rentalItemID}</td>
+                                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{new Date(rentalOrder.orderDate).toLocaleDateString()}</td>
                                         <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">{rentalOrder.title}</td>
                                         <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">{rentalOrder.quantity}</td>
                                         <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">{`Rs.${rentalOrder.totalPrice}`}</td>

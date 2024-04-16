@@ -5,9 +5,9 @@ const RentalOrder = require('../models/rentalOrder');
 //@route GET /api/rental-orders
 //@access Public
 const getRentalOrders = asyncHandler(async (req, res) => {
-    const rentalOrders = await RentalOrder.find();
+    const rentalOrders = await RentalOrder.find().sort({ orderDate: -1 }); // Sort by orderDate in descending order
     res.status(200).json(rentalOrders);
-});
+  });
 
 //@desc Get a rental order by ID
 //@route GET /api/rental-orders/:id
@@ -35,7 +35,8 @@ const createRentalOrder = asyncHandler(async (req, res) => {
             quantity,
             totalPrice,
             rentalDate,
-            numberOfDays
+            numberOfDays,
+            orderDate: Date.now() // Include orderDate
         });
         res.status(201).json(rentalOrder);
     } catch (error) {
@@ -43,6 +44,7 @@ const createRentalOrder = asyncHandler(async (req, res) => {
         res.status(400).json({ message: "Failed to create rental order" });
     }
 });
+
 
 //@desc Update a rental order by ID
 //@route PUT /api/rental-orders/:id

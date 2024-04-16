@@ -49,6 +49,7 @@ function RentalItemPage() {
 
   const handleSubmit = async () => {
     try {
+      // Validate form fields
       if (!rentalDate) {
         throw new Error('Please select a rental date');
       }
@@ -59,9 +60,10 @@ function RentalItemPage() {
         throw new Error('Number of days must be between 1 and 7');
       }
   
-      const totalPriceValue = parseInt(rentalItem.rentalPrice) * parseInt(numberOfDays);
-      setTotalPrice(totalPriceValue);
+      // Calculate total price
+      const totalPriceValue = rentalItemPrice * numberOfDays * quantity;
   
+      // Create rental order object
       const rentalOrder = {
         rentalItemID: rentalItem._id,
         image: rentalItem.image,
@@ -70,8 +72,10 @@ function RentalItemPage() {
         totalPrice: totalPriceValue,
         rentalDate: rentalDate,
         numberOfDays: parseInt(numberOfDays),
+        orderDate: new Date() // Add order date
       };
   
+      // Send POST request to create rental order
       const response = await fetch('http://localhost:5050/api/rental-orders/create', {
         method: 'POST',
         headers: {
@@ -84,13 +88,21 @@ function RentalItemPage() {
         throw new Error('Failed to create rental order');
       }
   
+      // Clear form fields after successful submission
       setQuantity(1);
       setRentalDate(null);
       setNumberOfDays(1);
+      setTotalPrice(null); // Clear total price
+  
+      // Show success message or redirect user
+      alert('Rental order created successfully!');
     } catch (error) {
+      // Handle errors
+      console.error(error);
       setError(error.message);
     }
   };
+  
   
 
   const maxNumberOfDays = 7;
