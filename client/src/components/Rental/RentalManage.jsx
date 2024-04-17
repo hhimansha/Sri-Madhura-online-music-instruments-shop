@@ -148,25 +148,44 @@ const RentalManage = () => {
             
             <div className="flex mb-10 justify-between items-center">
                 <h1 className="text-2xl font-semibold leading-7 text-dark text-left">Manage Rentals</h1>
+                <div className="items-center mt-4">
                 <FilterBar
-                categories={categories}
-                onFilterChange={setSelectedCategory}
-                onSortChange={setSelectedSort}
-                onSearch={setSearchQuery}
-            />
+                    categories={categories}
+                    onFilterChange={setSelectedCategory}
+                    onSortChange={setSelectedSort}
+                    onSearch={(query) => setSearchQuery(query)} // Update onSearch to pass the query value
+                />
+                </div>
                 <div className="flex">
-                <button onClick={downloadPDF} className="items-center text-sm font-medium rounded-lg text-dark hover:bg-gray-200 p-2 px-3 flex ">Download Report<span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 ml-1">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
-                    </svg>
+                    <button onClick={downloadPDF} className="items-center text-sm font-medium rounded-lg text-dark hover:bg-gray-200 p-2 px-3 flex ">
+                        Download Report
+                        <span>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6 ml-1">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                            </svg>
+                        </span>
+                    </button>
+                    <Link to={'/admindash/rental-orders'}>
+                        <button type="button" className="items-center text-sm font-medium rounded-lg text-white bg-dark p-2 flex mx-4 px-3">
+                            Rental Orders
+                            <span>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6  ml-1">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+                            </svg>
 
-                    </span>
-                </button>
-                <Link to={'/admindash/rentals/rentalcreate'}>
-                <button type="button" className="items-center text-sm font-medium rounded-lg text-white bg-primary hover:bg-primaryDark p-2 flex mx-4 px-3">Add New Rental<span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 font ml-1">
-                    <path fill-rule="evenodd" d="M12 3.75a.75.75 0 0 1 .75.75v6.75h6.75a.75.75 0 0 1 0 1.5h-6.75v6.75a.75.75 0 0 1-1.5 0v-6.75H4.5a.75.75 0 0 1 0-1.5h6.75V4.5a.75.75 0 0 1 .75-.75Z" clip-rule="evenodd" />
-                </svg></span>
-                </button></Link>
-                
+                            </span>
+                        </button>
+                    </Link>
+                    <Link to={'/admindash/rentals/rentalcreate'}>
+                        <button type="button" className="items-center text-sm font-medium rounded-lg text-white bg-primary hover:bg-primaryDark p-2 flex mx-4 px-3">
+                            Add New Rental
+                            <span>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 font ml-1">
+                                    <path fill-rule="evenodd" d="M12 3.75a.75.75 0 0 1 .75.75v6.75h6.75a.75.75 0 0 1 0 1.5h-6.75v6.75a.75.75 0 0 1-1.5 0v-6.75H4.5a.75.75 0 0 1 0-1.5h6.75V4.5a.75.75 0 0 1 .75-.75Z" clip-rule="evenodd" />
+                                </svg>
+                            </span>
+                        </button>
+                    </Link>
                 </div>
             </div>
             <div className="-m-1.5 overflow-x-auto">
@@ -186,7 +205,7 @@ const RentalManage = () => {
                                 </tr>
                             </thead>
                             <tbody className="divide-y divide-gray-200 text-start">
-                                {rentalItems.map((rentalItem) => (
+                                {filteredItems.map((rentalItem) => (
                                     <tr key={rentalItem._id}>
                                         <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">{`...${rentalItem._id.substring(rentalItem._id.length - 3)}`}
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5 ml-1 cursor-pointer" onClick={() => copyToClipboard(rentalItem._id)}>
@@ -207,7 +226,7 @@ const RentalManage = () => {
 
                                         <td className="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
                                             <Link to={`/admindash/rentals/update/${rentalItem._id}`}>
-                                            <button type="button" className="inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent text-white bg-dark p-1 px-2 disabled:opacity-50 disabled:pointer-events-none mr-4">Update</button>
+                                                <button type="button" className="inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent text-white bg-dark p-1 px-2 disabled:opacity-50 disabled:pointer-events-none mr-4">Update</button>
                                             </Link>
                                             <button type="button" className="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-red-500 p-1 px-2 text-red-500 hover:text-white hover:bg-red-600" onClick={() => handleDelete(rentalItem._id)}>Delete</button>
                                         </td>

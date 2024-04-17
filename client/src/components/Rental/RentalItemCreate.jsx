@@ -32,7 +32,7 @@ export default function RentalItemCreate() {
     formData.append('image', image);
 
     try {
-      const response = await fetch('http://localhost:5050/api/rentalcreate', {
+      const response = await fetch('http://localhost:5050/api/rentals/rentalcreate', {
         method: 'POST',
         body: formData
       });
