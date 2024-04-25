@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import { PhotoIcon } from '@heroicons/react/24/solid';
+import { useParams, useNavigate } from "react-router-dom";
+
 import { useRentalItemContext } from '../../hooks/useRentalItemContext';
 
 export default function RentalItemCreate() {
   const { dispatch } = useRentalItemContext();
+  const navigate = useNavigate();
+
 
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -37,9 +41,13 @@ export default function RentalItemCreate() {
         body: formData
       });
 
-      if (!response.ok) {
-        throw new Error('Failed to create rental item');
-      }
+      const json = await response.json();
+            if (!response.ok) {
+                throw new Error(json.message);
+            } else {
+                setError('');
+                navigate('/admindash/rentals');
+            }
 
       // Assuming the response is the created rental item object
       const createdRentalItem = await response.json();
@@ -83,7 +91,7 @@ export default function RentalItemCreate() {
                   id="title"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
-                  className="block w-full flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                  className="block w-full flex-1 border-0 bg-gray-100 py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                   placeholder="Enter title"
                 />
               </div>
@@ -100,7 +108,7 @@ export default function RentalItemCreate() {
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
                   rows={3}
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full rounded-md bg-gray-100 border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   placeholder="Enter description"
                 />
               </div>
@@ -113,7 +121,7 @@ export default function RentalItemCreate() {
               <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
                 <div className="text-center">
                   <PhotoIcon className="mx-auto h-12 w-12 text-gray-300" aria-hidden="true" />
-                  <div className="mt-4 flex text-sm leading-6 text-gray-600">
+                  <div className="mt-4 flex text-sm leading-6  text-gray-600">
                     <label
                       htmlFor="file-upload"
                       className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
@@ -122,7 +130,6 @@ export default function RentalItemCreate() {
                       <input type="file" name="image" onChange={(e) => setImage(e.target.files[0])} />
 
                     </label>
-                    <p className="pl-1">or drag and drop</p>
                   </div>
                   <p className="text-xs leading-5 text-gray-600">PNG, JPG, GIF up to 10MB</p>
                   {imageName && <p className="text-xs leading-5 text-gray-600">{imageName}</p>}
@@ -143,12 +150,12 @@ export default function RentalItemCreate() {
                 name="category"
                 value={category}
                 onChange={(e) => setCategory(e.target.value)}
-                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
+                className="block w-full rounded-md border-0 bg-gray-100 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
               >
                 <option value="">Select category</option>
                 <option value="Drums">Drums</option>
                 <option value="Guitars">Guitars</option>
-                <option value="Mexico">Mexico</option>
+                
               </select>
             </div>
           </div>
@@ -165,7 +172,7 @@ export default function RentalItemCreate() {
                   id="rentalPrice"
                   value={rentalPrice}
                   onChange={(e) => setRentalPrice(e.target.value)}
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full bg-gray-100 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   placeholder="Enter rental price"
                 />
               </div>
@@ -182,7 +189,7 @@ export default function RentalItemCreate() {
                   id="stockCount"
                   value={stockCount}
                   onChange={(e) => setStockCount(e.target.value)}
-                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  className="block w-full bg-gray-100 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   placeholder="Enter stock count"
                 />
               </div>

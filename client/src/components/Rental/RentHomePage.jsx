@@ -13,20 +13,21 @@ function RentHomePage() {
     </div> {/* List */} 
     <div><img src={wide} className="w-fit mx-auto mt-4"></img></div>
     <ul className="py-10 grid gap-8  sm:grid-cols-3 sm:gap-12 md:grid-cols-5 md:gap-4 shadow-xl rounded-3xl">
-      <li className="flex items-center justify-center">
-        <img src="https://assets.website-files.com/6458c625291a94a195e6cf3a/6458c625291a948ffde6cf70_Microsoft%20Logo.svg" alt="" className="inline-block" />
+
+      <li className="flex justify-center">
+        <img src="https://1000logos.net/wp-content/uploads/2020/06/Yamaha-Logo.png" alt="" className="inline-block" />
       </li>
       <li className="flex justify-center">
-        <img src="https://assets.website-files.com/6458c625291a94a195e6cf3a/6458c625291a94ae44e6cf75_PayPal%20Logo.svg" alt="" className="inline-block" />
+        <img src="https://1000marcas.net/wp-content/uploads/2020/02/Logo-Ibanez-1280x800.png" alt="" className="inline-block" />
       </li>
       <li className="flex justify-center">
-        <img src="https://assets.website-files.com/6458c625291a94a195e6cf3a/6458c625291a9467b4e6cf74_Google%20Logo.svg" alt="" className="inline-block" />
+        <img src="https://upload.wikimedia.org/wikipedia/commons/e/e6/Koll_guitar_co_logo.png" alt="" className="inline-block " />
       </li>
       <li className="flex justify-center">
-        <img src="https://assets.website-files.com/6458c625291a94a195e6cf3a/6458c625291a940c75e6cf67_Chase%20Logo.svg" alt="" className="inline-block" />
+        <img src="https://1000marcas.net/wp-content/uploads/2020/02/Logo-Ibanez-1280x800.png" alt="" className="inline-block" />
       </li>
       <li className="flex justify-center">
-        <img src="https://assets.website-files.com/6458c625291a94a195e6cf3a/6458c625291a948d9ce6cf68_Walmart%20Logo.svg" alt="" className="inline-block" />
+        <img src="https://1000logos.net/wp-content/uploads/2020/06/Yamaha-Logo.png" alt="" className="inline-block" />
       </li>
     </ul>
     

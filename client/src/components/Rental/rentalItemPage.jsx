@@ -112,6 +112,7 @@ function RentalItemPage() {
   return (
     <div className="container mx-auto py-8">
       {rentalItem && (
+        <>
         <div className="flex flex-col md:flex-row max-w-screen-xl mx-auto my-10">
           <div className="md:w-1/2">
             <img src={`http://localhost:5050/uploads/${rentalItem.image}`} alt={rentalItem.title} className="w-[600px] h-auto shadow-xl rounded-2xl" />
@@ -146,13 +147,18 @@ function RentalItemPage() {
                 max={maxNumberOfDays}
               />
             </div>
-            <p className="text-lg mt-2">Rental Item Price: Rs.{rentalItemPrice}</p>
-            {totalPrice && <p className="text-lg">Total Price: Rs.{totalPrice}</p>} {/* Display total price */}
-            <button className="mt-4 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded" onClick={handleSubmit}>
-              Add to Cart
+            <p className="text-lg my-4">Rental Item Price: Rs.{rentalItemPrice}</p>
+            {totalPrice && <p className="text-lg font-semibold">Total Price: Rs.{totalPrice}</p>} {/* Display total price */}
+            <button className="mt-4 bg-primary w-full text-white px-4 py-2 rounded" onClick={handleSubmit}>
+              Checkout Now
             </button>
           </div>
         </div>
+        <div>
+            <h2 className="text-2xl font-semibold text-center mt-20 border-b-4 max-w-screen-xl  justify-center mx-auto">Description</h2>
+            <p className="text-md mt-10 text-center max-w-screen-xl justify-center mx-auto mb-20">{rentalItem.description}</p>
+        </div>
+        </>
       )}
     </div>
   );

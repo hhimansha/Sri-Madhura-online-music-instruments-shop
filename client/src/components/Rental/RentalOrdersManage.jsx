@@ -123,7 +123,7 @@ const RentalOrdersManage = () => {
                     onChange={(e) => setSearchQuery(e.target.value)} 
                     className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-primaryDark focus:border-transparent"
                 />
-                <button onClick={downloadPDF} className="items-center text-sm font-medium rounded-lg text-dark hover:bg-gray-200 p-2 px-3 flex ">
+                <button onClick={downloadPDF} className="items-center text-sm font-medium rounded-lg text-dark hover:bg-gray-200 p-2 px-3 flex mx-4">
                     Download Report
                     <span>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6 ml-1">
