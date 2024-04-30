@@ -28,7 +28,7 @@ connection.once('open', () => {
   console.log("MongoDB database connection successfull!!!");
 });
 
-app.use("/api/repairs", require("./routes/repairItemsRoute")); 
+
 
 
 app.listen(PORT, () => {

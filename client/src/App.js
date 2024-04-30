@@ -13,6 +13,7 @@ function App() {
         <Routes>
           <Route path="/rentalcreate" element={<><AdminDash /><RentalItemCreate /></>} />
           <Route path="/" element={<><TopNav/><RentHome /><Footer/></>} />
+          <Route path = '/repair/create' element={<CreateRequest />} />
           <Route
            path="/admindash"
             element={<AdminDash />}
