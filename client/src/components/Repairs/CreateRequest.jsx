@@ -129,6 +129,7 @@ const CreateRequest = () => {
     type="text"
     name="name"
     id="name" // Unique id for the input field
+    onChange={(e) => setName(e.target.value)}
     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
     placeholder="Customer Name"
     required
@@ -156,14 +157,23 @@ const CreateRequest = () => {
             </div>
             <div style={{ display: 'flex', alignItems: 'center', borderBottom: '1px solid #ccc', paddingBottom: '0.5rem' }}>
               <FaMapMarkerAlt style={{ color: '#333', marginRight: '0.5rem', fontSize: '1.5rem' }} />
-              <input
+              {/* <input
                 id='address'
                 type='text'
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
                 style={{ border: 'none', padding: '0.5rem', flex: '1', fontSize: '1rem' }}
                 placeholder='Address'
-              />
+              /> */}
+                <input
+    type="text"
+    value={address}
+    id="address" // Unique id for the input field
+    onChange={(e) => setAddress(e.target.value)}
+    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+    placeholder="Address"
+    required
+  />
             </div>
             <div style={{ display: 'flex', alignItems: 'center', borderBottom: '1px solid #ccc', paddingBottom: '0.5rem' }}>
               <FaCalendarAlt style={{ color: '#333', marginRight: '0.5rem', fontSize: '1.5rem' }} />
