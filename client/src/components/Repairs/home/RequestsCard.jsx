@@ -1,5 +1,6 @@
 
 import RequestSingleCard from './RequestSingleCard';
+
 import { Link } from 'react-router-dom';
 import { PiBookOpenTextLight } from 'react-icons/pi';
 import { BiUserCircle } from 'react-icons/bi';
@@ -26,10 +27,8 @@ const RequestsCard = ({ repair }) => {
     />
  
     <script src="./js_files/main.js"></script> 
-    <link rel="stylesheet" href="./style/main.css" />
-    <link rel="stylesheet" href="./style/bootstrap.min.css"></link>
-    <link rel="stylesheet" href="./style/style.css"></link>
-    <link rel="stylesheet" href="./style/flaticon.css"></link>
+    
+    <link rel="stylesheet" href="../style/style.css"></link>
     <section id="heroNew">
   <h2><b>Explore the world of Repair</b></h2>
   <br></br>
