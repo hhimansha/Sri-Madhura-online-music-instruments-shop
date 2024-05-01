@@ -120,27 +120,39 @@ const CreateRequest = () => {
                 placeholder='cID'
               />
   </div> */}
-            <div style={{ display: 'flex', alignItems: 'center', borderBottom: '1px solid #ccc', paddingBottom: '0.5rem' }}>
+        <div style={{ display: 'flex', alignItems: 'center', borderBottom: '1px solid #ccc', paddingBottom: '0.5rem' }}>
+        
+        
               <FaUser style={{ color: '#333', marginRight: '0.5rem', fontSize: '1.5rem' }} />
-              <input
-                id='name'
-                type='text'
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                style={{ border: 'none', padding: '0.5rem', flex: '1', fontSize: '1rem' }}
-                placeholder='Name'
-              />
-            </div>
+              
+<input
+    type="text"
+    name="name"
+    id="name" // Unique id for the input field
+    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+    placeholder="Customer Name"
+    required
+  />
+  </div>
             <div style={{ display: 'flex', alignItems: 'center', borderBottom: '1px solid #ccc', paddingBottom: '0.5rem' }}>
               <FaEnvelope style={{ color: '#333', marginRight: '0.5rem', fontSize: '1.5rem' }} />
-              <input
+              {/* <input
                 id='email'
                 type='email'
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 style={{ border: 'none', padding: '0.5rem', flex: '1', fontSize: '1rem' }}
                 placeholder='Email'
-              />
+              /> */}
+               <input
+    type="email"
+    value={email}
+    id="email" // Unique id for the input field
+    onChange={(e) => setEmail(e.target.value)}
+    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+    placeholder="Email"
+    required
+  />
             </div>
             <div style={{ display: 'flex', alignItems: 'center', borderBottom: '1px solid #ccc', paddingBottom: '0.5rem' }}>
               <FaMapMarkerAlt style={{ color: '#333', marginRight: '0.5rem', fontSize: '1.5rem' }} />
