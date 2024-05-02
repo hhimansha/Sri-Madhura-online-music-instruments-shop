@@ -8,6 +8,7 @@ import EditRequest from './components/Repairs/EditRequest'
 import DeleteRequest from './components/Repairs/DeleteRequest'
 import SendEmail from './components/Repairs/SendEmail'
 import CreatePrices from './components/RepairDetails/CreatePrices'
+import EditPrice from './components/RepairDetails/EditPrice'
 import RentHome from './components/Rental/RentHomePage';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import AdminDash from './components/AdminDash';
@@ -24,6 +25,7 @@ function App() {
           <Route path = '/repair/edit/:id' element={<EditRequest />} />
           <Route path = '/repair/delete/:id' element={<DeleteRequest />} />
           <Route path = '/prices/create' element={<CreatePrices />} />
+          <Route path = '/prices/edit/:id' element={<EditPrice />} />
           <Route path = '/repair/home' element={<Home />} />
           <Route path = '/repair/homeUser' element={<HomeUser />} />
           <Route path="/send-email" element={<SendEmail />} />
