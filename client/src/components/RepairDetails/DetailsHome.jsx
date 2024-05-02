@@ -1,26 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Spinner from './Spinner';
+import Spin from './Spin';
 import { Link } from 'react-router-dom';
 import { AiOutlineEdit } from 'react-icons/ai';
 import { BsInfoCircle } from 'react-icons/bs';
 import { MdOutlineAddBox, MdOutlineDelete } from 'react-icons/md';
-import RequestsTable from './home/RequestsTable';
-import RequestsCard from './home/RequestsCard';
-import TopNav from '../topNav';
-import Footer from '../Footer';
+import PricesTable from './home/PricesTable';
+import PricesCard from './home/PricesCard';
 
-export const Home = () => {
-    const [repair, setRepair] = useState([]);
+export const DetailsHome = () => {
+    const [prices, setPrices] = useState([]);
     const [loading, setLoading] = useState(false);
     const [showType, setShowType] = useState('table');
 
     useEffect(() => {
         setLoading(true);
         axios
-            .get(`http://localhost:5050/repair`)
+            .get('http://localhost:5050/prices')
             .then((response) => {
-                setRepair(response.data.data);
+                setPrices(response.data.data);
                 setLoading(false);
             })
             .catch((error) => {
@@ -30,24 +28,37 @@ export const Home = () => {
     }, []);
 
     return (<>
-    <TopNav/>
+        
         <div className='p-4'>
             <div className='flex justify-center items-center gap-x-4'>
+            <button
+            className='hover:bg-sky-600 px-4 py-1 rounded-lg'
+            style={{ backgroundColor: '#de6418' }}
+            onClick={() => setShowType('table')}
+            >
+            Admin
+            </button>
 
-  
+            <button
+            className='hover:bg-sky-600 px-4 py-1 rounded-lg'
+            style={{ backgroundColor: '#de6418' }}
+            onClick={() => setShowType('card')}
+            >
+             User
+            </button>
 
             </div>
             <div className='flex justify-between items-center'>
-                <h1 className='text-3xl my-8'>Customer Requests List</h1>
-                <Link to='/repair/create'>
+                <h1 className='text-3xl my-8'>Details List</h1>
+                <Link to='/prices/create'>
                     <MdOutlineAddBox className='text-sky-800 text-4xl' />
                 </Link>
             </div>
-            {loading ? <Spinner /> : showType === 'table' ? <RequestsTable repair={repair} /> : <RequestsCard repair={repair} />}
+            {loading ? <Spin /> : showType === 'table' ? <PricesTable prices={prices} /> : <PricesCard prices={prices} />}
         </div>
-        <Footer/>
+       
         </>
     );
 };
 
-export default Home;
+export default DetailsHome;
