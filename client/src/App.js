@@ -9,6 +9,9 @@ import RentalItemDisplay from './components/Rental/RentalItemDisplay';
 import RentalManage from './components/Rental/RentalManage';
 import UpdateRental from './components/Rental/UpdateRental';
 
+import Home from './components/SellInstrument/Home';
+import CreateItem from './components/SellInstrument/CreateItem';
+
 function App() {
   return (
     <Router>
@@ -19,6 +22,9 @@ function App() {
           <Route path="/admindash/rentals" element={<><AdminDash /><RentalManage /></>} />
           <Route path="/rentals" element={<><TopNav/><RentHome /><RentalItemDisplay /><Footer/></>} />
           <Route path="/rentals/:id" element={<><TopNav/><RentHome /><Footer/></>} />
+
+          <Route path="/" element={<Home />} />
+          <Route path="/sellItem/create" element={<CreateItem />} />
           
           <Route
            path="/admindash"
