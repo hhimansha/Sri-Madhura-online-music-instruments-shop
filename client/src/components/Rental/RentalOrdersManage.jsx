@@ -112,7 +112,7 @@ const RentalOrdersManage = () => {
     }
 
     return (
-        <div className="flex flex-col max-w-[1280px] mx-auto my-6 ml-[280px]">
+        <div className="flex flex-col max-w-[1280px] mx-auto my-6 ml-[270px]">
         <div className="flex mb-10 justify-between">
             <h1 className="text-2xl font-semibold leading-7 text-dark text-left">Manage Rental Orders</h1>
             <div className="flex">
