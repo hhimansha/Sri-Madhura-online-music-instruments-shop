@@ -177,14 +177,24 @@ const CreateRequest = () => {
             </div>
             <div style={{ display: 'flex', alignItems: 'center', borderBottom: '1px solid #ccc', paddingBottom: '0.5rem' }}>
               <FaCalendarAlt style={{ color: '#333', marginRight: '0.5rem', fontSize: '1.5rem' }} />
-              <input
+              {/* <input
                 id='date'
                 type='date'
                 placeholder='Date'
                 value={date}
                 onChange={(e) => setDate(e.target.value)}
                 style={{ border: 'none', padding: '0.5rem', flex: '1', fontSize: '1rem' }}
-              />
+              /> */}
+              
+                <input
+    type="date"
+    value={date}
+    id="date" // Unique id for the input field
+    onChange={(e) => setDate(e.target.value)}
+    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+    placeholder="Date"
+    required
+  />
             </div>
             <div style={{ display: 'flex', alignItems: 'center', borderBottom: '1px solid #ccc', paddingBottom: '0.5rem' }}>
               <FaGuitar style={{ color: '#333', marginRight: '0.5rem', fontSize: '1.5rem' }} />
@@ -193,7 +203,7 @@ const CreateRequest = () => {
                 placeholder='Instrument Category'
                 value={instrumentCat}
                 onChange={handleInstrumentCatChange}
-                style={{ border: 'none', padding: '0.5rem', flex: '1', fontSize: '1rem', background: 'transparent', color: '#333' }}
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
               >
                 <option value=''>Select Instrument</option>
                 {Object.keys(instrumentCategories).map(cat => (
@@ -208,7 +218,7 @@ const CreateRequest = () => {
                   id='instrumentBrand'
                   value={instrumentBrand}
                   onChange={(e) => setInstrumentBrand(e.target.value)}
-                  style={{ border: 'none', padding: '0.5rem', flex: '1', fontSize: '1rem', background: 'transparent', color: '#333' }}
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                 >
                   <option value=''>Select {instrumentCat} Category</option>
                   {instrumentCategories[instrumentCat].map(category => (
@@ -224,7 +234,7 @@ const CreateRequest = () => {
                 type='text' 
                 value={brand}
                 onChange={(e) => setBrand(e.target.value)}
-                style={{ border: 'none', padding: '0.5rem', flex: '1', fontSize: '1rem' }}
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                 placeholder='Brand'
               />
             </div>
@@ -235,7 +245,7 @@ const CreateRequest = () => {
                 placeholder='Warranty'
                 value={warranty}
                 onChange={(e) => setWarranty(e.target.value)}
-                style={{ border: 'none', padding: '0.5rem', flex: '1', fontSize: '1rem', background: 'transparent', color: '#333' }}
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
               >
                 <option value=''>Select Warranty</option>
                 <option value='Have'>Have</option>
@@ -250,7 +260,7 @@ const CreateRequest = () => {
                 placeholder='Issue Type'
                 value={issueType}
                 onChange={(e) => handleIssueTypeChange(e.target.value)}
-                style={{ border: 'none', padding: '0.5rem', flex: '1', fontSize: '1rem', background: 'transparent', color: '#333' }}
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
               >
                 <option value=''>Select Issue</option>
                 <option value='String Replacement'>String Replacement</option>
@@ -266,8 +276,14 @@ const CreateRequest = () => {
   
   <div style={{ display: 'flex', alignItems: 'center', borderBottom: '1px solid #ccc', paddingBottom: '0.5rem' }}>
               <FaDollarSign style={{ color: '#333', marginRight: '0.5rem', fontSize: '1.5rem' }} />
-          Price: {price}
+          
+          <input
+          value = {price}
+          placeholder='price'
+          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+          />
         </div>
+
       
     
             <div style={{ display: 'flex', alignItems: 'center', borderBottom: '1px solid #ccc', paddingBottom: '0.5rem' }}>
@@ -277,7 +293,7 @@ const CreateRequest = () => {
                 type='text'
                 value={issueDescription}
                 onChange={(e) => setIssueDescription(e.target.value)}
-                style={{ border: 'none', padding: '0.5rem', flex: '1', fontSize: '1rem' }}
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                 placeholder='Issue Description'
               />
             </div>
@@ -288,7 +304,7 @@ const CreateRequest = () => {
                 placeholder='Status'
                 value={status}
                 onChange={(e) => setStatus(e.target.value)}
-                style={{ border: 'none', padding: '0.5rem', flex: '1', fontSize: '1rem', background: 'transparent', color: '#333' }}
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
               >
                 <option value=''>Select Status</option>
                 <option value='Pending'>Pending</option>

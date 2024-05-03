@@ -28,6 +28,12 @@ connection.once('open', () => {
   console.log("MongoDB database connection successfull!!!");
 });
 
+//Routes
+const rentItemsRoute = require("./routes/rentItemsRoute");
+app.use("/api", rentItemsRoute);
+
+const repairItemsRoute = require("./routes/repairItemsRoute");
+app.use('/repair', repairItemsRoute);
 
 
 
