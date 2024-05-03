@@ -5,9 +5,15 @@ import { RentalItemProvider } from './context/rentalItemContext'; // Import Rent
 
 ReactDOM.render(
   <React.StrictMode>
+    <OrderContextProvider>
+        <ProteinsContextProvider>
+          <CartProvider>
     <RentalItemProvider> {/* Wrap App with RentalItemProvider */}
       <App />
     </RentalItemProvider>
+    </CartProvider>
+        </ProteinsContextProvider>
+      </OrderContextProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
