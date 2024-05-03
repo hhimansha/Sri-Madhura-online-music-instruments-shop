@@ -107,23 +107,14 @@ const CreateRequest = () => {
         <BackButton />
         <h1 className='text-3xl font-bold mb-6' style={{ color: '#fff' }}>Add Request</h1>
         {loading && <Spinner/>}
-        <div style={{ background: '#f9f9f9', width: '600px', padding: '2rem', borderRadius: '10px', boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)' }}>
-          <form style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-          {/* <div style={{ display: 'flex', alignItems: 'center', borderBottom: '1px solid #ccc', paddingBottom: '0.5rem' }}>
-              <FaSearch style={{ color: '#333', marginRight: '0.5rem', fontSize: '1.5rem' }} />
-              <input
-                id='cID'
-                type='text'
-                value={cID}
-                onChange={(e) => setcID(e.target.value)}
-                style={{ border: 'none', padding: '0.5rem', flex: '1', fontSize: '1rem' }}
-                placeholder='cID'
-              />
-  </div> */}
+        
+        <div style={{ background: '#f9f9f9', width: '500px', padding: '2rem', borderRadius: '10px', boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)' }}>
+          <form style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+
         <div style={{ display: 'flex', alignItems: 'center', borderBottom: '1px solid #ccc', paddingBottom: '0.5rem' }}>
         
         
-              <FaUser style={{ color: '#333', marginRight: '0.5rem', fontSize: '1.5rem' }} />
+       <FaUser style={{ color: '#333', marginRight: '0.5rem', fontSize: '1.5rem' }} />
               
 <input
     type="text"
@@ -137,18 +128,11 @@ const CreateRequest = () => {
   </div>
             <div style={{ display: 'flex', alignItems: 'center', borderBottom: '1px solid #ccc', paddingBottom: '0.5rem' }}>
               <FaEnvelope style={{ color: '#333', marginRight: '0.5rem', fontSize: '1.5rem' }} />
-              {/* <input
-                id='email'
-                type='email'
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                style={{ border: 'none', padding: '0.5rem', flex: '1', fontSize: '1rem' }}
-                placeholder='Email'
-              /> */}
+              
                <input
     type="email"
     value={email}
-    id="email" // Unique id for the input field
+    id="email" 
     onChange={(e) => setEmail(e.target.value)}
     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
     placeholder="Email"
@@ -157,18 +141,11 @@ const CreateRequest = () => {
             </div>
             <div style={{ display: 'flex', alignItems: 'center', borderBottom: '1px solid #ccc', paddingBottom: '0.5rem' }}>
               <FaMapMarkerAlt style={{ color: '#333', marginRight: '0.5rem', fontSize: '1.5rem' }} />
-              {/* <input
-                id='address'
-                type='text'
-                value={address}
-                onChange={(e) => setAddress(e.target.value)}
-                style={{ border: 'none', padding: '0.5rem', flex: '1', fontSize: '1rem' }}
-                placeholder='Address'
-              /> */}
+             
                 <input
     type="text"
     value={address}
-    id="address" // Unique id for the input field
+    id="address" 
     onChange={(e) => setAddress(e.target.value)}
     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
     placeholder="Address"
@@ -177,19 +154,12 @@ const CreateRequest = () => {
             </div>
             <div style={{ display: 'flex', alignItems: 'center', borderBottom: '1px solid #ccc', paddingBottom: '0.5rem' }}>
               <FaCalendarAlt style={{ color: '#333', marginRight: '0.5rem', fontSize: '1.5rem' }} />
-              {/* <input
-                id='date'
-                type='date'
-                placeholder='Date'
-                value={date}
-                onChange={(e) => setDate(e.target.value)}
-                style={{ border: 'none', padding: '0.5rem', flex: '1', fontSize: '1rem' }}
-              /> */}
+             
               
                 <input
     type="date"
     value={date}
-    id="date" // Unique id for the input field
+    id="date" 
     onChange={(e) => setDate(e.target.value)}
     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
     placeholder="Date"
@@ -286,17 +256,17 @@ const CreateRequest = () => {
 
       
     
-            <div style={{ display: 'flex', alignItems: 'center', borderBottom: '1px solid #ccc', paddingBottom: '0.5rem' }}>
-              <FaStickyNote style={{ color: '#333', marginRight: '0.5rem', fontSize: '1.5rem' }} />
-              <input
-                id='issueDescription'
-                type='text'
-                value={issueDescription}
-                onChange={(e) => setIssueDescription(e.target.value)}
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                placeholder='Issue Description'
-              />
-            </div>
+        <div style={{ display: 'flex', alignItems: 'center', borderBottom: '1px solid #ccc', paddingBottom: '0.5rem' }}>
+  <FaStickyNote style={{ color: '#333', marginRight: '0.5rem', fontSize: '1.5rem' }} />
+  <textarea
+    id='issueDescription'
+    value={issueDescription}
+    onChange={(e) => setIssueDescription(e.target.value)}
+    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 resize-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+    placeholder='Issue Description'
+  />
+</div>
+
             <div style={{ display: 'flex', alignItems: 'center', borderBottom: '1px solid #ccc', paddingBottom: '0.5rem' }}>
               <FaCheck  style={{ color: '#333', marginRight: '0.5rem', fontSize: '1.5rem' }} />
               <select
@@ -312,6 +282,7 @@ const CreateRequest = () => {
                 <option value='Not Completed'>Not Completed</option>
               </select>
             </div>
+            
             <button
               type='button'
               style={{

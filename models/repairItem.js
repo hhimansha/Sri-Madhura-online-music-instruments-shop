@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require('mongoose');
 
 const repairSchema = mongoose.Schema(
     {
@@ -66,9 +66,11 @@ const repairSchema = mongoose.Schema(
     {
         timestamps: true,
     }
+  
 );
 
 
 
-export const repairs = mongoose.model('repair', repairSchema);
-
+module.exports = {
+    repairs: mongoose.model('repair', repairSchema)
+};

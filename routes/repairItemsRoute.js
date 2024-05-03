@@ -1,5 +1,5 @@
-import express from 'express';
-import { repairs } from '../models/requestModel.js';
+const express = require('express');
+const { repairs } = require('../models/repairItem.js');
 
 const router = express.Router();
 
@@ -94,4 +94,4 @@ router.delete('/:id', async (req, res) => {
     }
 });
 
-export default router;
+module.exports = router;
