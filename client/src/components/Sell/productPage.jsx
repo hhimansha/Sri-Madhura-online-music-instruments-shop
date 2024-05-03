@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { useCart } from '../hooks/useCart';
+import { useCart } from '../../hooks/useCart';
 import { v4 as uuidv4 } from 'uuid';
 import ItemAddedCart from './AlertBoxes/ItemAddedCart';
 import { motion } from 'framer-motion';
@@ -83,7 +83,7 @@ function ProductPage() {
     useEffect(() => {
       const fetchProtein = async () => {
         try {
-          const response = await fetch(`http://localhost:9092/api/proteins/admindash/products/${proteinId}`);
+          const response = await fetch(`http://localhost:5050/api/admindash/products/${proteinId}`);
           const json = await response.json();
   
           if (response.ok) {

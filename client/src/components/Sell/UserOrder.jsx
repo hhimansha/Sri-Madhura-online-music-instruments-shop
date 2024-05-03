@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useReducer } from 'react';
-import { useAuthContext } from '../hooks/useAuthContext';
-import { useOrderContext } from '../hooks/useOrderContext';
+import { useOrderContext } from '../../hooks/useOrderContext';
 
 const UserOrder = () => {
   const [orders, setOrders] = useState([]);
@@ -16,7 +15,7 @@ const UserOrder = () => {
     }
 
     try {
-      const response = await fetch(`http://localhost:9092/api/order/admindash/orders/${orderId}`, {
+      const response = await fetch(`http://localhost:5050/api/order/admindash/orders/${orderId}`, {
         method: 'DELETE',
         headers: {
           Authorization: `Bearer ${user.token}`,
@@ -48,32 +47,7 @@ const UserOrder = () => {
     alert("Order ID copied to clipboard: " + text);
   };
 
-  useEffect(() => {
-    const fetchOrders = async () => {
-      try {
-        if (!user) {
-          return;
-        }
-
-        const response = await fetch(`http://localhost:9092/api/order/orders/user/${user._id}`);
-        const data = await response.json();
-        forceUpdate();
-
-        console.log('Fetched orders:', data);
-
-        if (response.ok) {
-          setOrders(data);
-        } else {
-          console.error('Error fetching orders:', data);
-        }
-      } catch (error) {
-        console.error('Error fetching orders:', error);
-      }
-    };
-
-    fetchOrders();
-  }, [reducerValue, user]);
-
+  
   console.log('User Orders:', orders); // Log user orders
 
   // Check if there are orders before rendering

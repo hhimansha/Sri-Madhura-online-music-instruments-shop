@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import MainLogo from "../components/assets/MainLogo.png";
 import "./TopNav.css";
 
 function TopNav() {
@@ -35,7 +34,7 @@ function TopNav() {
       <nav className="bg-white border-gray-200 text-gray-900 shadow-lg">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-1">
           <a href="https://flowbite.com/" className="flex items-center space-x-3 rtl:space-x-reverse">
-            <img src={MainLogo} className="h-10" alt="Flowbite Logo" />
+            <img src="" className="h-10" alt="Flowbite Logo" />
           </a>
 
           <div className="flex items-center md:order-2 space-x-3 md:space-x-3 rtl:space-x-reverse relative">

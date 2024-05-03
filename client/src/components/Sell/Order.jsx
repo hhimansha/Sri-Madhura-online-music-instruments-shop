@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuthContext } from "../hooks/useAuthContext";
 import SuccessAlert from "./AlertBoxes/SuccessAlert";
 
 const Order = () => {
-  const { user } = useAuthContext();
   const [carts, setCarts] = useState([]);
   const [cardNumber, setCardNumber] = useState("");
   const [expirationDate, setExpirationDate] = useState("");
@@ -51,7 +49,7 @@ const Order = () => {
   
     // Rest of your code for placing the order
     try {
-      const response = await fetch("http://localhost:9092/api/order/place", {
+      const response = await fetch("http://localhost:5050/api/order/place", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
