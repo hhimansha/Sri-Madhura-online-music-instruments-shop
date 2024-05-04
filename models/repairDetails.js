@@ -1,6 +1,7 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-const priceSchema = mongoose.Schema(
+const priceSchema = new Schema(
     {
         Ninstrument: {
             type: String,
@@ -32,4 +33,4 @@ const priceSchema = mongoose.Schema(
     }
 );
 
-export const Price = mongoose.model('prices', priceSchema);
+exports.Price = mongoose.model('prices', priceSchema);

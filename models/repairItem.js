@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-const repairSchema = mongoose.Schema(
+const repairSchema = new Schema( 
     {
         // cID: {
         //     type: String,

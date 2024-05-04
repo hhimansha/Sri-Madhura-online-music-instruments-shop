@@ -1,6 +1,6 @@
 const express = require('express');
 const multer = require('multer');
-const { Price } = require('../models/PriceModel');
+const { Price } = require('../models/repairDetails.js');
 
 const router = express.Router();
 
