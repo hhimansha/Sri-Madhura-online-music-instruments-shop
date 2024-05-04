@@ -25,8 +25,13 @@ function App() {
     <Router>
       <div className="App">
         <Routes>
-  
-          
+          <Route path="/admindash/rentals/rentalcreate" element={<><AdminDash /><RentalItemCreate /></>} />
+          <Route path="/admindash/rentals/update/:id" element={<><AdminDash /><UpdateRental /></>} />
+          <Route path="/admindash/rentals" element={<><AdminDash /><RentalManage /></>} />
+          <Route path="/rentals" element={<><TopNav/><RentHome /><RentalItemDisplay /><Footer/></>} />
+          <Route path="/rentals/:id" element={<><TopNav/><RentHome /><Footer/></>} />
+          <Route path="/rentalcreate" element={<><AdminDash /><RentalItemCreate /></>} />
+          <Route path="/" element={<><TopNav/><RentHome /><Footer/></>} />
           <Route path='/repair/create' element={<CreateRequest />} />
           <Route path='/repair/edit/:id' element={<EditRequest />} />
           <Route path='/repair/delete/:id' element={<DeleteRequest />} />
@@ -35,6 +40,7 @@ function App() {
           <Route path='/prices/delete/:id' element={<DeletePrice />} />
           <Route path='/repair/home' element={<Home />} /> 
           <Route path='/repair/homeUser' element={<HomeUser />} />
+          <Route path='/prices/DetailsHomeUser' element={<DetailsHomeUser />} />
           <Route path='/prices/DetailsHome' element={<DetailsHome />} /> 
           <Route path="/send-email" element={<SendEmail />} />
 

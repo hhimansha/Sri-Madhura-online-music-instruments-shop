@@ -22,9 +22,8 @@ const PricesCard = ({ prices }) => {
             "\n  body {\n    font-family: Arial, sans-serif;\n    background-color: #f0f0f0;\n    margin: 0;\n    padding: 0;\n  }\n  .container {\n    max-width: 1200px;\n    margin: 0 auto;\n    padding: 20px;\n  }\n  .topic-heading {\n    font-size: 24px;\n    font-weight: bold;\n    margin-bottom: 10px;\n  }\n  .instrument-card {\n    background-color: #fff;\n    border-radius: 8px;\n    box-shadow: 0 2px 4px rgba(0,0,0,0.1);\n    padding: 20px;\n    margin-bottom: 20px;\n    display: flex;\n    align-items: center;\n  }\n  .instrument-image {\n    width: 120px;\n    height: 120px;\n    border-radius: 8px;\n    margin-right: 20px;\n  }\n  .instrument-details {\n    flex: 1;\n  }\n  .instrument-details h2 {\n    margin-top: 0;\n    margin-bottom: 10px;\n    font-size: 20px;\n    color: #333;\n  }\n  .instrument-details p {\n    margin: 0;\n    font-size: 16px;\n    color: #666;\n  }\n  .price {\n    font-weight: bold;\n    font-size: 18px;\n    color: #333;\n  }\n  .issue {\n    font-style: italic;\n    color: #888;\n  }\n  .header {\n    background-image: url('./images/header-background.jpg');\n    background-size: cover;\n    background-position: center;\n    color: #fff;\n    padding: 50px 0;\n  }\n"
         }}
       />
+   <link rel="stylesheet" href="../style/styleNew.css"></link> 
    
-      <link rel="stylesheet" href="../style/styleNew.css"></link>
-      
       <section id="heroNew">
     <h2><b>Explore the world of Repair</b></h2>
     <br></br>
@@ -88,16 +87,16 @@ const PricesCard = ({ prices }) => {
 
 
 
-      <section>
-        <div className='row'>
-          
+
+        <div className='grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
           {prices.map((item) => (
-            <div key={item._id} className="col-md-4 col-sm-6">
-              <PriceSingleCard price={item} />
-            </div>
+            
+              <PriceSingleCard key={item._id} price={item} />
+            
           ))}
         </div>
-      </section>
+      
+     
       
     </>
   );
