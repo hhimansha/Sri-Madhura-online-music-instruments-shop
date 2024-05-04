@@ -11,6 +11,10 @@ import UpdateRental from './components/Rental/UpdateRental';
 
 import Home from './components/SellInstrument/Home';
 import CreateItem from './components/SellInstrument/CreateItem';
+import EditItem from './components/SellInstrument/EditItem';
+import DeleteItem from './components/SellInstrument/DeleteItem';
+import ShowItem from './components/SellInstrument/ShowItem';
+import AdminHome from './components/Admin/AdminSellItemHome';
 
 function App() {
   return (
@@ -23,12 +27,21 @@ function App() {
           <Route path="/rentals" element={<><TopNav/><RentHome /><RentalItemDisplay /><Footer/></>} />
           <Route path="/rentals/:id" element={<><TopNav/><RentHome /><Footer/></>} />
 
-          <Route path="/" element={<Home />} />
-          <Route path="/sellItem/create" element={<CreateItem />} />
+          <Route path='/repair/home' element={<Home />} />
+          
+          <Route path='/sellItem/home' element={<Home />} />
+          <Route path='/sellItem/create' element={<CreateItem />} />
+          <Route path='/sellItem/details/:id' element={<ShowItem />} />
+          <Route path='/sellItem/edit/:id' element={<EditItem />} />
+          <Route path='/sellItem/delete/:id' element={<DeleteItem />} />
           
           <Route
            path="/admindash"
             element={<AdminDash />}
+          />
+          <Route
+           path="/adminhome"
+            element={<AdminHome />}
           />
         </Routes>
       

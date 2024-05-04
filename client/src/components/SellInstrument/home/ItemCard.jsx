@@ -15,8 +15,7 @@ const ItemCard = ({ sellitems }) => {
     href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
   />
   <script src="./js_files/main.js"></script> 
-  <link rel="stylesheet" href="./styles/main.css" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="../styles/main.css" />
   {/*-----------------------Font Awesome Icons -------------*/}
   {/*--------x---------------Font Awesome Icons --------x-----*/}
   {/*--------x---------------Google font --------x-----*/}

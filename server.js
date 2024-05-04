@@ -48,6 +48,9 @@ connection.once('open', () => {
 const rentItemsRoute = require("./routes/rentItemsRoute");
 app.use("/api", rentItemsRoute); // Change the route to /api
 
+const sellItemRoute = require("./routes/sellItemRoute");
+app.use('/sellItem', sellItemRoute);
+
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 app.listen(PORT, () => {

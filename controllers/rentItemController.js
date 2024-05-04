@@ -11,7 +11,7 @@ const getRentals = asyncHandler(async (req, res) => {
 
 //@desc Get a rental item by ID
 //@route GET /api/rentals/:id
-//@access Public
+//@access Public 
 const getRentItem = asyncHandler(async (req, res) => {
     const rentItem = await RentItem.findById(req.params.id);
     if (!rentItem) {
