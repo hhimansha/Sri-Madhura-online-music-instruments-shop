@@ -24,8 +24,9 @@ const rentItemSchema = new Schema({
         required: true
     },
     image: {
-        type: String, // Assuming you'll store the image URL
+        type: String,
         required: true
+    
     },
     // You can add more fields here if needed
 }, {

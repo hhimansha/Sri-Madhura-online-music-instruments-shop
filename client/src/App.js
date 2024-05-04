@@ -14,16 +14,25 @@ import EditPrice from './components/RepairDetails/EditPrice'
 import DeletePrice from './components/RepairDetails/DeletePrice'
 import RentHome from './components/Rental/RentHomePage';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
-import AdminDash from './components/AdminDash';
+import AdminDash from './components/Admin/AdminDash';
 import RentalItemCreate from './components/Rental/RentalItemCreate';
+import RentalItemDisplay from './components/Rental/RentalItemDisplay';
+import RentalManage from './components/Rental/RentalManage';
+import UpdateRental from './components/Rental/UpdateRental';
 
 function App() {
   return (
     <Router>
       <div className="App">
         <Routes>
+          <Route path="/admindash/rentals/rentalcreate" element={<><AdminDash /><RentalItemCreate /></>} />
+          <Route path="/admindash/rentals/update/:id" element={<><AdminDash /><UpdateRental /></>} />
+          <Route path="/admindash/rentals" element={<><AdminDash /><RentalManage /></>} />
+          <Route path="/rentals" element={<><TopNav/><RentHome /><RentalItemDisplay /><Footer/></>} />
+          <Route path="/rentals/:id" element={<><TopNav/><RentHome /><Footer/></>} />
           <Route path="/rentalcreate" element={<><AdminDash /><RentalItemCreate /></>} />
           <Route path="/" element={<><TopNav/><RentHome /><Footer/></>} />
+<<<<<<< HEAD
           <Route path = '/repair/create' element={<CreateRequest />} />
           <Route path = '/repair/edit/:id' element={<EditRequest />} />
           <Route path = '/repair/delete/:id' element={<DeleteRequest />} />
@@ -34,7 +43,19 @@ function App() {
           <Route path = '/repair/homeUser' element={<HomeUser />} />
           <Route path = '/prices/DetailsHome' element={<DetailsHome />} /> 
           <Route path = '/prices/DetailsHomeUser' element={<DetailsHomeUser />} /> 
+=======
+          <Route path='/repair/create' element={<CreateRequest />} />
+          <Route path='/repair/edit/:id' element={<EditRequest />} />
+          <Route path='/repair/delete/:id' element={<DeleteRequest />} />
+          <Route path='/prices/create' element={<CreatePrices />} />
+          <Route path='/prices/edit/:id' element={<EditPrice />} />
+          <Route path='/prices/delete/:id' element={<DeletePrice />} />
+          <Route path='/repair/home' element={<Home />} /> 
+          <Route path='/repair/homeUser' element={<HomeUser />} />
+          <Route path='/prices/DetailsHome' element={<DetailsHome />} /> 
+>>>>>>> 1aa42a9ed8934d9aabae73a1ae105bd44c0c2713
           <Route path="/send-email" element={<SendEmail />} />
+
           <Route
            path="/admindash"
             element={<AdminDash />}

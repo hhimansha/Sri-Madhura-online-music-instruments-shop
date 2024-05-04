@@ -10,7 +10,7 @@ export default function RentalItemCreate() {
   const [category, setCategory] = useState('');
   const [rentalPrice, setRentalPrice] = useState('');
   const [stockCount, setStockCount] = useState('');
-  const [image, setImage] = useState('');
+  const [image, setImage] = useState(null);
   const [imageName, setImageName] = useState('');
   const [error, setError] = useState('');
   const [emptyFields, setEmptyFields] = useState(false);
@@ -23,22 +23,18 @@ export default function RentalItemCreate() {
       return;
     }
 
-    const rentalItem = {
-      title,
-      description,
-      category,
-      rentalPrice,
-      stockCount,
-      image
-    };
+    const formData = new FormData();
+    formData.append('title', title);
+    formData.append('description', description);
+    formData.append('category', category);
+    formData.append('rentalPrice', rentalPrice);
+    formData.append('stockCount', stockCount);
+    formData.append('image', image);
 
     try {
-      const response = await fetch('http://localhost:5050/api/rentals/rentalcreate', {
+      const response = await fetch('http://localhost:5050/api/rentalcreate', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(rentalItem)
+        body: formData
       });
 
       if (!response.ok) {
@@ -57,7 +53,7 @@ export default function RentalItemCreate() {
       setCategory('');
       setRentalPrice('');
       setStockCount('');
-      setImage('');
+      setImage(null);
       setImageName('');
       setEmptyFields(false);
       setError('');
@@ -123,23 +119,8 @@ export default function RentalItemCreate() {
                       className="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500"
                     >
                       <span>Upload a file</span>
-                      <input
-                        id="file-upload"
-                        name="image"
-                        type="file"
-                        className="sr-only"
-                        onChange={(e) => {
-                          const file = e.target.files[0];
-                          if (file) {
-                            const reader = new FileReader();
-                            reader.onloadend = () => {
-                              setImage(reader.result);
-                              setImageName(file.name);
-                            };
-                            reader.readAsDataURL(file);
-                          }
-                        }}
-                      />
+                      <input type="file" name="image" onChange={(e) => setImage(e.target.files[0])} />
+
                     </label>
                     <p className="pl-1">or drag and drop</p>
                   </div>
