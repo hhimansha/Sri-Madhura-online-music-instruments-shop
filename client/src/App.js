@@ -14,7 +14,7 @@ import CreateItem from './components/SellInstrument/CreateItem';
 import EditItem from './components/SellInstrument/EditItem';
 import DeleteItem from './components/SellInstrument/DeleteItem';
 import ShowItem from './components/SellInstrument/ShowItem';
-import AdminHome from './components/Admin/AdminSellItemHome';
+import AdminSellItemHome from './components/SellInstrument/AdminSellItemHome';
 
 function App() {
   return (
@@ -30,6 +30,7 @@ function App() {
           <Route path='/repair/home' element={<Home />} />
           
           <Route path='/sellItem/home' element={<Home />} />
+          <Route path='/sellItem/adminhome' element={<AdminSellItemHome />} />
           <Route path='/sellItem/create' element={<CreateItem />} />
           <Route path='/sellItem/details/:id' element={<ShowItem />} />
           <Route path='/sellItem/edit/:id' element={<EditItem />} />
@@ -38,10 +39,6 @@ function App() {
           <Route
            path="/admindash"
             element={<AdminDash />}
-          />
-          <Route
-           path="/adminhome"
-            element={<AdminHome />}
           />
         </Routes>
       

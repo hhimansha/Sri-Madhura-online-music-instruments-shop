@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import Spinner from './Spinner1';
+import Spinner from '../SellInstrument/Spinner1';
 import ItemTable from './home/ItemTable';
+
 
 const Home = () => {
   const [sellItem, setSellItem] = useState([]);

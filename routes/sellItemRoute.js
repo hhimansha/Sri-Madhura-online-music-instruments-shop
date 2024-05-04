@@ -1,7 +1,7 @@
 
 const express = require('express');
-const router = express.Router();
 const { SellItem } = require('../models/sellInstrumentModel.js');
+const router = express.Router();
 
 
 //Route for save a new book
