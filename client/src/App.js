@@ -10,6 +10,7 @@ import User_login from './components/User/User_login';
 import Reset from './components/User/Reset';
 import Recovery from './components/User/Recovery';
 import Profile from './components/User/Profile';
+import Usermanage from './components/User/Usermanage';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/profile" element={<Profile/>} />
           <Route path="/" element={<><TopNav/><RentHome /><Footer/></>} />
           <Route path="/admindash" element={<AdminDash />} />
+          <Route path="/usermanage" element={<><AdminDash /> <Usermanage/></>} />
           
         </Routes>
       

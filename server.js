@@ -26,6 +26,8 @@ app.use(cookieParser(
 ))
 app.use(express.json());
 app.use('/auth', UserRouter);
+app.use('/api/users', UserRouter);
+
 
 // start the Express server
 const URL = process.env.ATLAS_URI;

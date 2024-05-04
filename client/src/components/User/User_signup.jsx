@@ -1,120 +1,152 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
 import { Toaster } from 'react-hot-toast';
-import { useFormik } from 'formik';
-import { usernameValidate } from "../../helper/validate";
-import { registerValidation } from "../../helper/validate";
-import { passwordValidate } from "../../helper/validate";
-import { useState } from 'react';
-import Axios from 'axios';
-import { useNavigate } from "react-router-dom";
+import axios from 'axios';
 
+// Define the validation schema with Yup
+const validationSchema = Yup.object().shape({
+  firstname: Yup.string().required('First Name is required'),
+  lastname: Yup.string().required('Last Name is required'),
+  email: Yup.string().email('Invalid email format').required('Email is required'),
+  password: Yup.string().min(6, 'Minimum 6 characters').required('Password is required'),
+  phone: Yup.string()
+    .matches(/^\+?[0-9]*$/, 'Invalid phone number')
+    .nullable(),
+});
 
+const SignUp = () => {
+  const navigate = useNavigate();
 
-export default function SignUp() {
-
-
-  const [firstName, setfirstName] = useState('');
-  const [lastName, setlastName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [phone, setPhone] = useState('');
-
-const navigate = useNavigate()
-
-  const formik = useFormik({
-    initialValues: {
-      username: '',
-      password: '',
-      email: ''
-    },
-    validate: values => {
-      const errors = {};
-      const usernameErrors = usernameValidate(values.username);
-      const passwordErrors = passwordValidate(values.password);
-
-      // Merge username and password errors
-      Object.assign(errors, usernameErrors, passwordErrors);
-
-      return errors;
-    },
-    validateOnBlur: false,
-    validateOnChange: false,
-    onSubmit: async values => {
-      console.log(values)
-    }
-  })
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    Axios.post('http://localhost:3000/auth/signup', {
-      firstName,
-      lastName,
-      email,
-      password,
-      phone,
-
-    }).then(response => {
-      if(response.data.status){
-        navigate('/login')
+  // Handle form submission
+  const handleSubmit = async (values, { setSubmitting, setErrors }) => {
+    try {
+      const response = await axios.post('http://localhost:3000/auth/signup', values);
+      if (response.data.status) {
+        navigate('/login'); // Navigate to login after successful signup
+      } else {
+        setErrors({ submit: response.data.message });
       }
-      
-    }).catch(err => {
-      console.log(err)
-    })
-  }
+    } catch (error) {
+      setErrors({ submit: 'Error during signup, please try again.' });
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
   return (
-    <div class="lg:m-10">
-      <form class="relative border border-gray-100 space-y-3 max-w-screen-md mx-auto rounded-md bg-white p-6 shadow-xl lg:p-10"
-       onSubmit={handleSubmit} >
-        <h1 class="mb-6 text-xl font-semibold lg:text-2xl">Register</h1>
+    <div className="lg:m-10">
+      <Toaster position="top-center" reverseOrder={false} />
+      <Formik
+        initialValues={{ firstname: '', lastname: '', email: '', password: '', phone: '' }}
+        validationSchema={validationSchema}
+        onSubmit={handleSubmit}
+      >
+        {({ isSubmitting, errors }) => (
+          <Form
+            className="relative border border-gray-100 space-y-3 max-w-screen-md mx-auto rounded-md bg-white p-6 shadow-xl lg:p-10"
+          >
+            <h1 className="mb-6 text-xl font-semibold lg:text-2xl text-left">Register</h1>
 
-        <div class="grid gap-3 md:grid-cols-2">
-          <div>
-            <label class=""> First Name </label>
-            <input type="text" placeholder="Your Name" class="mt-2 h-12 w-full rounded-md bg-gray-100 px-3"
-              onChange={(e) => setfirstName(e.target.value)} />
-          </div>
-          <div>
-            <label class=""> Last Name </label>
-            <input type="text" placeholder="Last  Name" class="mt-2 h-12 w-full rounded-md bg-gray-100 px-3"
-              onChange={(e) => setlastName(e.target.value)} />
-          </div>
-        </div>
+            {/* First Name and Last Name */}
+            <div className="grid gap-3 md:grid-cols-2">
+              <div className="text-left">
+                <label>First Name</label>
+                <Field
+                  type="text"
+                  name="firstname"
+                  placeholder="Your Name"
+                  className="mt-2 h-12 w-full rounded-md bg-gray-100 px-3"
+                />
+                <ErrorMessage name="firstname" component="div" className="text-red-500 text-sm" />
+              </div>
+              <div className="text-left">
+                <label>Last Name</label>
+                <Field
+                  type="text"
+                  name="lastname"
+                  placeholder="Last Name"
+                  className="mt-2 h-12 w-full rounded-md bg-gray-100 px-3"
+                />
+                <ErrorMessage name="lastname" component="div" className="text-red-500 text-sm" />
+              </div>
+            </div>
 
-        <div>
-          <label class=""> Email Address </label>
-          <input type="email" placeholder="Info@example.com" name="email" class="mt-2 h-12 w-full rounded-md bg-gray-100 px-3"
-            onChange={(e) => setEmail(e.target.value)} />
-        </div>
-        <div>
-          <label class=""> Password </label>
-          <input type="password" placeholder="******" class="mt-2 h-12 w-full rounded-md bg-gray-100 px-3"
-            onChange={(e) => setPassword(e.target.value)} />
-        </div>
-        <div class="grid gap-3 lg:grid-cols-2">
-          <div>
-            <label class=""> Phone: <span class="text-sm text-gray-400">(optional)</span> </label>
-            <input type="text" placeholder="+543 5445 0543" class="mt-2 h-12 w-full rounded-md bg-gray-100 px-3"
-              onChange={(e) => setPhone(e.target.value)} />
-          </div>
-        </div>
+            {/* Email Field */}
+            <div className="text-left">
+              <label>Email Address</label>
+              <Field
+                type="email"
+                name="email"
+                placeholder="Info@example.com"
+                className="mt-2 h-12 w-full rounded-md bg-gray-100 px-3"
+              />
+              <ErrorMessage name="email" component="div" className="text-red-500 text-sm" />
+            </div>
 
-        <div class="checkbox">
-          <input type="checkbox" id="chekcbox1" checked="" />
-          <label for="checkbox1">I agree to the <a href="#" target="_blank" class="text-blue-600"> Terms and Conditions </a> </label>
-        </div>
+            {/* Password Field */}
+            <div className="text-left">
+              <label>Password</label>
+              <Field
+                type="password"
+                name="password"
+                placeholder="******"
+                className="mt-2 h-12 w-full rounded-md bg-gray-100 px-3"
+              />
+              <ErrorMessage name="password" component="div" className="text-red-500 text-sm" />
+            </div>
 
-        <div>
-          <button type="submit" class="mt-5 w-full rounded-md bg-blue-600 p-2 text-center font-semibold text-white">Get Started</button>
-          <p className="mb-4 text-center">
-                            Already have an account?
-                            <Link to="/login" className="cursor-pointer text-indigo-500 no-underline hover:text-indigo-500">  Login </Link>
-                        </p>        
-        </div>
-      </form>
-      
+            {/* Phone Field */}
+            <div className="grid gap-3 lg:grid-cols-2">
+              <div className="text-left">
+                <label>Phone: <span className="text-sm text-gray-400">(optional)</span></label>
+                <Field
+                  type="text"
+                  name="phone"
+                  placeholder="+543 5445 0543"
+                  className="mt-2 h-12 w-full rounded-md bg-gray-100 px-3"
+                />
+                <ErrorMessage name="phone" component="div" className="text-red-500 text-sm" />
+              </div>
+            </div>
+
+            {/* Terms Checkbox */}
+            <div className="checkbox">
+              <Field
+                type="checkbox"
+                name="terms"
+                id="checkbox1"
+                className="mt-1"
+              />
+              <label htmlFor="checkbox1">
+                I agree to the 
+                <a href="#" target="_blank" className="text-blue-600"> Terms and Conditions</a>
+              </label>
+              <ErrorMessage name="terms" component="div" className="text-red-500 text-sm" />
+            </div>
+
+            {/* Submit Button */}
+            <div>
+              <button
+                type="submit"
+                className="grid w-full cursor-pointer select-none rounded-md border bg-primary py-2 px-5 text-center text-white shadow hover:bg-primaryDark"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? 'Signing Up...' : 'Sign Up'}
+              </button>
+            </div>
+
+            {/* Redirect to Login */}
+            <p className="mb-4 text-center">
+              Already have an account? 
+              <Link to="/login" className="text-indigo-500 hover:text-indigo-600"> Login</Link>
+            </p>
+          </Form>
+        )}
+      </Formik>
     </div>
   );
-}
+};
+
+export default SignUp;

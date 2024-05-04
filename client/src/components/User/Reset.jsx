@@ -112,7 +112,7 @@ export default function Reset (){
                               
                             </div>
                             <div className="mb-4">
-                                <button className="grid w-full cursor-pointer select-none rounded-md border border-indigo-500 bg-indigo-500 py-2 px-5 text-center align-middle text-sm text-white shadow hover:border-indigo-600 hover:bg-indigo-600 hover:text-white focus:border-indigo-600 focus:bg-indigo-600 focus:text-white focus:shadow-none" type="submit">Reset</button>
+                                <button className="grid w-full cursor-pointer select-none rounded-md border bg-primary py-2 px-5 text-center align-middle text-sm text-white shadow  hover:bg-primaryDark hover:text-white focus:primaryDark  focus:text-white focus:shadow-none" type="submit">Reset</button>
                             </div>
                         </form>
 

@@ -93,9 +93,9 @@ export default function Recovery() {
                         <p className="mb-6 text-gray-500">Please enter your email</p>
 
                         <form className="mb-4" action="#" method="POST" onSubmit={handleSubmit}>
-                            <div className="mb-4">
-                                <label htmlFor="email" className="mb-2 inline-block text-xs font-medium uppercase text-gray-700">OTP</label>
-                                <input type="text" onChange={(e) => setEmail(e.target.value)} className="block w-full cursor-text appearance-none rounded-md border border-gray-400 bg--100 py-2 px-3 text-sm outline-none focus:border-indigo-500 focus:bg-white focus:text-gray-600 focus:shadow" id="email" name="OTP" placeholder="Enter OTP" autoFocus />
+                            <div className="mb-4 text-left">
+                                <label htmlFor="email" className="mb-2 inline-block text-xs font-medium uppercase text-gray-700">Email</label>
+                                <input type="text" onChange={(e) => setEmail(e.target.value)} className="block w-full cursor-text appearance-none rounded-md border border-gray-400 bg--100 py-2 px-3 text-sm outline-none focus:border-indigo-500 focus:bg-white focus:text-gray-600 focus:shadow" id="email" name="OTP" placeholder="Enter Email" autoFocus />
                             </div>
                             <div className="mb-4">
                                 <div className="flex justify-between">
@@ -110,7 +110,7 @@ export default function Recovery() {
 
                             </div>
                             <div className="mb-4">
-                                <button className="grid w-full cursor-pointer select-none rounded-md border border-indigo-500 bg-indigo-500 py-2 px-5 text-center align-middle text-sm text-white shadow hover:border-indigo-600 hover:bg-indigo-600 hover:text-white focus:border-indigo-600 focus:bg-indigo-600 focus:text-white focus:shadow-none" type="submit">Recover</button>
+                                <button className="grid w-full cursor-pointer select-none rounded-md border bg-primary py-2 px-5 text-center align-middle text-sm text-white shadow  hover:bg-primaryDark hover:text-white focus:primaryDark  focus:text-white focus:shadow-none" type="submit">Recover</button>
                             </div>
                         </form>
 

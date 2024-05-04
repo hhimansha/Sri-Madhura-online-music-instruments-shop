@@ -13,39 +13,20 @@ export default function Profile (){
 
   const navigate = useNavigate();
   axios.defaults.withCredentials = true;
+  
 
   const handleLogout = () => {
     axios.get('http://localhost:3000/auth/logout')
     .then(res => {
       if(res.data.status){
+        console.log('Password reset successful. Navigating to login page.');
         navigate('/login')
       }
     }).catch(err => {
       console.log(err);
+      console.error('Error occurred during password reset:', err);
     })
   }
-
-    const formik = useFormik( {
-        initialValues : {
-            password : '',
-            confirm_pwd : ''
-        },
-        validate: values => {
-            const errors = {};
-           // const usernameErrors = usernameValidate(values.username);
-            const passwordErrors = passwordValidate(values.password);
-
-            // Merge username and password errors
-            Object.assign(errors,  passwordErrors);
-
-            return errors;
-        },
-        validateOnBlur: false,
-        validateOnChange:false,
-        onSubmit : async values => {
-            console.log(values)
-        }
-    } )
 
     
     return (
@@ -70,7 +51,7 @@ export default function Profile (){
         </div>
         <div>
           <label class=""> Email Address </label>
-          <input type="email" {...formik.getFieldProps('email')} placeholder="Info@example.com" name="email" class="mt-2 h-12 w-full rounded-md bg-gray-100 px-3" />
+          <input type="email" placeholder="Info@example.com" name="email" class="mt-2 h-12 w-full rounded-md bg-gray-100 px-3" />
         </div>
         <div>
           <label class=""> Password </label>
@@ -104,7 +85,7 @@ export default function Profile (){
         </div>
       
         <div>
-          <button type="button" onClick={handleLogout} class="mt-5 w-full rounded-md bg-blue-600 p-2 text-center font-semibold text-white">Log Out</button>
+          <button type="button" onClick={handleLogout} class="grid w-full cursor-pointer select-none rounded-md border bg-primary py-2 px-5 text-center align-middle text-sm text-white shadow  hover:bg-primaryDark hover:text-white focus:primaryDark  focus:text-white focus:shadow-none">Log Out</button>
         </div>
       </form>
       

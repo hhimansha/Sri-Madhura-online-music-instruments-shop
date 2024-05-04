@@ -33,7 +33,7 @@ router.post('/login', async (req, res) => {
         return res.json({ message: "User is not registered" })
     }
 
-    const validPassword = bcrypt.compare(password, user.password)
+    const validPassword = await bcrypt.compare(password, user.password)
     if (!validPassword) {
         return res.json({ message: "password is incorect" })
     }
@@ -94,7 +94,7 @@ router.post('/reset/:token', async (req, res) => {
         const id = decoded.id;
         const hashpassword = await bcrypt.hash(password, 10);
         await User.findByIdAndUpdate({_id: id}, {password: hashpassword});
-        return res.json({ststus: true, message:"Password Updated"});
+        return res.json({status: true, message:"Password Updated"});
     } catch (err) {
         return res.json("Invalid Token");
     }
@@ -105,4 +105,47 @@ router.get('/logout', (req, res) => {
     res.clearCookie('token')
     return res.json({status: true})
 })
+
+// GET all users
+router.get('/', async (req, res) => {
+    try {
+        const users = await User.find();
+        res.json(users);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+
+//Delete a User
+
+// DELETE a user by ID
+router.delete('/:id', async (req, res) => {
+    try {
+        const deletedUser = await User.findByIdAndDelete(req.params.id);
+        if (!deletedUser) {
+            return res.status(404).json({ error: 'User not found' });
+        }
+        res.json({ message: 'User deleted successfully', deletedUser });
+    } catch (error) {
+        console.error('Error deleting user:', error);
+        res.status(500).json({ error: 'Failed to delete user' });
+    }
+});
+
+//get user by id
+router.get('/:id', async (req, res) => {
+    const userId = req.params.id;
+
+    try {
+        const user = await User.findById(userId);
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+        res.json(user);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+
+
 module.exports = router;
