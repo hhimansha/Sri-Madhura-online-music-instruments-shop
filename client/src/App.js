@@ -4,6 +4,7 @@ import Footer from './components/Footer';
 import Home from './components/Repairs/Home'
 import HomeUser from './components/Repairs/HomeUser'
 import DetailsHome from './components/RepairDetails/DetailsHome'
+import DetailsHomeUser from './components/RepairDetails/DetailsHomeUser'
 import CreateRequest from './components/Repairs/CreateRequest'
 import EditRequest from './components/Repairs/EditRequest'
 import DeleteRequest from './components/Repairs/DeleteRequest'
@@ -32,6 +33,7 @@ function App() {
           <Route path = '/repair/home' element={<Home />} /> 
           <Route path = '/repair/homeUser' element={<HomeUser />} />
           <Route path = '/prices/DetailsHome' element={<DetailsHome />} /> 
+          <Route path = '/prices/DetailsHomeUser' element={<DetailsHomeUser />} /> 
           <Route path="/send-email" element={<SendEmail />} />
           <Route
            path="/admindash"

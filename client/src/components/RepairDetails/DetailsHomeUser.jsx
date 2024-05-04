@@ -8,7 +8,7 @@ import { MdOutlineAddBox, MdOutlineDelete } from 'react-icons/md';
 import PricesTable from './home/PricesTable';
 import PricesCard from './home/PricesCard';
 
-export const DetailsHome = () => {
+export const DetailsHomeUser = () => {
     const [prices, setPrices] = useState([]);
     const [loading, setLoading] = useState(false);
     const [showType, setShowType] = useState('table');
@@ -36,17 +36,12 @@ export const DetailsHome = () => {
            
 
             </div>
-            <div className='flex justify-between items-center'>
-                <h1 className='text-3xl my-8'>Details List</h1>
-                <Link to='/prices/create'>
-                    <MdOutlineAddBox className='text-sky-800 text-4xl' />
-                </Link>
-            </div>
-            {loading ? <Spin /> : showType === 'table' ? <PricesTable prices={prices} /> : <PricesCard prices={prices} />}
+          
+            {loading ? <Spin /> : showType === 'card' ? <PricesTable prices={prices} /> : <PricesCard prices={prices} />}
         </div>
        
         </>
     );
 };
 
-export default DetailsHome;
+export default DetailsHomeUser;

@@ -35,6 +35,9 @@ app.use("/api", rentItemsRoute);
 const repairItemsRoute = require("./routes/repairItemsRoute");
 app.use('/repair', repairItemsRoute);
 
+const RepairDetailsRoute = require("./routes/RepairDetailsRoute");
+app.use('/prices', RepairDetailsRoute);
+
 
 
 app.listen(PORT, () => {
