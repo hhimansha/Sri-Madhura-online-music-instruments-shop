@@ -42,10 +42,11 @@ const RequestsCard = ({ repair }) => {
 </section>
 <section class="bg-white py-6 sm:py-8 lg:py-12">
   <div class="mx-auto max-w-screen-xl px-4 md:px-8">
- 
+  <h2 class="-mx-4 px-4 pt-4 pb-6 text-3xl text-blue-900 sm:text-4xl xl:text-5xl">Our <span class="font-bold">Growth</span></h2>
     
 
     <div class="grid gap-8 sm:grid-cols-2 sm:gap-12 lg:grid-cols-3 xl:grid-cols-4 xl:gap-16">
+      
    
       <article class="">
         <a class="block rounded-lg bg-gradient-to-r from-orange-500 via-orange-400 to-yellow-400 p-2 transition hover:scale-105" href="#">

@@ -38,12 +38,7 @@ export const Home = () => {
 
 
             </div>
-            <div className='flex justify-between items-center'>
-                <h1 className='text-3xl my-8'>Repairs</h1>
-                <Link to='/repair/create'>
-                    <MdOutlineAddBox className='text-sky-800 text-4xl' />
-                </Link>
-            </div>
+          
             {loading ? <Spinner /> : showType === 'card' ? <RequestsTable repair={repair} /> : <RequestsCard repair={repair} />}
         </div>
         <Footer/>

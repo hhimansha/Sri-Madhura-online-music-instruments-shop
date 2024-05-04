@@ -15,31 +15,34 @@ const RequestSingleCard = ({ request }) => {
   
 
   return (
-    
-    <div className='border-2 border-gray-500 rounded-lg px-4 py-2 m-4 relative hover:shadow-xl'>
-      <h4 className='absolute top-1 right-2 px-4 py-1 bg-yellow-300 rounded-lg'>
+    <div class="my-10 max-w-xs rounded-xl  relative hover:shadow-xl">
+      
+   
+    <article class="">
+      <a class="block rounded-lg bg-gradient-to-r from-gray-500 via-gray-400 to-gray-400 p-2 " href="#">
+      <h4 className='absolute top-1 right-2 px-4 py-1 bg-yellow-400 rounded-lg'>
         {request.issueType}
       </h4>
       <br></br>
       <h4 className='my-2 text-gray-500'>{request.cID}</h4>
      <br></br>
       <div className='flex justify-start items-center gap-x-2'>
-        <BiUserCircle className='text-orange-600 text-2xl' />
+        <BiUserCircle className='text-yellow-400 text-2xl' />
         <h4 className='my-1'>{request.email}</h4>
       </div>
       <br></br>
       <div className='flex justify-start items-center gap-x-2'>
-        <FaMusic className='text-orange-600 text-2xl' />
+        <FaMusic className='text-yellow-400 text-2xl' />
         <h4 className='my-1'>{request.instrumentCat}</h4>
       </div>
       <br></br>
       <div className='flex justify-start items-center gap-x-2'>
-        <GiGuitar className='text-orange-600 text-2xl' /> {/* Use GiGuitar icon */}
+        <GiGuitar className='text-yellow-400 text-2xl' /> {/* Use GiGuitar icon */}
         <h4 className='my-1'>{request.instrumentBrand}</h4>
       </div>
       <br></br>
       <div className='flex justify-start items-center gap-x-2'>
-        <FaDollarSign className='text-orange-600 text-2xl' /> {/* Use GiGuitar icon */}
+        <FaDollarSign className='text-yellow-400 text-2xl' /> {/* Use GiGuitar icon */}
         <h4 className='my-1'>{request.price}</h4>
       </div>
       <br></br>
@@ -56,7 +59,7 @@ const RequestSingleCard = ({ request }) => {
       <br></br>
       <div className='flex justify-between items-center gap-x-2 mt-4 p-4'>
         <BiShow
-          className='text-3xl text-blue-800 hover:text-black cursor-pointer'
+          className='text-3xl text-red-800 hover:text-black cursor-pointer'
           onClick={() => setShowModal(true)}
         />
        
@@ -65,7 +68,18 @@ const RequestSingleCard = ({ request }) => {
       {showModal && (
         <RequestModal request={request} onClose={() => setShowModal(false)} />
       )}
+        
+          
+          
+     
+      </a>
+    </article>
+  
+
+    
+ 
     </div>
+   
   );
 };
 
