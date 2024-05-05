@@ -15,23 +15,21 @@ export default function Reset (){
 
     const navigate = useNavigate()
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    Axios.post('http://localhost:3000/auth/reset/' + token,{  
-        
-      password,
-
-    }).then(response => {
-      if(response.data.status){
-        navigate('/login')
-        
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        Axios.post('http://localhost:3000/auth/reset', {
+          token,
+          password,
+        }).then(response => {
+          if(response.data.status){
+            navigate('/login')
+          }
+          console.log(response.data)
+        }).catch(err => {
+          console.log(err)
+        })
       }
-      console.log(response.data)
       
-    }).catch(err => {
-      console.log(err)
-    })
-  }
 
     const formik = useFormik( {
         initialValues : {

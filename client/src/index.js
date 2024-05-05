@@ -2,15 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import { RentalItemProvider } from './context/rentalItemContext'; // Import RentalItemProvider
-import { AuthProvider } from './context/AuthContext';
+import { AuthContextProvider } from './context/AuthContext';
 
 ReactDOM.render(
   <React.StrictMode>
-    <AuthProvider>
+    <AuthContextProvider>
       <RentalItemProvider>
         <App />
       </RentalItemProvider>
-      </AuthProvider>
+      </AuthContextProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

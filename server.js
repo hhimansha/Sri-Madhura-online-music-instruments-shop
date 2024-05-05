@@ -6,7 +6,6 @@ const dotenv = require('dotenv').config();
 const connectDB = require('./config/dbConnect');
 const multer = require('multer');
 const path = require('path');
-const  UserRouter  = require("./routes/user");
 
 connectDB();
 const PORT = process.env.PORT || 5050;
@@ -37,8 +36,8 @@ app.use(bodyParser.json({ limit: '10mb' }));
 app.use(bodyParser.urlencoded({ extended: true, limit: '10mb' }));
 
 app.use(express.json());
-app.use('/auth', UserRouter);
-app.use('/api/users', UserRouter);
+app.use("/api/users", require("./routes/userRoutes"));
+app.use("/auth", require("./routes/userRoutes"));
 
 // start the Express server
 const URL = process.env.ATLAS_URI;

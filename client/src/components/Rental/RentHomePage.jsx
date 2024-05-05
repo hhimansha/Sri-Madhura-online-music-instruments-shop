@@ -1,10 +1,8 @@
 import React, { useEffect , useState} from "react";
 import wide from '../assets/wideHero.png';
-import { useAuth } from '../../context/AuthContext';
 import axios from 'axios';
 
 function RentHomePage() {
-    const { userId } = useAuth();
     
     return (
 

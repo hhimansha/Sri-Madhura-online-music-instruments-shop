@@ -1,6 +1,9 @@
 const asyncHandler = require("express-async-handler");
 const User = require("../models/userModel");
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const nodemailer = require('nodemailer');
+const router = require("express").Router();
 
 
 //@desc Get all users
@@ -193,6 +196,66 @@ const updateUser = asyncHandler(async (req, res) => {
 });
 
 
+
+const recover = asyncHandler(async (req, res) => {
+  const { email } = req.body;
+  try {
+      const user = await User.findOne({ email })
+      if (!user) {
+          return res.json({ message: "User not registered" })
+      }
+
+      const token = jwt.sign({ id: user._id }, process.env.KEY, { expiresIn: '10m' })
+
+      var transporter = nodemailer.createTransport({
+          service: 'gmail',
+          auth: {
+              user: 'srimadhuramusicalinstruments@gmail.com',
+              pass: 'ugto dqub fcpd zddq'
+          }
+      });
+
+      var mailOptions = {
+          from: 'srimadhuramusicalinstruments@gmail.com',
+          to: email,
+          subject: 'Reset Password',
+          text: `http://localhost:3000/reset/${token}`
+      };
+
+      transporter.sendMail(mailOptions, function (error, info) {
+          if (error) {
+              return res.json({ message: "Error Sending Email" })
+
+          } else {
+              return res.json({ status: true, message: "Email Sent" })
+
+          }
+      });
+
+  } catch (err) {
+      console.log(err)
+
+  }
+}
+
+);
+
+const reset = asyncHandler(async (req, res) => {
+  const token = req.params.token;
+  const {password} = req.body;
+
+  try {
+    const decoded = await jwt.verify(token, process.env.KEY);
+    const id = decoded.id;
+    const hashpassword = await bcrypt.hash(password, 10);
+    await User.findByIdAndUpdate({_id: id}, {password: hashpassword});
+    return res.json({status: true, message:"Password Updated"});
+  } catch (err) {
+    return res.status(400).json({ message: "Invalid Token" }); // Send 400 status code
+  }
+});
+
+
 //@desc Delete user address
 //@route DELETE /api/users/:id/addresses
 //@access public (you may change to private based on your logic)
@@ -242,6 +305,8 @@ module.exports = {
   getUser,
   loginUser,
   deleteUser,
+  recover,
+  reset,
   createAddress,
   getUserAddresses,
   updateUser,

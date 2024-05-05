@@ -8,8 +8,8 @@ import RentalItemCreate from './components/Rental/RentalItemCreate';
 import RentalItemDisplay from './components/Rental/RentalItemDisplay';
 import RentalManage from './components/Rental/RentalManage';
 import UpdateRental from './components/Rental/UpdateRental';
-import User_signup from './components/User/User_signup';
-import User_login from './components/User/User_login';
+import Signup from './components/User/signUp';
+import Login from './components/User/login';
 import Reset from './components/User/Reset';
 import Recovery from './components/User/Recovery';
 import Profile from './components/User/Profile';
@@ -31,8 +31,8 @@ function App() {
           <Route path="/rentals" element={<><TopNav/><RentHome /><RentalItemDisplay /><Footer/></>} />
           <Route path="/rentals/checkout-order" element={<><TopNav/><rentalOrderCheckout /><Footer/></>} />
 
-          <Route path="/login" element={<User_login />} /> {/* New route for user login */}
-          <Route path="/signup" element={<User_signup />} /> {/* New route for user signup */}
+          <Route path="/login" element={<Login />} /> {/* New route for user login */}
+          <Route path="/signup" element={<Signup />} /> {/* New route for user signup */}
           <Route path="/reset/:token" element={<Reset/>} /> 
           <Route path="/recover" element={<Recovery/>} />
           <Route path="/profile" element={<Profile/>} />
