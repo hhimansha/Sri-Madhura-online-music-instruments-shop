@@ -6,6 +6,7 @@ const dotenv = require('dotenv').config();
 const connectDB = require('./config/dbConnect');
 const multer = require('multer');
 const path = require('path');
+const  UserRouter  = require("./routes/user");
 
 connectDB();
 const PORT = process.env.PORT || 5050;
@@ -35,6 +36,10 @@ app.use(cors());
 app.use(bodyParser.json({ limit: '10mb' }));
 app.use(bodyParser.urlencoded({ extended: true, limit: '10mb' }));
 
+app.use(express.json());
+app.use('/auth', UserRouter);
+app.use('/api/users', UserRouter);
+
 // start the Express server
 const URL = process.env.ATLAS_URI;
 mongoose.connect(URL, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -49,8 +54,7 @@ app.use("/api", rentItemsRoute); // Change the route to /api
 
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-const repairItemsRoute = require("./routes/repairItemsRoute");
-app.use('/repair', repairItemsRoute);
+
 
 
 app.listen(PORT, () => {

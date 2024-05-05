@@ -112,7 +112,7 @@ const RentalOrdersManage = () => {
     }
 
     return (
-        <div className="flex flex-col max-w-[1280px] mx-auto my-6 ml-[280px]">
+        <div className="flex flex-col max-w-[1280px] mx-auto my-6 ml-[270px]">
         <div className="flex mb-10 justify-between">
             <h1 className="text-2xl font-semibold leading-7 text-dark text-left">Manage Rental Orders</h1>
             <div className="flex">
@@ -162,6 +162,7 @@ const RentalOrdersManage = () => {
                                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">{new Date(rentalOrder.rentalDate).toLocaleDateString()}</td>
                                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">{rentalOrder.numberOfDays}</td>
                                     <td className="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
+                                        <button type="button" className="inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent text-white bg-dark p-1 px-2 disabled:opacity-50 disabled:pointer-events-none mr-4">Approve</button>
                                         <button type="button" className="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-red-500 p-1 px-2 text-red-500 hover:text-white hover:bg-red-600" onClick={() => handleDelete(rentalOrder._id)}>Cancel</button>
                                     </td>
                                 </tr>
