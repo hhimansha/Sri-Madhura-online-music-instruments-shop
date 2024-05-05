@@ -105,52 +105,60 @@ function RentalItemDisplay() {
         onSortChange={handleSortChange}
         onSearch={handleSearch}
       />
-      <div className="flex flex-wrap justify-center lg:mx-10 xl:mx-40 ">
-        {searchQuery.trim() === '' ? (
-          filteredItems.map((rentalItem) => (
-            <motion.div
-              key={rentalItem._id}
-              className="w-full md:w-1/3 lg:w-1/4 xl:w-1/5 px-4 mb-8 "
-              variants={cardVariants}
-              initial="hidden"
-              animate="visible"
-            >
-              <div className="bg-white shadow-xl rounded-xl overflow-hidden">
-              <Link to={`/rentals/${rentalItem._id}`}>
-                <img src={`http://localhost:5050/uploads/${rentalItem.image}`} alt={rentalItem.title} className="w-full h-64 object-cover" />
-                <div className="p-4">
-                  <h2 className="text-lg font-semibold text-left">{rentalItem.title}</h2>
-                  <p className="mt-2 text-left font-semibold text-primary">${rentalItem.rentalPrice} per day</p>
-                </div>
-                </Link>
+      <div className="flex flex-wrap justify-center lg:mx-10 xl:mx-40">
+  {searchQuery.trim() === '' ? (
+    filteredItems.map((rentalItem) => (
+      <motion.div
+        key={rentalItem._id}
+        className="w-full md:w-1/3 lg:w-1/4 xl:w-1/5 px-4 mb-8 flex justify-center"
+        variants={cardVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        <div className="bg-white shadow-xl rounded-xl overflow-hidden w-full">
+          <Link to={`/rentals/${rentalItem._id}`} className="block w-full h-full">
+            <img
+              src={`http://localhost:5050/uploads/${rentalItem.image}`}
+              alt={rentalItem.title}
+              className="w-full h-64 object-cover aspect-w-1 aspect-h-1"
+            />
+            <div className="p-4">
+              <h2 className="text-md font-semibold text-left">{rentalItem.title}</h2>
+              <p className="mt-2 text-left font-semibold text-primary text-xl border-t-2">${rentalItem.rentalPrice} per day</p>
+            </div>
+          </Link>
+        </div>
+      </motion.div>
+    ))
+  ) : (
+    filteredItems.map((rentalItem) => (
+      rentalItem.title.toLowerCase().includes(searchQuery.toLowerCase()) && (
+        <motion.div
+          key={rentalItem._id}
+          className="w-full md:w-1/3 lg:w-1/4 xl:w-1/5 px-4 mb-8 flex justify-center"
+          variants={cardVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <div className="bg-white shadow-xl rounded-xl overflow-hidden w-full">
+            <Link to={`/rentals/${rentalItem._id}`} className="block w-full h-full">
+              <img
+                src={`http://localhost:5050/uploads/${rentalItem.image}`}
+                alt={rentalItem.title}
+                className="w-full h-64 object-cover aspect-w-1 aspect-h-1"
+              />
+              <div className="p-4">
+                <h2 className="text-md font-semibold text-left">{rentalItem.title}</h2>
+                <p className="mt-2 text-left font-semibold text-primary text-xl border-t-2">${rentalItem.rentalPrice} per day</p>
               </div>
-            </motion.div>
-          ))
-        ) : (
-          filteredItems.map((rentalItem) => (
-            rentalItem.title.toLowerCase().includes(searchQuery.toLowerCase()) && (
-              <motion.div
-                key={rentalItem._id}
-                className="w-full md:w-1/3 lg:w-1/4 xl:w-1/5 px-4 mb-8 "
-                variants={cardVariants}
-                initial="hidden"
-                animate="visible"
-              >
-                <div className="bg-white shadow-xl rounded-xl overflow-hidden">
-                <Link to={`/rentals/${rentalItem._id}`}>
-                  <img src={`http://localhost:5050/uploads/${rentalItem.image}`} alt={rentalItem.title} className="w-full h-64 object-cover" />
-                  <div className="p-4">
-                    <h2 className="text-lg font-semibold">{rentalItem.title}</h2>
-                    <p className="text-gray-800 mt-2">${rentalItem.rentalPrice} per day</p>
-                  </div>
-                  </Link>
-                </div>
-                
-              </motion.div>
-            )
-          ))
-        )}
-      </div>
+            </Link>
+          </div>
+        </motion.div>
+      )
+    ))
+  )}
+</div>
+
     </div>
   );
 }

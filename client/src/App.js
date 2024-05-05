@@ -24,8 +24,11 @@ import Reset from './components/User/Reset';
 import Recovery from './components/User/Recovery';
 import Profile from './components/User/Profile';
 import Usermanage from './components/User/Usermanage';
+import RentalItemPage from './components/Rental/rentalItemPage';
+import RentalOrdersManage from './components/Rental/RentalOrdersManage';
 
 function App() {
+
   return (
     <Router>
       <div className="App">
@@ -33,7 +36,9 @@ function App() {
           <Route path="/admindash/rentals/rentalcreate" element={<><AdminDash /><RentalItemCreate /></>} />
           <Route path="/admindash/rentals/update/:id" element={<><AdminDash /><UpdateRental /></>} />
           <Route path="/admindash/rentals" element={<><AdminDash /><RentalManage /></>} />
+          <Route path="/admindash/rental-orders" element={<><AdminDash /><RentalOrdersManage /></>} />
           <Route path="/rentals" element={<><TopNav/><RentHome /><RentalItemDisplay /><Footer/></>} />
+
           <Route path="/rentals/:id" element={<><TopNav/><RentHome /><Footer/></>} />
           <Route path="/rentalcreate" element={<><AdminDash /><RentalItemCreate /></>} />
           <Route path="/login" element={<User_login />} /> {/* New route for user login */}
@@ -56,6 +61,9 @@ function App() {
 
           <Route path="/admindash" element={<AdminDash />} />
           <Route path="/usermanage" element={<><AdminDash /> <Usermanage/></>} />
+
+          <Route path="/rentals/:id" element={<><TopNav/><RentalItemPage /><Footer/></>} />
+
           
         </Routes>
       
