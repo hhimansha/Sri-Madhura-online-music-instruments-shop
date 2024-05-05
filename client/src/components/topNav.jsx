@@ -1,7 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import MainLogo from "../components/assets/MainLogo.png";
 import "./TopNav.css";
+
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+
 import { Link } from 'react-router-dom';
+
 
 function TopNav() {
   const [showMenu, setShowMenu] = useState(false);
@@ -30,6 +35,22 @@ function TopNav() {
   const toggleMenu = () => setShowMenu(!showMenu);
   const toggleDropdown = () => setShowDropdown((prev) => !prev);
   const toggleCategoryDropdown = () => setShowCategoryDropdown((prev) => !prev);
+  const navigate = useNavigate();
+  axios.defaults.withCredentials = true;
+  
+
+  const handleLogout = () => {
+    axios.get('http://localhost:3000/auth/logout')
+    .then(res => {
+      if(res.data.status){
+        console.log('Password reset successful. Navigating to login page.');
+        navigate('/login')
+      }
+    }).catch(err => {
+      console.log(err);
+      console.error('Error occurred during password reset:', err);
+    })
+  }
 
   return (
     <>
@@ -42,9 +63,10 @@ function TopNav() {
           <div className="flex items-center md:order-2 space-x-3 md:space-x-3 rtl:space-x-reverse relative">
             <button
               type="button"
+              onClick={handleLogout}
               className="px-4 py-1 mx-6 text-20 text-orange bg- font-semibold rounded-lg border border-grey transition duration-1000 ease-in-out bg-gray-900 text-white hover:text-white hover:bg-primary"
             >
-              Log In
+              Log Out
             </button>
 
             <button
