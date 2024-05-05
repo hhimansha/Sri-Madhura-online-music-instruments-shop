@@ -49,8 +49,7 @@ app.use("/api", rentItemsRoute); // Change the route to /api
 
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-const repairItemsRoute = require("./routes/repairItemsRoute");
-app.use('/repair', repairItemsRoute);
+
 
 
 app.listen(PORT, () => {
