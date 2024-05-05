@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import BackButton from '../Repairs/BackButton';
-import Spinner from '../Repairs/Spinner';
+
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
@@ -106,7 +106,7 @@ const EditRequest = () => {
          <div style={{ maxWidth: '600px', margin: 'auto', marginTop: '4rem', padding: '1rem' }}>
         <BackButton />
         <h1 className='text-3xl font-bold mb-6' style={{ color: '#fff' }}>Edit Request</h1>
-        {loading && <Spinner />}
+       
         
         <div className='max-w-2xl mx-auto' style={{ backgroundColor: 'rgba(255, 255, 255, 0.8)', padding: '20px', borderRadius: '10px' }}>
        
@@ -284,7 +284,7 @@ const EditRequest = () => {
               e.target.style.backgroundColor = '#3498db';
             }}
           >
-            Save
+            Update
           </button>
         </div>
       </div>

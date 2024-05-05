@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Spinner from '../Repairs/Spinner';
 import { Link } from 'react-router-dom';
 import { AiOutlineEdit } from 'react-icons/ai';
 import { BsInfoCircle } from 'react-icons/bs';
@@ -39,7 +38,7 @@ export const Home = () => {
 
             </div>
           
-            {loading ? <Spinner /> : showType === 'card' ? <RequestsTable repair={repair} /> : <RequestsCard repair={repair} />}
+            {showType === 'card' ? <RequestsTable repair={repair} /> : <RequestsCard repair={repair} />}
         </div>
         <Footer/>
         </>

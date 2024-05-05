@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Spinner from './Spinner';
+
 import { Link } from 'react-router-dom';
 import { AiOutlineEdit } from 'react-icons/ai';
 import { BsInfoCircle } from 'react-icons/bs';
@@ -10,7 +10,7 @@ import RequestsCard from './home/RequestsCard';
 import TopNav from '../topNav';
 import Footer from '../Footer';
 
-export const Home = () => {
+export const RepairHome = () => {
     const [repair, setRepair] = useState([]);
     const [loading, setLoading] = useState(false);
     const [showType, setShowType] = useState('table');
@@ -43,11 +43,11 @@ export const Home = () => {
                     <MdOutlineAddBox className='text-sky-800 text-4xl' />
                 </Link>
             </div>
-            {loading ? <Spinner /> : showType === 'table' ? <RequestsTable repair={repair} /> : <RequestsCard repair={repair} />}
+            {showType === 'table' ? <RequestsTable repair={repair} /> : <RequestsCard repair={repair} />}
         </div>
         <Footer/>
         </>
     );
 };
 
-export default Home;
+export default RepairHome;

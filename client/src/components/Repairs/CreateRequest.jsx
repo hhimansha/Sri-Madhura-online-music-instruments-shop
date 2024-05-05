@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import BackButton from '../Repairs/BackButton';
-import Spinner from '../Repairs/Spinner';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
@@ -45,13 +44,13 @@ const CreateRequest = () => {
 
   };
   const issuePrices = {
-    'String Replacement': 10,
-    'Drumhead Replacement': 20,
-    'Drum Shell Repair': 30,
-    'Tuning Peg Replacement': 15,
-    'Pickup Replacement': 25,
-    'Key Replacement': 5,
-    'Tuning': 12,
+    'String Replacement': 200,
+    'Drumhead Replacement': 1500,
+    'Drum Shell Repair': 1200,
+    'Tuning Peg Replacement': 500,
+    'Pickup Replacement': 750,
+    'Key Replacement': 950,
+    'Tuning': 650,
   };
 
   const handleSaveRequest = () => {
@@ -106,7 +105,7 @@ const CreateRequest = () => {
       <div style={{ maxWidth: '600px', margin: 'auto', marginTop: '4rem', padding: '1rem' }}>
         <BackButton />
         <h1 className='text-3xl font-bold mb-6' style={{ color: '#fff' }}>Add Request</h1>
-        {loading && <Spinner/>}
+        
         
         <div style={{ background: '#f9f9f9', width: '500px', padding: '2rem', borderRadius: '10px', boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)' }}>
           <form style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
@@ -199,14 +198,23 @@ const CreateRequest = () => {
             )}
             <div style={{ display: 'flex', alignItems: 'center', borderBottom: '1px solid #ccc', paddingBottom: '0.5rem' }}>
               <MdMusicNote style={{ color: '#333', marginRight: '0.5rem', fontSize: '1.5rem' }} />
-              <input
+              <select
                 id='brand'
                 type='text' 
                 value={brand}
                 onChange={(e) => setBrand(e.target.value)}
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                placeholder='Brand'
-              />
+                placeholder='Brand'>
+                <option value=''>Select Brand</option>
+                <option value='Lark'>Lark</option>
+                <option value='Cremona'>Cremona</option>
+                <option value='Yamaha'>Yamaha</option>
+                <option value='Suzuki'>Suzuki</option>
+                <option value='Yamaha'>Yamaha</option>
+                <option value='Yamaha'>Yamaha</option>
+
+                </select>
+              
             </div>
             <div style={{ display: 'flex', alignItems: 'center', borderBottom: '1px solid #ccc', paddingBottom: '0.5rem' }}>
               <FaShieldAlt  style={{ color: '#333', marginRight: '0.5rem', fontSize: '1.5rem' }} />

@@ -19,35 +19,37 @@ const RequestModal = ({ request, onClose }) => {
           className='absolute right-6 top-6 text-3xl text-red-600 cursor-pointer'
           onClick={onClose}
         />
-        <h4 className='w-fit px-4 py-1 bg-red-300 rounded-lg'>
+        <h3 className='w-fit px-4 py-1 bg-orange-600 rounded-lg'>
           {request.issueType}
-        </h4>
+        </h3>
         {/* <h4 className='my-2 text-gray-500'>{request._id}</h4> */}
         <div className='flex justify-start items-center gap-x-2'>
-          <PiBookOpenTextLight className='text-red-300 text-2xl' />
-          <h4 className='my-1'>{request.name}</h4>
+          <PiBookOpenTextLight className='text-orange-600 text-2xl' />
+          <h3 className='my-1'>{request.name}</h3>
         </div>
         <div className='flex justify-start items-center gap-x-2'>
-          <BiUserCircle className='text-red-300 text-2xl' />
-          <h4 className='my-1'>{request.email}</h4>
+          <BiUserCircle className='text-orange-600 text-2xl' />
+          <h3 className='my-1'>{request.email}</h3>
         </div>
         <div className='flex justify-start items-center gap-x-2'>
-          <FaMapMarkerAlt className='text-red-300 text-2xl' /> {/* Use GiGuitar icon */}
-          <h4 className='my-1'>{request.address}</h4>
+          <FaMapMarkerAlt className='text-orange-600 text-2xl' /> {/* Use GiGuitar icon */}
+          <h3 className='my-1'>{request.address}</h3>
         </div>
         <div className='flex justify-start items-center gap-x-2'>
-          <GiGuitar className='text-red-300 text-2xl' /> {/* Use GiGuitar icon */}
-          <h4 className='my-1'>{request.instrumentCat}</h4>
+          <GiGuitar className='text-orange-600 text-2xl' /> {/* Use GiGuitar icon */}
+          <h3 className='my-1'>{request.instrumentCat}</h3>
         </div>
         <div className='flex justify-start items-center gap-x-2'>
-          <FaAlignLeft className='text-red-300 text-2xl' /> {/* Use GiGuitar icon */}
-          <h4 className='my-1'>{request.issueDescription}</h4>
+          <FaAlignLeft className='text-orange-600 text-2xl' /> {/* Use GiGuitar icon */}
+          <h3 className='my-1'>{request.issueDescription}</h3>
         </div>
-        <h4 className='my-2'>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni quia
-          voluptatum sint. 
+        <h3 className='my-2'>
+        Guitar World Gold Coast specializes in guitar re-strings and setups. Our service
+         ensures optimal playability, comfort, and sound quality. We adjust action, 
+         intonation, and truss rod, replace strings, and offer personalized setups to 
+         match your playing style.Ready to give your guitar the care it needs? Contact us today to schedule your repair or setup. Our friendly staff is here to answer At Guitar World Gold Coast, customer satisfaction is our priority. We strive to provide fast, reliable, and affordable services that  
           <b> Read more...</b>
-        </h4>
+        </h3>
       </div>
     </div>
   );

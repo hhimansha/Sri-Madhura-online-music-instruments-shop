@@ -30,13 +30,12 @@ const RequestsCard = ({ repair }) => {
     
     <link rel="stylesheet" href="../style/style.css"></link>
     <section id="heroNew">
-  <h2><b>Explore the world of Repair</b></h2>
+  <h2><b>Repairing Melodies, Fixing Memories</b></h2>
   <br></br>
-  <h5>Never take broken for an answer</h5>
+  <h5>Strings, Keys, Winds, Percussions: We Fix Every Note with Care.</h5>
   <br></br>
-  <p><b>We help thousands of people to repair their instruments every day.</b></p>
-  <br></br>
-  <button>Explore Our Repairs</button>
+  <p><b>Your Trusted Instrument Repair Partner.</b></p>
+  
 
   
 </section>
@@ -44,7 +43,7 @@ const RequestsCard = ({ repair }) => {
   <div class="mx-auto max-w-screen-xl px-4 md:px-8">
   <h2 class="-mx-4 px-4 pt-4 pb-6 text-3xl text-blue-900 sm:text-4xl xl:text-5xl">Our <span class="font-bold">Growth</span></h2>
     
-
+{/* 
     <div class="grid gap-8 sm:grid-cols-2 sm:gap-12 lg:grid-cols-3 xl:grid-cols-4 xl:gap-16">
       
    
@@ -63,7 +62,7 @@ Experience</h2>
       </article>
     
       <article class="">
-        <a class="block rounded-lg bg-gradient-to-r from-blue-500 via-sky-400 to-cyan-400 p-2 transition hover:scale-105" href="#">
+        <a class="block rounded-lg bg-gradient-to-r from-orange-500 via-orange-400 to-yellow-400 p-2 transition hover:scale-105" href="#">
           <h2 class="mx-4 mt-4 mb-10 font-serif text-2xl font-semibold text-white">We Deliver
 Quality Serivces</h2>
           <div class="flex items-center rounded-md px-4 py-3">
@@ -77,7 +76,7 @@ Quality Serivces</h2>
       </article>
       
       <article class="">
-        <a class="block rounded-lg bg-gradient-to-r from-purple-500 via-indigo-400 to-indigo-400 p-2 transition hover:scale-105" href="#">
+        <a class="block rounded-lg bg-gradient-to-r from-orange-500 via-orange-400 to-yellow-400 p-2 transition hover:scale-105" href="#">
           <h2 class="mx-4 mt-4 mb-10 font-serif text-2xl font-semibold text-white">Why Choose Us?</h2>
           <div class="flex items-center rounded-md px-4 py-3">
             
@@ -89,7 +88,55 @@ Quality Serivces</h2>
         </a>
       </article>
       
+    </div> */}
+<div class="flex mx-4 justify-between mb-10">
+  
+ 
+  <div class="group relative h-96 w-96 overflow-hidden rounded-lg shadow-md">
+    <div class="absolute left-0 top-0 h-full w-full transition-all duration-300 ease-in-out group-hover:-top-96">
+      <img class="h-4/6 w-full object-cover" src="https://th.bing.com/th/id/OIP.sqZZa2vuWQKlakBnQ3XdKAHaHa?pid=ImgDet&w=208&h=208&c=7&dpr=2.5" alt="" />
+      <h1 class="mt-4 px-4 text-center font-serif text-xl font-semibold text-orange-600">50+ Years Of
+Experience</h1>
+
     </div>
+    <div class="absolute left-0 -bottom-96 flex h-full w-full flex-col justify-center transition-all duration-300 ease-in-out group-hover:bottom-0">
+      
+      <p class="px-8 text-center text-black">Since the days of Sri Lanka's closed economy, the founder of Sri Madhura Group, Mrs. Aban Pestonjee, used to buy used appliances from embassy auctions. She would repair these appliances and sell them</p>
+    </div>
+  </div>
+
+
+  <div class="group relative h-96 w-96 overflow-hidden rounded-lg shadow-md ml-4">
+  <div class="absolute left-0 top-0 h-full w-full transition-all duration-300 ease-in-out group-hover:-top-96">
+      <img class="h-4/6 w-full object-cover" src="https://www.careersinmusic.com/wp-content/uploads/2014/11/instrument-repair-restoration-specialist.jpg" alt="" />
+      <h1 class="mt-4 px-4 text-center font-serif text-xl font-semibold text-orange-600">We Deliver
+Quality Serivces</h1>
+     
+    </div>
+    <div class="absolute left-0 -bottom-96 flex h-full w-full flex-col justify-center transition-all duration-300 ease-in-out group-hover:bottom-0">
+      <h1 class="mb-2 px-8 text-center font-serif text-xl font-semibold text-500"></h1>
+      <p class="px-8 text-center text-black">At Sri Madura Musical instrumental shop, our team consists of well-trained, competent individuals dedicated to providing superior service.</p>
+    </div>
+  </div>
+ 
+
+
+  <div class="group relative h-96 w-96 overflow-hidden rounded-lg shadow-md ml-4">
+  <div class="absolute left-0 top-0 h-full w-full transition-all duration-300 ease-in-out group-hover:-top-96">
+      <img class="h-4/6 w-full object-cover" src="https://media.musicshop360.com/12554/IMGP3012.jpg" alt="" />
+      <h1 class="mt-4 px-4 text-center font-serif text-xl font-semibold text-orange-600">Why Choose Us?</h1>
+      
+    </div>
+    <div class="absolute left-0 -bottom-96 flex h-full w-full flex-col justify-center transition-all duration-300 ease-in-out group-hover:bottom-0">
+
+      <p class="px-8 text-center text-black">The Sri Mahura Team comprises a group of well-trained and highly competent individuals - dedicated to always providing great service. Fast, efficient and reliable</p>
+    </div>
+  
+  </div>
+  
+</div>
+
+
   </div>
 </section>
 <h1 style={{ 

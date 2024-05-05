@@ -33,19 +33,19 @@ function Footer() { return(
           </a>
         </div>
       </div> {/* FOOTER LINKS */} <div className="flex grow flex-row flex-wrap lg:mx-10 lg:flex-nowrap lg:justify-center"> {/* LINK BLOCK */} <div className="mb-5 mr-8 flex max-w-[200px] grow basis-[100px] flex-col space-y-5 lg:mx-10">
-          <h2 className="font-inter font-medium">SOLUTION</h2>
+          <h3 className="font-inter font-medium">SOLUTION</h3>
           <a href="" className="font-inter font-light text-gray-500">Marketing</a>
           <a href="" className="font-inter font-light text-gray-500">Analytics</a>
           <a href="" className="font-inter font-light text-gray-500">Commerce</a>
           <a href="" className="font-inter font-light text-gray-500">Insights</a>
         </div> {/* LINK BLOCK */} <div className="mb-5 mr-8 flex max-w-[200px] grow basis-[100px] flex-col space-y-5 lg:mx-10">
-          <h2 className="font-inter font-medium">SUPPORT</h2>
+          <h3 className="font-inter font-medium">SUPPORT</h3>
           <a href="" className="font-inter font-light text-gray-500">Pricing</a>
           <a href="" className="font-inter font-light text-gray-500">Documentation</a>
           <a href="" className="font-inter font-light text-gray-500">Guides</a>
           <a href="" className="font-inter font-light text-gray-500">API Status</a>
         </div> {/* LINK BLOCK */} <div className="mb-5 mr-8 flex max-w-[200px] grow basis-[100px] flex-col space-y-5 lg:mx-10">
-          <h2 className="font-inter font-medium">COMPANY</h2>
+          <h3 className="font-inter font-medium">COMPANY</h3>
           <a href="" className="font-inter font-light text-gray-500">About</a>
           <a href="" className="font-inter font-light text-gray-500">Blog</a>
           <a href="" className="font-inter font-light text-gray-500">Jobs</a>

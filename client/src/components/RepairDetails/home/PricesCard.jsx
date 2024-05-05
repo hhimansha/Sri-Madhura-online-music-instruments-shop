@@ -39,27 +39,27 @@ const PricesCard = ({ prices }) => {
 
   <section class="py-20">
   <div class="mx-auto max-w-md px-4 md:max-w-2xl lg:max-w-screen-lg">
-    <h1 class="mb-12 text-center text-5xl font-bold">About Our Services</h1>
+    <h1 class="mb-12 text-center text-5xl font-bold">Proudly Providing Best Quality Services</h1>
     <div class="mx-auto grid gap-10 md:grid-cols-2 lg:grid-cols-3">
       <div class="flex flex-col overflow-hidden rounded shadow-md">
         <img src="../images/repair2.jpg" class="h-56 w-full object-cover" />
         <div class="p-4">
-          <span class="mb-1 block text-xs font-medium uppercase text-gray-600">White Paper</span>
-          <h5 class="font-medium">5 Keys to Financial Operations Excellence</h5>
+          <span class="mb-1 block text-xs font-medium uppercase text-gray-600">24/7 Availability</span>
+          <h5 class="font-medium">Open service requests through our website any time of the day, and our experts will get back to you soon.</h5>
         </div>
       </div>
       <div class="flex flex-col overflow-hidden rounded shadow-md">
         <img src="../images/repair1.jpg" class="h-56 w-full object-cover" />
         <div class="p-4">
-          <span class="mb-1 block text-xs font-medium uppercase text-gray-600">White Paper</span>
-          <h5 class="font-medium">5 Keys to Financial Operations Excellence</h5>
+          <span class="mb-1 block text-xs font-medium uppercase text-gray-600"> Vast Network</span>
+          <h5 class="font-medium">Our service centres and agents are distributed all over the island, making operations much easier.experts will get back to you soon.</h5>
         </div>
       </div>
       <div class="flex flex-col overflow-hidden rounded shadow-md">
         <img src="../images/repair3.jpg" class="h-56 w-full object-cover" />
         <div class="p-4">
-          <span class="mb-1 block text-xs font-medium uppercase text-gray-600">White Paper</span>
-          <h5 class="font-medium">5 Keys to Financial Operations Excellence</h5>
+          <span class="mb-1 block text-xs font-medium uppercase text-gray-600">Prompt Service</span>
+          <h5 class="font-medium">Get your installations, repairs and services done without hassle.Get your installations, repairs and services done without hassle.</h5>
         </div>
       </div>
     </div>
@@ -72,8 +72,7 @@ const PricesCard = ({ prices }) => {
     fontSize: '4.5rem',  
     fontWeight: 'bold',  
     color: '#333',    
-    textAlign: 'center',
-    margin: '2rem 0',    
+    textAlign: 'center', 
     letterSpacing: '0.1rem',    
     textTransform: 'uppercase', 
     borderBottom: '2px solid #333', 

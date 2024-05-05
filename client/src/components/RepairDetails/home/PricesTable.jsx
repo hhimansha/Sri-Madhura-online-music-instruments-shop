@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { AiOutlineEdit } from 'react-icons/ai';
 import { BsInfoCircle } from 'react-icons/bs';
 import { MdOutlineDelete } from 'react-icons/md';
+import { FaDownload } from 'react-icons/fa';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 
@@ -42,13 +43,13 @@ const PricesTable = ({ prices }) => {
 
     return (
         <div>
-            <div className="mb-4">
+ <div className="flex items-center mb-4">
   <input
     type="text"
-    placeholder="Search by name..."
+    placeholder="Search by instrument name.."
     className="border border-gray-400 py-2 px-4 rounded-md"
     style={{
-      width: '200px',
+      width: '300px',
       backgroundColor: '#f0f0f0',
       color: '#333',
       borderRadius: '0.25rem',
@@ -57,13 +58,19 @@ const PricesTable = ({ prices }) => {
     value={searchQuery}
     onChange={(e) => setSearchQuery(e.target.value)}
   />
-</div>
-            <button
-    className='bg-orange-500 hover:bg-orange-700 px-4 py-1 rounded-lg'
+  
+  
+  <div className="flex-grow"></div> 
+  
+  <button
+    className='flex items-center hover:bg-sky-600 px-4 py-1 rounded-lg'
+    style={{ backgroundColor: '#de6418' }}
     onClick={saveAsPDF}
->
-    Save as PDF
-</button>
+  >
+    <FaDownload className="mr-2" />
+    Download as PDF
+  </button>
+</div>
 
             <br></br>
             <br></br>
@@ -95,7 +102,7 @@ const PricesTable = ({ prices }) => {
                             <td className='border border-slate-700 rounded-md text-center'>{price.fprice}</td>
                             <td className='border border-slate-700 rounded-md text-center'>
                                 <div className='flex justify-center gap-x-4'>
-                                    <Link to={`/prices/details/${price._id}`}>
+                                    <Link to={`/prices/show/${price._id}`}>
                                         <BsInfoCircle className='text-2xl text-green-800' />
                                     </Link>
                                     <Link to={`/prices/edit/${price._id}`}>

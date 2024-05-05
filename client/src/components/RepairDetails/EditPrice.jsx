@@ -140,7 +140,6 @@
 
 import React, { useState, useEffect } from 'react';
 import Back from '../RepairDetails/Back';
-import Spin from '../RepairDetails/Spin';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
@@ -213,7 +212,7 @@ const EditPrice = () => {
 
   return (
     <div style={{ 
-      backgroundImage: "url('/images/detail1.jpg')", 
+      backgroundImage: "url('/images/repairB4.jpeg')", 
       backgroundSize: 'cover', 
       minHeight: '100vh', 
       display: 'flex', 
@@ -223,7 +222,7 @@ const EditPrice = () => {
    <div style={{ maxWidth: '600px', margin: 'auto', marginTop: '4rem', padding: '1rem' }}>
         <Back />
         <h1 className='text-3xl font-bold mb-6' style={{ color: '#fff' }}>Edit Request</h1>
-        {loading && <Spin/>}
+        
         <div className='max-w-2xl mx-auto' style={{ backgroundColor: 'rgba(255, 255, 255, 0.8)', padding: '20px', borderRadius: '10px' }}>
         <div className='my-4'>
           <label className='text-xl text-gray-700 mb-2 block'>Instrument </label>
@@ -235,16 +234,7 @@ const EditPrice = () => {
             
           />
         </div>
-       {/* <div className='flex flex-col border-2 border-sky-400 rounded-xl w-[600px] p-4 mx-auto'>
-        <div className='my-4'>
-          <label className='text-xl mr-4 text-gray-500'>Instrument</label>
-          <input
-            type='text'
-            value={Ninstrument}
-            onChange={(e) => setNInstrument(e.target.value)}
-            className='border-2 border-gray-500 px-4 py-2 w-full'
-          />
-        </div>  */}
+ 
       <div className='my-4'>
             <label className='text-xl text-gray-700 mb-2 block'>Issue Type</label>
             <input
@@ -255,15 +245,7 @@ const EditPrice = () => {
               
             />
           </div>
-        {/* <div className='my-4'>
-          <label className='text-xl mr-4 text-gray-500'>Issue Type</label>
-          <input
-            type='text'
-            value={issueType2}
-            onChange={(e) => setIssueType2(e.target.value)}
-            className='border-2 border-gray-500 px-4 py-2 w-full'
-          />
-        </div> */}
+
 
 
 <div className='my-4'>
@@ -276,15 +258,7 @@ const EditPrice = () => {
             
             />
           </div>
-        {/* <div className='my-4'>
-          <label className='text-xl mr-4 text-gray-500'>Price</label>
-          <input
-            type='text'
-            value={fprice}
-            onChange={(e) => setFprice(e.target.value)}
-            className='border-2 border-gray-500 px-4 py-2  w-full '
-          />
-        </div> */}
+
  
  <div className='my-4'>
             <label className='text-xl text-gray-700 mb-2 block'>Issue Details</label>
@@ -296,15 +270,7 @@ const EditPrice = () => {
               
             />
           </div>
-        {/* <div className='my-4'>
-          <label className='text-xl mr-4 text-gray-500'>Issue Details</label>
-          <input
-            type='text'
-            value={issueDetail}
-            onChange={(e) => setIssueDetail(e.target.value)}
-            className='border-2 border-gray-500 px-4 py-2  w-full '
-          />
-        </div> */}
+        
         <div className='my-4'>
             <label className='text-xl text-gray-700 mb-2 block'>Image</label>
             <input
@@ -314,14 +280,7 @@ const EditPrice = () => {
               className='border-2 border-gray-300 rounded px-4 py-2 w-full focus:outline-none focus:border-blue-400'
             />
           </div>
-        {/* <div className='my-4'>
-          <label className='text-xl mr-4 text-gray-500'>Image</label>
-          <input 
-            type='file' 
-            onChange={handleImageChange} 
-            accept='image/*' 
-            className='border-2 border-gray-500 px-4 py-2 w-full'
-          /> */}
+     
           {RimageBase64 && (
             <img src={RimageBase64} className='mt-4 h-40 w-auto object-cover' alt='Price Image' />
           )}

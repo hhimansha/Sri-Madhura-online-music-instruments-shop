@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Spin from './Spin';
+
 import { Link } from 'react-router-dom';
 import { AiOutlineEdit } from 'react-icons/ai';
 import { BsInfoCircle } from 'react-icons/bs';
@@ -37,7 +37,7 @@ export const DetailsHomeUser = () => {
 
             </div>
           
-            {loading ? <Spin /> : showType === 'card' ? <PricesTable prices={prices} /> : <PricesCard prices={prices} />}
+            {showType === 'card' ? <PricesTable prices={prices} /> : <PricesCard prices={prices} />}
         </div>
        
         </>
