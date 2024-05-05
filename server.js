@@ -43,12 +43,15 @@ const connection = mongoose.connection;
 connection.once('open', () => {
   console.log("MongoDB database connection successful!!!");
 });
-
 // Routes
 const rentItemsRoute = require("./routes/rentItemsRoute");
 app.use("/api", rentItemsRoute); // Change the route to /api
 
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
+const repairItemsRoute = require("./routes/repairItemsRoute");
+app.use('/repair', repairItemsRoute);
+
 
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
