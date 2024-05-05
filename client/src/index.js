@@ -5,9 +5,9 @@ import { RentalItemProvider } from './context/rentalItemContext'; // Import Rent
 
 ReactDOM.render(
   <React.StrictMode>
-    <RentalItemProvider> {/* Wrap App with RentalItemProvider */}
-      <App />
-    </RentalItemProvider>
+      <RentalItemProvider>
+        <App />
+      </RentalItemProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

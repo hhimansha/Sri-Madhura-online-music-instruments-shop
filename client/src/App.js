@@ -29,8 +29,6 @@ function App() {
           <Route path="/admindash/rental-orders" element={<><AdminDash /><RentalOrdersManage /></>} />
           <Route path="/rentals" element={<><TopNav/><RentHome /><RentalItemDisplay /><Footer/></>} />
 
-          <Route path="/rentals/:id" element={<><TopNav/><RentHome /><Footer/></>} />
-          <Route path="/rentalcreate" element={<><AdminDash /><RentalItemCreate /></>} />
           <Route path="/login" element={<User_login />} /> {/* New route for user login */}
           <Route path="/signup" element={<User_signup />} /> {/* New route for user signup */}
           <Route path="/reset/:token" element={<Reset/>} /> 

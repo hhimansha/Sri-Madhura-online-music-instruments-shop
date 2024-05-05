@@ -70,12 +70,30 @@ router.post('/login', async (req, res) => {
 
     const validPassword = await bcrypt.compare(password, user.password)
     if (!validPassword) {
-        return res.json({ message: "password is incorect" })
+        return res.json({ message: "password is incorrect" })
     }
+
     const token = jwt.sign({ username: user.username, role: user.role }, process.env.KEY, { expiresIn: '1h' })
     res.cookie('token', token, { httpOnly: true, maxAge: 360000 })
-    return res.json({ status: true, message: "login successful", role: user.role })
+
+    // Include more user details in the response
+    const userDetails = {
+        status: true,
+        message: "login successful",
+        userID : user._id,
+        role: user.role,
+        firstname: user.firstname,
+        lastname: user.lastname,
+        email: user.email,
+        // Add more user properties as needed
+    };
+
+    console.log('Logged-in user details:', userDetails); // Display user details in the console
+
+    return res.json(userDetails);
 })
+
+
 
 router.post('/recover', async (req, res) => {
     const { email } = req.body;
