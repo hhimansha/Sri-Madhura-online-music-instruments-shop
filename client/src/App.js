@@ -16,6 +16,7 @@ import Profile from './components/User/Profile';
 import Usermanage from './components/User/Usermanage';
 import RentalItemPage from './components/Rental/rentalItemPage';
 import RentalOrdersManage from './components/Rental/RentalOrdersManage';
+import rentalOrderCheckout from './components/Rental/rentalOrderCheckout'
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
           <Route path="/admindash/rentals" element={<><AdminDash /><RentalManage /></>} />
           <Route path="/admindash/rental-orders" element={<><AdminDash /><RentalOrdersManage /></>} />
           <Route path="/rentals" element={<><TopNav/><RentHome /><RentalItemDisplay /><Footer/></>} />
+          <Route path="/rentals/checkout-order" element={<><TopNav/><rentalOrderCheckout /><Footer/></>} />
 
           <Route path="/login" element={<User_login />} /> {/* New route for user login */}
           <Route path="/signup" element={<User_signup />} /> {/* New route for user signup */}
@@ -39,7 +41,7 @@ function App() {
 
 
           <Route path="/admindash" element={<AdminDash />} />
-          <Route path="/usermanage" element={<><AdminDash /> <Usermanage/></>} />
+          
 
           <Route path="/rentals/:id" element={<><TopNav/><RentalItemPage /><Footer/></>} />
 
