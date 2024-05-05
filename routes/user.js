@@ -5,8 +5,42 @@ const router = express.Router();
 const jwt = require('jsonwebtoken')
 const nodemailer = require('nodemailer')
 
+
+// Token verification function
+const verifyToken = (req, res, next) => {
+    const token = req.cookies.token || req.headers.authorization?.split(' ')[1]; // Check both cookies and authorization header
+    if (!token) {
+        return res.status(403).json({ message: "No token provided" });
+    }
+
+    jwt.verify(token, process.env.KEY, (err, decoded) => {
+        if (err) {
+            return res.status(401).json({ message: "Invalid token" });
+        }
+
+        req.user = decoded; // Store decoded token data in the request
+        next(); // Continue to the next middleware or route handler
+    });
+};
+
+// Role-based authorization function
+const requireRole = (role) => {
+    return (req, res, next) => {
+        if (req.user.role !== role) {
+            return res.status(403).json({ message: `Requires ${role} role` }); // Return an error if roles don't match
+        }
+
+        next(); // If roles match, proceed
+    };
+};
+
+//  Restricted to admin users
+router.get('/admin/dashboard', verifyToken, requireRole('admin'), (req, res) => {
+    res.json({ message: "Welcome to the admin dashboard!" });
+});
+
 router.post('/signup', async (req, res) => {
-    const { firstname, lastname, email, password, phone } = req.body;
+    const { firstname, lastname, email, password, phone, role } = req.body;
     const user = await User.findOne({ email })
     if (user) {
         return res.json({ message: "User already exist" })
@@ -18,7 +52,8 @@ router.post('/signup', async (req, res) => {
         lastname,
         email,
         password: hashpassword,
-        phone
+        phone,
+        role: role || 'user',
 
     })
 
@@ -37,9 +72,9 @@ router.post('/login', async (req, res) => {
     if (!validPassword) {
         return res.json({ message: "password is incorect" })
     }
-    const token = jwt.sign({ username: user.username }, process.env.KEY, { expiresIn: '1h' })
+    const token = jwt.sign({ username: user.username, role: user.role }, process.env.KEY, { expiresIn: '1h' })
     res.cookie('token', token, { httpOnly: true, maxAge: 360000 })
-    return res.json({ status: true, message: "login successful" })
+    return res.json({ status: true, message: "login successful", role: user.role })
 })
 
 router.post('/recover', async (req, res) => {
@@ -119,7 +154,7 @@ router.get('/', async (req, res) => {
 //Delete a User
 
 // DELETE a user by ID
-router.delete('/:id', async (req, res) => {
+router.delete('/:id',  async (req, res) => {
     try {
         const deletedUser = await User.findByIdAndDelete(req.params.id);
         if (!deletedUser) {

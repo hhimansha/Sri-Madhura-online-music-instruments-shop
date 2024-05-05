@@ -25,8 +25,16 @@ export default function LoginForm() {
             const response = await Axios.post('http://localhost:3000/auth/login', values);
             // Handle successful login (e.g., redirect, store token, etc.)
              if (response.data.status) {
-                console.log('Login successful', response.data);
-                navigate('/')
+                //localStorage.setItem('token', response.data.token);
+                const userRole = response.data.role;
+
+                if (userRole === 'admin') {
+                    navigate('/Usermanage'); // Redirect to admin dashboard
+                } else {
+                    console.log('Login successful', response.data);
+                    navigate('/') // Redirect to user dashboard
+                }
+                
             }
         } catch (error) {
             // Handle error, e.g., display error message
