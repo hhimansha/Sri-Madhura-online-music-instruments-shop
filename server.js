@@ -53,6 +53,9 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 const sellItemRoute = require("./routes/sellItemRoute");
 app.use('/sellItem', sellItemRoute);
 
+const orderRequestRoute = require("./routes/orderRequestRoute");
+app.use('/suprequest', orderRequestRoute);
+
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
 });

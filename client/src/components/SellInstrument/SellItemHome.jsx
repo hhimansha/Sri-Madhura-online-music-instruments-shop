@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Spinner from './Spinner1';
 import { Link } from 'react-router-dom';
-import ItemCard from '../SellInstrument/home/ItemCard';
+import ItemCard from './home/ItemCard';
 
 const Home = () => {
   const [sellItem, setSellItem] = useState([]);
