@@ -1,8 +1,10 @@
 import React, { useState, useReducer } from "react";
 import { useNavigate } from 'react-router-dom';
 
+import { useAuthContext } from "../hooks/useAuthContext";
 
 function UserAddress() {
+  const { user, dispatch } = useAuthContext();
   const navigate = useNavigate();
 
   const [reducerValue, forceUpdate] = useReducer((x) => x + 1, 0);
@@ -20,6 +22,11 @@ function UserAddress() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (!user) {
+      setError("You must be logged in");
+      return;
+    }
+
     // Update userAddress object with new variables
     const DeliveryAddress = {
       street,
@@ -28,7 +35,7 @@ function UserAddress() {
       zipCode,
     };
 
-    const response = await fetch(`http://localhost:5050/api/users/user/address/${user._id}`, {
+    const response = await fetch(`http://localhost:9092/api/users/user/address/${user._id}`, {
     method: "POST",
     body: JSON.stringify(DeliveryAddress),
     headers: {
