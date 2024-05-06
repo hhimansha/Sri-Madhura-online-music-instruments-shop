@@ -13,7 +13,8 @@ const getRentalOrders = asyncHandler(async (req, res) => {
 //@route GET /api/rental-orders/:id
 //@access Public
 const getRentalOrderById = asyncHandler(async (req, res) => {
-    const rentalOrder = await RentalOrder.findById(req.params.id);
+    const userId = req.params.id;
+    const rentalOrder = await RentalOrder.find({userId: userId});
     if (!rentalOrder) {
         res.status(404);
         throw new Error("Rental order not found");
@@ -25,11 +26,12 @@ const getRentalOrderById = asyncHandler(async (req, res) => {
 //@route POST /api/rental-orders
 //@access Public
 const createRentalOrder = asyncHandler(async (req, res) => {
-    const { rentalItemID, image, title, quantity, totalPrice, rentalDate, numberOfDays } = req.body;
+    const { rentalItemID, userId, image, title, quantity, totalPrice, rentalDate, numberOfDays } = req.body;
 
     try {
         const rentalOrder = await RentalOrder.create({
             rentalItemID,
+            userId,
             image,
             title,
             quantity,

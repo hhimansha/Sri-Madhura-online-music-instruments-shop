@@ -77,7 +77,7 @@ const Profile = () => {
     <div>
       <h1>Profile</h1>
       {/* Display user information */}
-      <p>User ID: {userId}</p>
+      <p>UserID: {userId}</p>
       <p>First Name: {user.firstName}</p>
       <p>Last Name: {user.lastName}</p>
       <p>Email: {user.email}</p>

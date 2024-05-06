@@ -8,6 +8,11 @@ const rentOrderSchema = new Schema({
         ref: 'RentalItem', // Reference to the RentalItem model
         required: true
     },
+    userId: {
+        type: Schema.Types.ObjectId,
+        ref: 'User', // Reference to the User model
+        required: true
+    },
     image: {
         type: String,
         required: true
