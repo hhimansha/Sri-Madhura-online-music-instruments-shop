@@ -16,7 +16,7 @@ import {
 import axios from 'axios';
 import Swal from 'sweetalert2';
 import emailjs from 'emailjs-com';
-import AdminNav from '../AdminDash';
+import AdminNav from '../Admin/AdminDash';
 import * as XLSX from 'xlsx';
 
 const useStyles = makeStyles((theme) => ({
@@ -75,7 +75,7 @@ function BulkOrderRequestAdmin() {
 
     const fetchDetails = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/request/allRequests');
+            const response = await axios.get('http://localhost:5050/request/allRequests');
             const detailsWithId = response.data.map((details, index) => ({
                 id: index + 1,
                 ...details
@@ -92,7 +92,7 @@ function BulkOrderRequestAdmin() {
 
     const handleDelete = async (rid) => {
         try {
-            await axios.delete(`http://localhost:5000/request/deleteRequest/${rid}`);
+            await axios.delete(`http://localhost:5050/request/deleteRequest/${rid}`);
             Swal.fire({
                 title: "Success!",
                 text: "Request deleted successfully.",
@@ -123,7 +123,7 @@ function BulkOrderRequestAdmin() {
         const info = JSON.parse(localStorage.getItem("editdata"));
         const data = { rid: info.rid, itemId: info.itemId, item: info.item, quantity: info.quantity, status: info.status, price: price, mail: info.mail };
         try {
-            await axios.put(`http://localhost:5000/request/updateReq`, data);
+            await axios.put(`http://localhost:5050/request/updateReq`, data);
             Swal.fire({
                 title: "Success!",
                 text: "Request updated successfully.",
@@ -154,7 +154,7 @@ function BulkOrderRequestAdmin() {
         var status = 'Accepted';
         const data = { rid, itemId, item, quantity, status, price, mail };
         try {
-            await axios.put('http://localhost:5000/request/updateReq', data);
+            await axios.put('http://localhost:5050/request/updateReq', data);
             Swal.fire({
                 title: "Success!",
                 text: "Request Accepted successfully.",

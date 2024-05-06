@@ -81,7 +81,7 @@ function ItemsPage() {
 
     const fetchOrderDetails = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/request/allRequests');
+            const response = await axios.get('http://localhost:5050/request/allRequests');
             const detailsWithId = response.data.map((details, index) => ({
                 id: index + 1,
                 ...details
@@ -94,7 +94,7 @@ function ItemsPage() {
 
     const fetchDetails = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/item/allItem');
+            const response = await axios.get('http://localhost:5050/item/allItem');
             const detailsWithId = response.data.map((details, index) => ({
                 id: index + 1,
                 ...details
@@ -130,7 +130,7 @@ function ItemsPage() {
         };
 
         try {
-            await axios.post('http://localhost:5000/request/addRequest', data);
+            await axios.post('http://localhost:5050/request/addRequest', data);
             Swal.fire({
                 title: 'Product Requested',
                 text: product.name + ' Requested successfully!',
@@ -156,7 +156,7 @@ function ItemsPage() {
 
     const handleDelete = async (rid) => {
         try {
-            await axios.delete(`http://localhost:5000/request/deleteRequest/${rid}`);
+            await axios.delete(`http://localhost:5050/request/deleteRequest/${rid}`);
             Swal.fire({
                 title: "Success!",
                 text: "Request deleted successfully.",
@@ -179,7 +179,7 @@ function ItemsPage() {
         var status = 'Completed';
         const data = { rid, itemId, item, quantity, status, price, mail };
         try {
-            await axios.put('http://localhost:5000/request/updateReq', data);
+            await axios.put('http://localhost:5050/request/updateReq', data);
         } catch (error) {
             console.error(error.message);
         }

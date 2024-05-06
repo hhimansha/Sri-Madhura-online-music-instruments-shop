@@ -15,7 +15,7 @@ import {
 } from '@material-ui/core';
 import axios from 'axios';
 import Swal from 'sweetalert2';
-import AdminNav from '../AdminDash';
+import AdminNav from '../Admin/AdminDash';
 import * as XLSX from 'xlsx';
 
 const useStyles = makeStyles((theme) => ({
@@ -95,7 +95,7 @@ function BulkOrderAdmin() {
 
     const fetchDetails = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/item/allItem');
+            const response = await axios.get('http://localhost:5050/item/allItem');
             const detailsWithId = response.data.map((details, index) => ({
                 id: index + 1,
                 ...details
@@ -131,7 +131,7 @@ function BulkOrderAdmin() {
         const data = { uniqueId, name, type, brand, description, picture };
         console.log(data);
         try {
-            await axios.post('http://localhost:5000/item/addItem', data);
+            await axios.post('http://localhost:5050/item/addItem', data);
             Swal.fire({
                 title: "Success!",
                 text: "Item Add successfully.",
@@ -157,7 +157,7 @@ function BulkOrderAdmin() {
 
     const handleDelete = async (itemId) => {
         try {
-            await axios.delete(`http://localhost:5000/item/delete/${itemId}`);
+            await axios.delete(`http://localhost:5050/item/delete/${itemId}`);
             Swal.fire({
                 title: "Success!",
                 text: "Item deleted successfully.",
@@ -191,7 +191,7 @@ function BulkOrderAdmin() {
         const uniqueId = localStorage.getItem("uniqueId");
         const data = { uniqueId, name, type, brand, description, picture };
         try {
-            await axios.put(`http://localhost:5000/item/update`, data);
+            await axios.put(`http://localhost:5050/item/update`, data);
             Swal.fire({
                 title: "Success!",
                 text: "Item updated successfully.",
