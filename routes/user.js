@@ -1,27 +1,37 @@
 const express = require('express')
 const bcrypt = require('bcryptjs')
 const User = require('../models/user.js')
-const router = express.Router();
+const router = express.Router()
 const jwt = require('jsonwebtoken')
+const cookieParser = require('cookie-parser')
 const nodemailer = require('nodemailer')
 
+const app = express();
+app.use(cookieParser());
 
 // Token verification function
-const verifyToken = (req, res, next) => {
-    const token = req.cookies.token || req.headers.authorization?.split(' ')[1]; // Check both cookies and authorization header
+function verifyToken(req, res, next) {
+    const token = req.cookies.token; // Extract `httpOnly` cookie
     if (!token) {
-        return res.status(403).json({ message: "No token provided" });
+      return res.status(401).json({ message: 'No token provided' });
     }
-
-    jwt.verify(token, process.env.KEY, (err, decoded) => {
-        if (err) {
-            return res.status(401).json({ message: "Invalid token" });
-        }
-
-        req.user = decoded; // Store decoded token data in the request
-        next(); // Continue to the next middleware or route handler
-    });
-};
+  
+    try {
+      // Verify the token using the secret key
+      const decoded = jwt.verify(token, process.env.KEY);
+  
+      // Attach the decoded data to the request object
+      req.user = {
+        id: decoded.id,
+        role: decoded.role,
+      };
+  
+      // Call the next middleware or route handler
+      next();
+    } catch (err) {
+      return res.status(401).json({ message: 'Invalid or expired token' });
+    }
+  }
 
 // Role-based authorization function
 const requireRole = (role) => {
@@ -73,24 +83,11 @@ router.post('/login', async (req, res) => {
         return res.json({ message: "password is incorrect" })
     }
 
-    const token = jwt.sign({ username: user.username, role: user.role }, process.env.KEY, { expiresIn: '1h' })
-    res.cookie('token', token, { httpOnly: true, maxAge: 360000 })
+    const token = jwt.sign({ id: user._id,  role: user.role }, process.env.KEY, { expiresIn: '1h' })
+    res.cookie('jwt', token, { httpOnly: false, maxAge: 360000 })
+    
+    return res.json({ status: true, message: "login successful", role: user.role, id: user._id })
 
-    // Include more user details in the response
-    const userDetails = {
-        status: true,
-        message: "login successful",
-        userID : user._id,
-        role: user.role,
-        firstname: user.firstname,
-        lastname: user.lastname,
-        email: user.email,
-        // Add more user properties as needed
-    };
-
-    console.log('Logged-in user details:', userDetails); // Display user details in the console
-
-    return res.json(userDetails);
 })
 
 
@@ -169,6 +166,8 @@ router.get('/', async (req, res) => {
     }
 });
 
+
+
 //Delete a User
 
 // DELETE a user by ID
@@ -185,6 +184,8 @@ router.delete('/:id',  async (req, res) => {
     }
 });
 
+
+
 //get user by id
 router.get('/:id', async (req, res) => {
     const userId = req.params.id;
@@ -194,11 +195,20 @@ router.get('/:id', async (req, res) => {
         if (!user) {
             return res.status(404).json({ message: 'User not found' });
         }
-        res.json(user);
+        res.json({
+            firstName: user.firstname,
+            lastName: user.lastname,
+            email: user.email,
+            phone: user.phone, // Include phone number
+          });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
 });
 
+
+
+  
+  
 
 module.exports = router;

@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import { Toaster } from 'react-hot-toast';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-// import { usernameValidate } from "../../helper/validate";
-// import { passwordValidate } from "../../helper/validate";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 // import { useState } from 'react';
 import Axios from 'axios';
 import { useNavigate } from "react-router-dom";
@@ -25,58 +25,53 @@ export default function LoginForm() {
             const response = await Axios.post('http://localhost:3000/auth/login', values);
             // Handle successful login (e.g., redirect, store token, etc.)
              if (response.data.status) {
-                //localStorage.setItem('token', response.data.token);
-                const userRole = response.data.role;
 
+                //localStorage.setItem('token', response.data.token);
+
+                const token = response.data.token; // Get the token from the response
+                localStorage.setItem('token', token); // Save token to local storage
+                
+                const userRole = response.data.role;
+                
                 if (userRole === 'admin') {
-                    navigate('/Usermanage'); // Redirect to admin dashboard
-                } else {
+                    toast.success("Login as Admin");
                     console.log('Login successful', response.data);
-                    navigate('/') // Redirect to user dashboard
+                    setTimeout(() => {
+                        navigate('/Usermanage'); // Redirect to user dashboard
+                      }, 3000);
+                     // Redirect to admin dashboard
+                } else {
+                    toast.success("Login successful");
+                    console.log('Login successful', response.data);
+                    setTimeout(() => {
+                        navigate('/') // Redirect to user dashboard
+                      }, 3000);
+                   
                 }
                 
-            }
+                
+            }else {
+                // If login status is false, trigger an error toast
+                toast.error("Invalid login credentials");
+                setErrors({ submit: "Invalid login credentials" });
+              }
         } catch (error) {
+            toast.error("An error occurred during login. Please try again.");
             // Handle error, e.g., display error message
             setErrors({ submit: 'Invalid login credentials' });
         } finally {
+            
             setSubmitting(false);
         }
     };
 
-
-
-    // const [email, setEmail] = useState('');
-    // const [password, setPassword] = useState('');
-
-    // Axios.defaults.withCredentials = true;
-
-
-    // const navigate = useNavigate()
-
-    // const handleSubmit = (e) => {
-    //     e.preventDefault();
-    //     Axios.post('http://localhost:3000/auth/login', {
-
-    //         email,
-    //         password
-
-
-    //     }).then(response => {
-    //         if (response.data.status) {
-    //             navigate('/')
-    //         }
-
-    //     }).catch(err => {
-    //         console.log(err)
-    //     })
-    // }
 
     return (
 
         <div className="flex min-h-screen w-screen w-full items-center justify-center text-gray-600 bg-gray-50">
             <div className="relative">
                 <div className="hidden sm:block h-56 w-56 text-indigo-300 absolute left-20 top-20">
+                <ToastContainer />
                     <Toaster position="top-center" reverseOrder={false}></Toaster>
 
                     <svg width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'>

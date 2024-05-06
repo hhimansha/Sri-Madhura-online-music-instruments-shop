@@ -1,127 +1,87 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { Toaster } from 'react-hot-toast';
-import { useFormik } from 'formik';
-import { usernameValidate } from "../../helper/validate";
-import { passwordValidate } from "../../helper/validate";
-import { useState } from 'react';
-import Axios from 'axios';
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Formik, Field, Form, ErrorMessage } from "formik";
+import * as Yup from "yup";
+import Axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+const emailValidationSchema = Yup.object().shape({
+  email: Yup.string()
+    .email("Invalid email format")
+    .required("Email is required"),
+});
 
 export default function Recovery() {
+  const navigate = useNavigate();
 
+  const handleSubmit = async (values, { setSubmitting, setErrors }) => {
+    try {
+      const response = await Axios.post("http://localhost:3000/auth/recover", {
+        email: values.email,
+      });
 
-    const [email, setEmail] = useState('');
-
-    const navigate = useNavigate()
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    Axios.post('http://localhost:3000/auth/recover', {  
-        
-      email,
-
-    }).then(response => {
-      if(response.data.status){
-        alert("Check your email for reset password link")
-        navigate('/login')
+      if (response.data.status) {
+        toast.success("Check your email for the reset password link.");
+        // Redirect after a delay to allow the user to read the toast message
+        setTimeout(() => {
+          navigate("/login");
+        }, 3000);
       }
+    } catch (error) {
+      toast.error("An error occurred. Please try again.");
+      setErrors({ submit: "An error occurred. Please try again." });
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  return (
+    <div className="flex min-h-screen w-screen items-center justify-center bg-gray-50 text-gray-600">
       
-    }).catch(err => {
-      console.log(err)
-    })
-  }
+      <div className="relative sm:w-[30rem] bg-white border-gray-400 shadow-lg px-4 rounded-lg">
+        <div className="flex-auto p-6">
+        <ToastContainer />
+          <h4 className="mb-2 font-medium text-gray-700 xl:text-xl">Recovery</h4>
+          <p className="mb-6 text-gray-500">Please enter your email to recover your account.</p>
 
-    const formik = useFormik({
-        initialValues: {
-            username: '',
-            password: ''
-        },
-        validate: values => {
-            const errors = {};
-            const usernameErrors = usernameValidate(values.username);
-            const passwordErrors = passwordValidate(values.password);
-
-            // Merge username and password errors
-            Object.assign(errors, usernameErrors, passwordErrors);
-
-            return errors;
-        },
-        validateOnBlur: false,
-        validateOnChange: false,
-        onSubmit: async values => {
-            console.log(values)
-        }
-    })
-
-
-    return (
-
-        <div className="flex min-h-screen w-screen w-full items-center justify-center text-gray-600 bg-gray-50">
-            <div className="relative">
-                <div className="hidden sm:block h-56 w-56 text-indigo-300 absolute left-20 top-20">
-                    <Toaster position="top-center" reverseOrder={false}></Toaster>
-
-                    <svg width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'>
-                        <defs>
-                            <pattern id='a' patternUnits='userSpaceOnUse' width='40' height='40' patternTransform='scale(0.6) rotate(0)'>
-                                <rect x='0' y='0' width='100%' height='100%' fill='none' />
-                                <path d='M11 6a5 5 0 01-5 5 5 5 0 01-5-5 5 5 0 015-5 5 5 0 015 5' strokeWidth='1' stroke='none' fill='currentColor' />
-                            </pattern>
-                        </defs>
-                        <rect width='800%' height='800%' transform='translate(0,0)' fill='url(#a)' />
-                    </svg>
+          <Formik
+            initialValues={{ email: "" }}
+            validationSchema={emailValidationSchema}
+            onSubmit={handleSubmit}
+          >
+            {({ isSubmitting }) => (
+              <Form>
+                <div className="mb-4 text-left">
+                  <label
+                    htmlFor="email"
+                    className="mb-2 inline-block text-xs font-medium uppercase text-gray-700"
+                  >
+                    Email
+                  </label>
+                  <Field
+                    type="text"
+                    name="email"
+                    className="block w-full rounded-md border-gray-400 py-2 px-3 text-sm"
+                    placeholder="Enter your email"
+                  />
+                  <ErrorMessage name="email" component="div" className="text-red-500 text-sm mt-1" />
                 </div>
-                <div className="hidden sm:block h-28 w-28 text-indigo-300 absolute right-20 bottom-20">
-                    <svg width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'>
-                        <defs>
-                            <pattern id='b' patternUnits='userSpaceOnUse' width='40' height='40' patternTransform='scale(0.5) rotate(0)'>
-                                <rect x='0' y='0' width='100%' height='100%' fill='none' />
-                                <path d='M11 6a5 5 0 01-5 5 5 5 0 01-5-5 5 5 0 015-5 5 5 0 015 5' strokeWidth='1' stroke='none' fill='currentColor' />
-                            </pattern>
-                        </defs>
-                        <rect width='800%' height='800%' transform='translate(0,0)' fill='url(#b)' />
-                    </svg>
+
+                <div className="mb-4">
+                  <button
+                    type="submit"
+                    className="grid w-full cursor-pointer select-none rounded-md border bg-primary py-2 px-5 text-white shadow hover:bg-primaryDark"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? "Sending..." : "Recover"}
+                  </button>
                 </div>
-                {/* Register */}
-                <div className="relative flex flex-col sm:w-[30rem] rounded-lg border-gray-400 bg-white shadow-lg px-4">
-                    <div className="flex-auto p-6">
-                        {/* Logo */}
-
-                        {/* /Logo */}
-                        <h4 className="mb-2 font-medium text-gray-700 xl:text-xl">Recovery</h4>
-                        <p className="mb-6 text-gray-500">Please enter your email</p>
-
-                        <form className="mb-4" action="#" method="POST" onSubmit={handleSubmit}>
-                            <div className="mb-4 text-left">
-                                <label htmlFor="email" className="mb-2 inline-block text-xs font-medium uppercase text-gray-700">Email</label>
-                                <input type="text" onChange={(e) => setEmail(e.target.value)} className="block w-full cursor-text appearance-none rounded-md border border-gray-400 bg--100 py-2 px-3 text-sm outline-none focus:border-indigo-500 focus:bg-white focus:text-gray-600 focus:shadow" id="email" name="OTP" placeholder="Enter Email" autoFocus />
-                            </div>
-                            <div className="mb-4">
-                                <div className="flex justify-between">
-
-                                    <a href="auth-forgot-password-basic.html" className="cursor-pointer text-indigo-500 no-underline hover:text-indigo-500">
-                                        <small className="">Can't get the OTP?</small>
-                                    </a>
-                                </div>
-
-                            </div>
-                            <div className="mb-4">
-
-                            </div>
-                            <div className="mb-4">
-                                <button className="grid w-full cursor-pointer select-none rounded-md border bg-primary py-2 px-5 text-center align-middle text-sm text-white shadow  hover:bg-primaryDark hover:text-white focus:primaryDark  focus:text-white focus:shadow-none" type="submit">Recover</button>
-                            </div>
-                        </form>
-
-
-                    </div>
-                </div>
-                {/* /Register */}
-            </div>
+              </Form>
+            )}
+          </Formik>
         </div>
-
-
-
-    );
+      </div>
+    </div>
+  );
 }
