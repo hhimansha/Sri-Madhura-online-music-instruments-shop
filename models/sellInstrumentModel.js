@@ -63,12 +63,11 @@ const itemSchema = new Schema(
     orderstatus: {
       type: String,
     },
-    sellimage: {
+    simage: {
       type: String,
-    },
-    sellimageBase64: {
-      type: String,
-    },
+      required: true
+  
+  },
     
   },
   {

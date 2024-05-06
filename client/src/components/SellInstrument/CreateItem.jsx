@@ -22,32 +22,37 @@ const CreateItem = () => {
   const [email, setEmail] = useState('');
   const [phoneno, setPhoneno] = useState('');
   const [orderstatus, setOrderStatus] = useState('pending');
+  const [simage, setSImage] = useState(null); // State to store the selected image file
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
 
   const handleSaveItem = () => {
-    const data = {
-      title,
-      condition,
-      price,
-      type,
-      color,
-      brand,
-      description,
-      quantity,
-      bank,
-      accno, 
-      accname,
-      name,
-      email,
-      phoneno,
-      orderstatus
+    const formData = new FormData(); // Create FormData object to append file data
+    formData.append('title', title);
+    formData.append('condition', condition);
+    formData.append('price', price);
+    formData.append('type', type);
+    formData.append('color', color);
+    formData.append('brand', brand);
+    formData.append('description', description);
+    formData.append('quantity', quantity);
+    formData.append('bank', bank);
+    formData.append('accno', accno);
+    formData.append('accname', accname);
+    formData.append('name', name);
+    formData.append('email', email);
+    formData.append('phoneno', phoneno);
+    formData.append('orderstatus', orderstatus);
+    formData.append('simage', simage); // Append image file to FormData
 
-    };
     setLoading(true);
     axios
-      .post('http://localhost:5050/sellItem', data)
+      .post('http://localhost:5050/sellItem', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data' // Set content type as multipart/form-data for file upload
+        }
+      })
       .then(() => {
         setLoading(false);
         enqueueSnackbar('Item Created successfully', { variant: 'success' });
@@ -55,11 +60,11 @@ const CreateItem = () => {
       })
       .catch((error) => {
         setLoading(false);
-        // alert('An error happened. Please Check console');
         enqueueSnackbar('Error', { variant: 'error' });
         console.log(error);
       });
   };
+
 
   const instrumentTypes = {
     Violin: ["Violin", "Viola", "Cello", "Double Bass"],
@@ -384,7 +389,18 @@ const CreateItem = () => {
       <br />
 
    
-
+      <div className="labels">
+            <label htmlFor="image">Image:</label>
+          </div>
+          <div className="input-tab">
+            <input
+              type="file"
+              id="simage"
+              name="simage"
+              onChange={(e) => setSImage(e.target.files[0])} // Capture selected image file
+              required=""
+            />
+          </div>
 
       
       <br />

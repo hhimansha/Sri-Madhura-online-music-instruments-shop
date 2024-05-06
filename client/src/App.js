@@ -19,9 +19,11 @@ import AdminSellItemHome from './components/SellInstrument/AdminSellItemHome';
 import SupHome from './components/Supplier/SupHome';
 import CreateOrder from './components/Supplier/CreateOrder';
 import EditOrder from './components/Supplier/EditOrder';
-import DeleteOrder from './components/Supplier/DeleteOrder';
+import DeleteOrder from './components/Supplier/DeleteOrder'
 import ShowOrder from './components/Supplier/ShowOrder';
 import SendEmail from './components/Supplier/SendEmail';
+
+
 
 function App() {
   return (
@@ -34,8 +36,6 @@ function App() {
           <Route path="/rentals" element={<><TopNav/><RentHome /><RentalItemDisplay /><Footer/></>} />
           <Route path="/rentals/:id" element={<><TopNav/><RentHome /><Footer/></>} />
 
-      
-          
           <Route path='/sellItem/sellitemhome' element={<SellItemHome />} />
           <Route path='/sellItem/adminhome' element={<AdminSellItemHome />} />
           <Route path='/sellItem/create' element={<CreateItem />} />
@@ -44,12 +44,14 @@ function App() {
           <Route path='/sellItem/delete/:id' element={<DeleteItem />} />
 
           <Route path='/suprequest/suphome' element={<SupHome />} />
-         <Route path='/suprequest/create' element={<CreateOrder />} />
+          <Route path='/suprequest/create' element={<CreateOrder />} />
          <Route path='/suprequest/details/:id' element={<ShowOrder />} />
          <Route path='/suprequest/edit/:id' element={<EditOrder />} />
          <Route path='/suprequest/delete/:id' element={<DeleteOrder />} />
-        <Route path="/send-email" element={<SendEmail />} />
-        <Route path="/suprequest" element={<><TopNav/><Footer/></>} />
+         <Route path="/send-email" element={<SendEmail />} />
+         <Route path="/suprequest" element={<><TopNav/><Footer/></>} />
+
+          
           
           <Route
            path="/admindash"

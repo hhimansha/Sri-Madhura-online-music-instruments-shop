@@ -3,8 +3,8 @@ import axios from 'axios';
 import Spinner from '../Supplier/Spinner2';
 import { Link } from 'react-router-dom';
 import { MdOutlineAddBox, MdOutlineDelete } from 'react-icons/md';
-import OrderTable from './home/OrderTable';
-import OrderCard from './home/OrderCard';
+import OrderTable from '../Supplier/home/OrderTable';
+import OrderCard from '../Supplier/home/OrderCard';
 import TopNav from '../topNav';
 import Footer from '../Footer';
 

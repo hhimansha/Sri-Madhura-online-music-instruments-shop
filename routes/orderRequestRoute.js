@@ -1,7 +1,5 @@
-
 const express = require('express');
-const { Request } = require('../models/sellInstrumentModel.js');
-
+const { Request } = require('../models/orderRequestModel');
 const router = express.Router();
 //Route for save a new order
 router.post('/', async (request, response) => {
@@ -110,5 +108,4 @@ router.delete('/:id', async(request, response) => {
     response.status(500).send({ message: error.message});
   }
 });
-
 module.exports = router;

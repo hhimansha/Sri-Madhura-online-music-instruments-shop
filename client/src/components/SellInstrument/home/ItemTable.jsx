@@ -52,6 +52,7 @@ const ItemTable = ({ sellitems }) => {
             <th className='border border-black-600 py-3 px-4'>Name</th>
             <th className='border border-black-600 py-3 px-4'>Email</th>
             <th className='border border-black-600 py-3 px-4'>Phone No</th>
+            <th className='border border-black-600 py-3 px-4'>Image</th>
             <th className='border border-black-600 py-3 px-4'>Order Status</th>
             <th className='border border-black-600 py-3 px-4 w-20'>Operations</th> 
           </tr>
@@ -74,9 +75,13 @@ const ItemTable = ({ sellitems }) => {
               <td className='border border-gray-400 py-3 px-4'>{sellItem.name}</td>
               <td className='border border-gray-400 py-3 px-4'>{sellItem.email}</td>
               <td className='border border-gray-400 py-3 px-4'>{sellItem.phoneno}</td>
+              <td className='border border-gray-400 py-3 px-4'>
+              <img src={`http://localhost:5050/uploads/${sellItem.simage}`} alt={sellItem.title} className="w-full h-64 object-cover" />
+              </td>
 
 
               <td className='border border-gray-400 py-3 px-4'>{sellItem.orderstatus}</td>
+              
               <td className='border border-gray-400 py-3 px-4'>
                 <div className='flex justify-center gap-x-4'>
                   <Link to={`/sellItem/details/${sellItem._id}`} className='text-blue-600 hover:text-blue-800'>

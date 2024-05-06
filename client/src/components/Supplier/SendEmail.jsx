@@ -38,6 +38,7 @@ function App() {
     <>
     
     <link rel="stylesheet" type="text/css" href="../styles/emailStyle.css"/>
+  
     < br/> < br/> < br/>
     <div className="container">
     <h1 className='text-3xl my-4'>Send Email</h1>

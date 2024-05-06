@@ -16,7 +16,7 @@ export default function RentalItemCreate() {
   const [emptyFields, setEmptyFields] = useState(false);
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault(); 
 
     if (!title || !description || !category || !rentalPrice || !stockCount || !image) {
       setEmptyFields(true);

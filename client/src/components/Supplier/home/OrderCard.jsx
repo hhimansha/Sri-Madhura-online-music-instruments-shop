@@ -4,7 +4,7 @@ import { BiUserCircle } from 'react-icons/bi';
 import { AiOutlineEdit } from 'react-icons/ai';
 import { BsInfoCircle } from 'react-icons/bs';
 import { MdOutlineDelete } from 'react-icons/md';
-import OrderSingleCard from './OrderSingleCard';
+import OrderSingleCard from '../home/OrderSingleCard';
 
 const OrderCard = ({ suprequests }) => {
   return (

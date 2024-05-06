@@ -9,7 +9,7 @@ import { IoMusicalNotesOutline } from 'react-icons/io5';
 import { GiMusicalScore, GiGuitar, GiViolin } from 'react-icons/gi';
 import { FaGuitar, FaMusic } from 'react-icons/fa';
 import { useState } from 'react';
-import OrderModal from './OrderModal';
+import OrderModal from '../home/OrderModal';
 
 const OrderSingleCard = ({ suprequest }) => {
   const [showModal, setShowModal] = useState(false);

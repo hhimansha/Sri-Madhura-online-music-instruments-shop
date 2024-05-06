@@ -42,6 +42,9 @@ const ItemSingleCard = ({ sellItem }) => {
       <p>Quantity: {sellItem.quantity}</p>
     </div>
     <div>
+      <p>SImage: {sellItem.simage}</p>
+    </div>
+    <div>
       <p>Order status: {sellItem.orderstatus}</p>
     </div>
     

@@ -2,8 +2,7 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-
-const requestSchema = mongoose.Schema(
+const requestSchema = new Schema(
   {
     instrument: {
       type: String,
@@ -27,5 +26,4 @@ const requestSchema = mongoose.Schema(
     timestamps: true,
   }
 );
-
 exports.Request = mongoose.model('suprequest', requestSchema);
