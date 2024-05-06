@@ -49,6 +49,11 @@ const rentItemsRoute = require("./routes/rentItemsRoute");
 app.use("/api", rentItemsRoute); // Change the route to /api
 
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+const item = require('./routes/item.js');
+app.use('/item', item);
+
+const request = require('./routes/request.js');
+app.use('/request', request);
 
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);

@@ -8,6 +8,9 @@ import RentalItemCreate from './components/Rental/RentalItemCreate';
 import RentalItemDisplay from './components/Rental/RentalItemDisplay';
 import RentalManage from './components/Rental/RentalManage';
 import UpdateRental from './components/Rental/UpdateRental';
+import BulkOrderAdmin from './components/Admin/BulkOrderAdmin';
+import BulkOrderRequestAdmin from './components/Admin/BulkOrderRequestAdmin';
+import ItemsPage from './components/Customer/ItemsPage';
 
 function App() {
   return (
@@ -19,6 +22,10 @@ function App() {
           <Route path="/admindash/rentals" element={<><AdminDash /><RentalManage /></>} />
           <Route path="/rentals" element={<><TopNav/><RentHome /><RentalItemDisplay /><Footer/></>} />
           <Route path="/rentals/:id" element={<><TopNav/><RentHome /><Footer/></>} />
+
+          <Route path="/BulkOrderAdmin" element={<BulkOrderAdmin/>} />
+        <Route path="/BulkOrderRequestAdmin" element={<BulkOrderRequestAdmin/>} />
+        <Route path="/ItemsPage" element={<ItemsPage/>} />
           
           <Route
            path="/admindash"
