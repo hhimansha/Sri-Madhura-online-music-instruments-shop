@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { useAuthContext } from "../Sell/hooks1/useAuthContext";
 
-function UserAddress() {
+function UpdateAddressinOrder() {
   const { user, dispatch } = useAuthContext();
   const navigate = useNavigate();
 
@@ -62,7 +62,7 @@ function UserAddress() {
       setZipCode("");
       setEmptyFields([]);
       dispatch({ type: "UPDATE_DELIVERY_ADDRESS", payload: json.DeliveryAddress });
-      navigate("/user");
+      navigate("/place-order");
 
     }
   };
@@ -125,4 +125,4 @@ function UserAddress() {
   );
 }
 
-export default UserAddress;
+export default UpdateAddressinOrder;

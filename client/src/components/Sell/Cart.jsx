@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { useCart } from '../../hooks/';
 import { Link } from "react-router-dom";
 import { v4 as uuidv4 } from 'uuid'; // Import uuid library
+import { useCart } from '../Sell/hooks1/useCart';
 
 const Cart = () => {
   const [carts, setCarts] = useState([]);

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useCart } from '../../hooks/useCart';
 import { v4 as uuidv4 } from 'uuid';
-import ItemAddedCart from './AlertBoxes/ItemAddedCart';
+import ItemAddedCart from '../AlertBoxes/ItemAddedCart';
 import { motion } from 'framer-motion';
 
 function ProductPage() {

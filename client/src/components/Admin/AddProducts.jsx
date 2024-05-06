@@ -1,7 +1,7 @@
 // AddProducts.js
 import React, { useEffect, useState, useReducer } from "react";
 //import { useNavigate } from "react-router-dom";
-import { useAuthContext } from "../../hooks/useAuthContext";
+import { useAuthContext } from "../Sell/hooks1/useAuthContext";
 import { useProteinsContext } from "../../hooks/useProteinsContext";
 import ManageProteins from "./ManageProteins"; 
 

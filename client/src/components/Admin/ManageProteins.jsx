@@ -1,7 +1,7 @@
 import React from "react";
 import { useReducer } from "react";
 import { useProteinsContext } from "../../hooks/useProteinsContext";
-import { useAuthContext } from "../../hooks/useAuthContext";
+import { useAuthContext } from "../Sell/hooks1/useAuthContext";
 import { Link } from "react-router-dom";
 
 const ManageProteins = ({ proteins }) => {

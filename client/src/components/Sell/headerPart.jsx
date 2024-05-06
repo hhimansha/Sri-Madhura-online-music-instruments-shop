@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useLogout } from '../hooks/useLogout';
 import { Link } from 'react-router-dom';
-import { useCart } from '../hooks/useCart';
+import { useCart } from '../Sell/hooks1/useCart';
 
 function HeaderPart() {
   const { Logout } = useLogout();

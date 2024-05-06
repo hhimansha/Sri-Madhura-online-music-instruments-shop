@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import SuccessAlert from "./AlertBoxes/SuccessAlert";
+import SuccessAlert from "../AlertBoxes/SuccessAlert";
 
 const Order = () => {
   const [carts, setCarts] = useState([]);
