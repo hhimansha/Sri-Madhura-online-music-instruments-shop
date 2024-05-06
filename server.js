@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const dotenv = require('dotenv').config();
 const connectDB = require('./config/dbConnect');
+const nodemailer = require('nodemailer');
 const multer = require('multer');
 const path = require('path');
 
@@ -43,7 +44,43 @@ const connection = mongoose.connection;
 connection.once('open', () => {
   console.log("MongoDB database connection successful!!!");
 });
+
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+      user: process.env.USER,
+      pass: process.env.APP_PASSWORD,
+  },
+});
+
+app.post("/send-email", upload.single('pdfFile'), async (req, res) => {
+  const { receiverEmail, message } = req.body;
+
+  const mailOptions = {
+      from: process.env.USER,
+      to: receiverEmail,
+      subject: "Message from Sri Madura",
+      text: message,
+      attachments: [
+          {
+              filename: req.file.originalname,
+              content: req.file.buffer, // File content as buffer
+              contentType: 'application/pdf'
+          }
+      ]
+  };
+
+  try {
+      await transporter.sendMail(mailOptions);
+      res.status(200).json({ message: "Email sent successfully" });
+  } catch (error) {
+      console.error('Error sending email:', error);
+      res.status(500).json({ error: "An error occurred while sending the email" });
+  }
+});
+
 // Routes
+
 const rentItemsRoute = require("./routes/rentItemsRoute");
 app.use("/api", rentItemsRoute); // Change the route to /api
 

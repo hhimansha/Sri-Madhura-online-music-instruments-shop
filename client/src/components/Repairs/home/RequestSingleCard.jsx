@@ -18,7 +18,9 @@ const RequestSingleCard = ({ request }) => {
 
 <div class="grid h-screen bg-white-800 lg:grid-cols-1 justify-center">
   <div></div>
-  <div class="group border-gray-100/30 flex w-full max-w-xs flex-col self-center overflow-hidden rounded-lg border bg-gray-600 shadow-md">
+  <div class="group border-gray-100/30 flex w-full max-w-xs flex-col self-center overflow-hidden rounded-lg border bg-black shadow-md">
+
+
     <a class="relative mx-3 mt-3 flex h-60 overflow-hidden rounded-xl" href="#">
       <img class="peer absolute top-0 right-0 h-full w-full object-cover" src="https://www.musicgrotto.com/wp-content/uploads/2021/03/up-close-fingerstyle-guitar-playing.png" alt="product image" />
       <img class="peer peer-hover:right-0 absolute top-0 -right-96 h-full w-full object-cover transition-all delay-100 duration-1000 hover:right-0" src="https://strummingly.com/wp-content/uploads/2020/12/left-handed-guitar-player.jpg" alt="product image" />
