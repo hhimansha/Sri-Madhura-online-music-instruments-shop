@@ -80,13 +80,17 @@ router.post('/login', async (req, res) => {
 
     const validPassword = await bcrypt.compare(password, user.password)
     if (!validPassword) {
-        return res.json({ message: "password is incorect" })
+        return res.json({ message: "password is incorrect" })
     }
+
     const token = jwt.sign({ id: user._id,  role: user.role }, process.env.KEY, { expiresIn: '1h' })
     res.cookie('jwt', token, { httpOnly: false, maxAge: 360000 })
     
     return res.json({ status: true, message: "login successful", role: user.role, id: user._id })
+
 })
+
+
 
 router.post('/recover', async (req, res) => {
     const { email } = req.body;

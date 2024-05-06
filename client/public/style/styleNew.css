@@ -1,0 +1,288 @@
+
+h1,h2,h3,h4,h5,h6 { 
+    margin: 0;
+    color:#0c0d0d;
+  font-size: 18px;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+p {
+  margin: 0;
+  color:#a9abab;
+  font-size:14px;
+  line-height: 1.8;
+  text-transform: initial;
+}
+
+ul{
+  padding: 0;
+  margin: 0 auto;
+  list-style: none;
+}
+ul li {
+  list-style: none;
+  
+}
+
+/* section-header */
+.section-header{
+  position: relative;
+  text-align: center;
+}
+.section-header h2{
+  color: #505866;
+  font-size:24px;
+  font-weight: 500;
+  margin-bottom: 24px;
+  text-transform: uppercase;
+  letter-spacing: 1.3px;
+}
+.section-header h2 span{text-transform: lowercase;}
+.section-header p{
+  font-size:16px;
+}
+/* section-header */
+.fix{position: relative;clear: both;}
+/*=============Style css=========*/
+
+.header-top{border-bottom:1px solid #f6f8fa;}
+
+.header-top ul li {display: inline-block;}
+
+.header-top-left li,.header-top-right li  {display: inline-block;}
+
+/*.select-opt*/
+.select-opt,.header-top-contact{
+  padding: 10px 18px;
+  border-right: 1px solid #f6f8fa;
+}
+.header-top-contact{
+  border-right: 0;
+  border-left: 1px solid #f6f8fa;
+  font-size: 12px;
+}
+.select-opt select {
+  border: none;
+  cursor:pointer;
+  color:#a7b0ba;
+  font-size: 12px;
+  font-weight: 300;
+}
+.select-opt option{
+  color:#a7b0ba;
+  text-transform: uppercase;
+}
+.select-opt a span.lnr-magnifier:before {
+  font-size: 12px;
+  color: #373939;
+}
+.select-opt a span.lnr-magnifier:before {
+  font-size: 12px;
+  color: #373939;
+}
+/*.select-opt*/
+
+.header-top-right ul li a{
+  color:#a7b0ba;
+  font-size: 12px;
+  font-weight: 300;
+}
+
+
+
+
+
+/*-------------------------------------
+      6. Works 
+--------------------------------------*/
+.works{padding: 0 0 90px;}
+.works-content {margin-top: 73px;}
+
+.single-how-works{
+  text-align: center;
+  padding:50px 42px;
+  border-radius: 3px;
+  box-shadow: 0 0px 5px rgba(71,71,71,.2);
+  margin-bottom: 30px;
+  -webkit-transition: .3s linear; 
+  -moz-transition:.3s linear; 
+  -ms-transition:.3s linear; 
+  -o-transition:.3s linear;
+  transition: .3s linear;
+}
+
+.single-how-works-icon {
+  display: inline-block;
+  color: #50616c;
+  width: 80px;
+  height: 80px;
+  line-height: 80px;
+  background: #eef2f6;
+  border-radius: 50%;
+}
+.single-how-works h2 a {
+  font-size:  18px;
+  margin: 35px 0 20px;
+}
+.single-how-works h2 a span {text-transform:  lowercase;}
+.single-how-works p {margin-bottom: 25px;text-transform: initial;}
+
+.single-how-works-icon [class^="flaticon-"]:before,.single-how-works-icon [class*=" flaticon-"]:before,.single-how-works-icon [class^="flaticon-"]:after,.single-how-works-icon [class*=" flaticon-"]:after {font-size: 35px;}
+.single-how-works:hover .single-how-works-icon [class^="flaticon-"]:before,.single-how-works:hover .single-how-works-icon [class*=" flaticon-"]:before,.single-how-works:hover .single-how-works-icon [class^="flaticon-"]:after,.single-how-works:hover .single-how-works-icon [class*=" flaticon-"]:after {color:#ff545a;}
+
+.welcome-hero-btn.how-work-btn {
+  display: inline-block;
+  margin: 0;
+  width: 100px;
+  height: 35px;
+  font-size: 12px;
+  background: transparent;
+  color: #767f86;
+  border: 1px solid #d3d6d9;
+  border-radius: 3px;
+}
+
+.single-how-works:hover h2 a,.single-how-works:hover p{color: #fff;}
+.single-how-works:hover .single-how-works-icon{background: #fff;}
+.single-how-works:hover .welcome-hero-btn.how-work-btn{background: #fff;color: #0c0c0c;}
+.single-how-works:hover{box-shadow: 0 0px 10px rgba(71,71,71,.4);background: #3b3939;}
+
+@import url("https://fonts.googleapis.com/css2?family=Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+html {
+scroll-behavior: smooth;
+}
+
+*{
+margin: 0;
+padding: 0; 
+box-sizing: border-box;
+font-family: "Spartan", san-serif;
+
+}
+
+h3 {
+font-family: Arial, sans-serif; /* Use Arial font family */
+font-size: 1.5rem; /* Adjust the font size as needed */
+font-weight: bold; /* Set font weight to bold */
+color: #333; /* Set font color */
+}
+
+
+h1 {
+font-family: "Times New Roman", Times, serif; /* Font family for h1 */
+font-size: 2.5rem; /* Font size for h1 */
+font-weight: bold; /* Font weight for h1 */
+color: #333; /* Font color for h1 */
+margin-bottom: 20px; /* Bottom margin for h1 */
+}
+
+
+h2{
+font-size: 46px;
+line-height: 54px;
+color: #ffffff;
+}
+
+h4{
+font-size: 20px;
+color: #ffffff;
+}
+
+h6{
+font-size: 12px;
+font-weight: 700;
+}
+
+/* p{
+font-size: 16px;
+color: #d0cece;
+margin: 15px 0 20px 0
+} */
+
+.section-p1{
+padding: 40px 80px;
+
+}
+
+
+.section-m1{
+padding: 40px 0;
+}
+
+body{
+width: 100%;
+font-family: inherit; 
+}
+
+
+#heroNew{
+background-image: url("https://riff-mag.com/wp-content/uploads/2023/04/Tuning-guitar-to-an-Open-tuning-scaled.webp");
+
+height: 90vh;
+width: 100%;
+background-size: cover;
+background-position: top 25% right 0;
+padding: 0 80px;
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+justify-content: center;
+line-height: 1;
+
+}
+
+
+#heroNew h1{
+color: #3dcf2000;
+
+}
+
+
+#heroNew h4{
+padding-bottom: 15px;
+
+
+}
+
+#heroNew button{
+appearance: none;
+background-color: #de6418;
+border-radius: 15px;
+box-sizing: border-box;
+color: #FFFFFF;
+cursor: pointer;
+display: inline-block;
+font-family: Roobert,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+font-size: 16px;
+font-weight: 600;
+line-height: normal;
+margin: 0;
+min-height: 60px;
+min-width: 0;
+outline: none;
+padding: 16px 24px;
+text-align: center;
+text-decoration: none;
+transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+user-select: none;
+-webkit-user-select: none;
+touch-action: manipulation;
+width: 25%;
+will-change: transform;
+}
+
+#heroNew button:disabled {
+pointer-events: none;
+}
+
+#heroNew button:hover {
+box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+transform: translateY(-2px);
+}
+
+#heroNew button:active {
+background-color: #a34912; /* Darker shade of the original color */
+box-shadow: none;
+transform: translateY(0);
+}

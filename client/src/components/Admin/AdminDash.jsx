@@ -25,9 +25,11 @@ function AdminDash() {
         <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-black">
           <ul class="space-y-2 font-medium">
             <li>
+              <Link to='/'>
               <a href="#" class="flex items-center p-2 group">
                 <img src={MainLogoW} className='h-20 mx-auto my-4'/>
               </a>
+              </Link>
             </li>
             
             <li>
@@ -76,7 +78,7 @@ function AdminDash() {
                 <span class="flex-1 ms-3 whitespace-nowrap  text-start">Bulk Orders</span>
               </a>
             </li>
-            <li>
+            <li><Link to = '/admindash/rentals'>
               <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100  hover:text-primary dark:hover:bg-gray-800 group">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                   <path stroke-linecap="round" stroke-linejoin="round" d="m21 7.5-9-5.25L3 7.5m18 0-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" />
@@ -84,6 +86,7 @@ function AdminDash() {
 
                 <span class="flex-1 ms-3 whitespace-nowrap  text-start">Rentals</span>
               </a>
+              </Link>
             </li>
             <li>
               <a href="#" class="flex items-center p-2 hover:text-primary text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800 group">
