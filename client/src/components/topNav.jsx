@@ -43,8 +43,11 @@ function TopNav() {
     axios.get('http://localhost:3000/auth/logout')
     .then(res => {
       if(res.data.status){
-        console.log('Password reset successful. Navigating to login page.');
-        navigate('/login')
+        console.log('Log out successful. Navigating to login page.');
+        setTimeout(() => {
+          navigate('/login')// Redirect to user dashboard
+        }, 3000);
+        
       }
     }).catch(err => {
       console.log(err);
