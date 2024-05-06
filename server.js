@@ -17,13 +17,19 @@ if (dotenv.error) {
   console.error("Error loading .env file:", dotenv.error);
 }
 
-app.use(cors());
-app.use(cookieParser(
-  {
-    origin: ["http://localhost:3000"],
-    Credential: true
-  }
-))
+// app.use(cors());
+// app.use(cookieParser(
+//   {
+//     origin: ["http://localhost:3000"],
+//     Credential: true
+//   }
+// ))
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  credentials: true, // Allow cookies and credentials
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use('/auth', UserRouter);
 app.use('/api/users', UserRouter);
