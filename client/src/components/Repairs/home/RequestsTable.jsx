@@ -159,6 +159,7 @@ const RequestsTable = ({ repair }) => {
           </tbody>
         </table>
       </div>
+      
       <div>
         {/* Button to navigate to send-mail route */}
         <br></br>

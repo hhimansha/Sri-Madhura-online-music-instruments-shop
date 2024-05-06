@@ -35,7 +35,7 @@ const ShowRequest = () => {
   doc.text(20, 30, `Dear ${request.name},`);
   doc.setFontSize(12);
   doc.text(20, 45, 'Thank you for choosing our repair service.');
-  doc.text(20, 55, 'Please find attached the details of your repair request.');
+  doc.text(20, 55, 'Please find attached details of your repair request.');
   doc.text(20, 65, 'Repair ID is mentioned below in this document.');
   doc.text(20, 75, 'If you have any questions or concerns, feel free to contact us.');
   
