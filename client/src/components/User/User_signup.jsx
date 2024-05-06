@@ -4,6 +4,8 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { Toaster } from 'react-hot-toast';
 import axios from 'axios';
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 // Define the validation schema with Yup
 const validationSchema = Yup.object().shape({
@@ -24,8 +26,10 @@ const SignUp = () => {
     try {
       const response = await axios.post('http://localhost:3000/auth/signup', values);
       if (response.data.status) {
+        toast.success("User Registered Successfully");
         navigate('/login'); // Navigate to login after successful signup
       } else {
+        toast.error("Error during signup, please try again.");
         setErrors({ submit: response.data.message });
       }
     } catch (error) {
@@ -38,6 +42,7 @@ const SignUp = () => {
   return (
     <div className="lg:m-10">
       <Toaster position="top-center" reverseOrder={false} />
+      <ToastContainer />
       <Formik
         initialValues={{ firstname: '', lastname: '', email: '', password: '', phone: '' }}
         validationSchema={validationSchema}
