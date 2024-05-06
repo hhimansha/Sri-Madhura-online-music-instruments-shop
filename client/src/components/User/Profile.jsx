@@ -14,24 +14,16 @@ const Profile = () => {
 
 
   // Function to get a specific cookie by name
-function getCookie(name) {
-  const cookieValue = Cookies.get(name);
-  return cookieValue;
-}
-
-
+  function getCookie(name) {
+    const cookieValue = Cookies.get(name);
+    return cookieValue;
+  }
 
   useEffect(() => {
               // Retrieve token from local storage
               const jwtToken = getCookie('jwt');
 
           console.log('JWT Token:', jwtToken);
-
-          
-
-         
-
-         
 
     if (!jwtToken) {
       setError("Token not found. Please log in.");
