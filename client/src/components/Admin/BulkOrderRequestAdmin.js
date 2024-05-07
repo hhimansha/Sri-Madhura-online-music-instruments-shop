@@ -154,19 +154,17 @@ function BulkOrderRequestAdmin() {
         var status = 'Accepted';
         const data = { rid, itemId, item, quantity, status, price, mail };
         try {
-            await axios.put('http://localhost:5050/request/updateReq', data);
+            await axios.put('http://localhost:5050/request/updateReq', data).then(sendEmail(rid, price, mail));
             Swal.fire({
                 title: "Success!",
                 text: "Request Accepted successfully.",
                 icon: 'success',
                 confirmButtonText: "OK"
-            });
-
-            sendEmail(rid, price, mail);
+            });            
 
             setTimeout(() => {
                 window.location.href = "/BulkOrderRequestAdmin";
-            }, 1000);
+            }, 2000);
         } catch (error) {
             console.error(error.message);
             Swal.fire({
