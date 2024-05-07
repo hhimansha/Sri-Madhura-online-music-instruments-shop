@@ -38,7 +38,7 @@ function App() {
               <Route path="/admindash/rentals" element={<><AdminDash /><RentalManage /></>} />
               <Route path="/rentals" element={<><TopNav/><RentHome /><RentalItemDisplay /><Footer/></>} />
               <Route path="/rentals/:id" element={<><TopNav/><RentHome /><Footer/></>} />
-              <Route path="/admindash1" element={<AdminDash />} />
+              <Route path="/admindash" element={<AdminDash />} />
             </Routes>
           </div>
         </CartProvider>
