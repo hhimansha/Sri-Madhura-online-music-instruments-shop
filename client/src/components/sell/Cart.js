@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useCart } from '../../hooks/useCart';
 import { Link } from "react-router-dom";
 import { useAuthContext } from "../../hooks/useAuthContext";
-import emptyCart from "./images/emptyCart.png"
+import emptyCart from '../assets/emptyCart.png'
 import { v4 as uuidv4 } from 'uuid'; // Import uuid library
 
 const Cart = () => {

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { useLogout } from '../hooks/useLogout';
+import { useLogout } from '../../hooks/useLogout'
 import { useAuthContext } from '../../hooks/useAuthContext';
 import { Link } from 'react-router-dom';
-import img1 from './images/headerLogoH.png';
+import img1 from '../assets/headerLogoH.png';
 import { useCart } from '../../hooks/useCart';
 
 function HeaderPart() {

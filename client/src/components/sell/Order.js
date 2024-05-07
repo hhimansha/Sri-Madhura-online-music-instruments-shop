@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useAuthContext } from "../../../../../../../Desktop/MERN-e-commerce-Proj1-main/MERN-e-commerce-Proj1-main/frontend/src/hooks/useAuthContext";
-import SuccessAlert from "../../../../../../../Desktop/MERN-e-commerce-Proj1-main/MERN-e-commerce-Proj1-main/frontend/src/components/AlertBoxes/SuccessAlert";
+import { useAuthContext } from "../../hooks/useAuthContext";
+import SuccessAlert from "../../components/AlertBoxes/SuccessAlert";
 
 const Order = () => {
   const { user } = useAuthContext();

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import bookSet from './images/bookSet1.png';
+import bookSet from '../assets/bookSet1.png'
 import ProteinDetails from './ProteinDetails';
 import HeaderPart from './headerPart';
 import FilterBar from './filterbar';
