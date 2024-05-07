@@ -150,3 +150,32 @@
   font-size: 30px;
   text-align: center;
 }
+
+.item_list {
+  padding: 25px 12%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: start;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.box_item {
+  border: 2px solid black;
+  padding: 15px;
+  border-radius: 5px;
+  width: 400px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+.img_additem{
+  background-size: cover;
+  height: 200px;
+  width: 100%;
+  border-radius: 5px;
+}
+.pric{
+  font-weight: bold;
+  color: red;
+  text-align: center;
+  font-size: 25px;
+}

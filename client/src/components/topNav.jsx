@@ -188,7 +188,7 @@ function TopNav() {
               </li>
 
               {/* the rest of main navigation links*/}
-              <li onClick={()=>(window.location.href='/requestitem')}><a className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-primary md:p-0 dark:text-gray-900 md:dark:hover:bg-transparent">Personalizations</a></li>
+              <li onClick={()=>(window.location.href='/personalizationsHome')}><a className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-primary md:p-0 dark:text-gray-900 md:dark:hover:bg-transparent">Personalizations</a></li>
               <li><a href="#" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-primary md:p-0 dark:text-gray-900 md:dark:hover:bg-transparent">Bulk Orders</a></li>
               <li><Link to = {'/rentals'}><a href="#" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-primary md:p-0 dark:text-gray-900 md:dark:hover:bg-transparent">Rentals</a></Link></li>
               <li><a href="#" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-primary md:p-0 dark:text-gray-900 md:dark:hover:bg-transparent">Repairs</a></li>

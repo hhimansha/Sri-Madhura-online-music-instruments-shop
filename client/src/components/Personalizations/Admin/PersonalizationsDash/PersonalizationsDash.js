@@ -41,6 +41,9 @@ function PersonalizationsDash() {
     <div>
       <div className="fulbofy">
         <div className="btn_set">
+        <button className="booknow_btn" onClick={()=>(window.location.href='/admindash/additem')}>
+            Add Item
+          </button>
           <div>
             <tr>
               <td className="">
@@ -64,6 +67,7 @@ function PersonalizationsDash() {
             Generate Report
           </button>
         </div>
+       
         <div className="bok_box_admin" ref={ComponentsRef}>
           <h1 className="topic_personal">
             Customers Request

@@ -8,6 +8,7 @@ const multer = require("multer");
 const path = require("path");
 const UserRouter = require("./routes/user");
 const PersonalizationsRouter = require("./routes/PersonalizationsRoutes");
+const AddItemRouter = require("./routes/AdminAddItemRoutes");
 connectDB();
 const PORT = process.env.PORT || 5050;
 const app = express();
@@ -55,6 +56,7 @@ app.use(express.json());
 app.use("/auth", UserRouter);
 app.use("/api/users", UserRouter);
 app.use("/personal", PersonalizationsRouter);
+app.use("/additem", AddItemRouter);
 // start the Express server
 const URL = process.env.ATLAS_URI;
 mongoose.connect(URL, { useNewUrlParser: true, useUnifiedTopology: true });
