@@ -3,9 +3,12 @@ import { useParams } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import './custom-datepicker.css'; // Import your custom styles
+import { jwtDecode } from "jwt-decode";
+import Cookies from 'js-cookie';
 
 function RentalItemPage() {
   const { id } = useParams();
+  const [userId, setUserId] = useState(null);
   const [rentalItem, setRentalItem] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -14,7 +17,23 @@ function RentalItemPage() {
   const [numberOfDays, setNumberOfDays] = useState(1);
   const [totalPrice, setTotalPrice] = useState(null);
 
+  // Function to get a specific cookie by name
+  function getCookie(name) {
+    const cookieValue = Cookies.get(name);
+    return cookieValue;
+  }
+
+
   useEffect(() => {
+    // Retrieve token from cookies
+    const jwtToken = getCookie('jwt');
+
+    if (!jwtToken) {
+      setError("Token not found. Please log in.");
+      setLoading(false);
+      return;
+    }
+
     const fetchRentalItem = async () => {
       try {
         const response = await fetch(`http://localhost:5050/api/rentals/${id}`);
@@ -59,12 +78,31 @@ function RentalItemPage() {
       if (numberOfDays < 1 || numberOfDays > 7) {
         throw new Error('Number of days must be between 1 and 7');
       }
-  
+
+      // Retrieve token from cookies
+    const jwtToken = getCookie('jwt');
+
+    if (!jwtToken) {
+      setError("Token not found. Please log in.");
+      setLoading(false);
+      return;
+    }
+
+      // Decode the JWT to get the payload
+      const decodedToken = jwtDecode(jwtToken);
+
+      // Extract the user ID from the decoded token
+      const userId = decodedToken.id;
+
+      // Set the user ID state
+      setUserId(userId);
+
       // Calculate total price
       const totalPriceValue = rentalItemPrice * numberOfDays * quantity;
-  
+
       // Create rental order object
       const rentalOrder = {
+        userId: userId, // Include userId
         rentalItemID: rentalItem._id,
         image: rentalItem.image,
         title: rentalItem.title,
@@ -74,27 +112,26 @@ function RentalItemPage() {
         numberOfDays: parseInt(numberOfDays),
         orderDate: new Date() // Add order date
       };
-  
+
       // Send POST request to create rental order
       const response = await fetch('http://localhost:5050/api/rental-orders/create', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          
         },
         body: JSON.stringify(rentalOrder),
       });
-  
+
       if (!response.ok) {
         throw new Error('Failed to create rental order');
       }
-  
+
       // Clear form fields after successful submission
       setQuantity(1);
       setRentalDate(null);
       setNumberOfDays(1);
       setTotalPrice(null); // Clear total price
-  
+
       // Show success message or redirect user
       alert('Rental order created successfully!');
     } catch (error) {
@@ -103,8 +140,6 @@ function RentalItemPage() {
       setError(error.message);
     }
   };
-  
-  
 
   const maxNumberOfDays = 7;
 

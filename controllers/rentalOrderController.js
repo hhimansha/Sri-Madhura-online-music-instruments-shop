@@ -41,6 +41,7 @@ const createRentalOrder = asyncHandler(async (req, res) => {
             orderDate: Date.now() // Include orderDate
         });
         res.status(201).json(rentalOrder);
+        console.log(rentalOrder);
     } catch (error) {
         console.error(error);
         res.status(400).json({ message: "Failed to create rental order" });
