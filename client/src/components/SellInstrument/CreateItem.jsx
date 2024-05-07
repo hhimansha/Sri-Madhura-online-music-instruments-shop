@@ -24,6 +24,8 @@ const CreateItem = () => {
   const [orderstatus, setOrderStatus] = useState('pending');
   const [Simage, setSImage] = useState(null); // State to hold the image file
   const [SimageBase64, setSimageBase64] = useState(null);
+  const [isValid, setIsValid] = useState(true); // State to track email validity
+  const [isValidPhone, setIsValidPhone] = useState(true);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
@@ -93,6 +95,27 @@ const CreateItem = () => {
   // Function to handle type change
   const handleTypeChange = (e) => {
     setType(e.target.value);
+  };
+
+  const handleEmailChange = (e) => {
+    const inputEmail = e.target.value;
+    setEmail(inputEmail);
+
+    // Regular expression to validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const isValidEmail = emailRegex.test(inputEmail);
+    setIsValid(isValidEmail);
+  };
+
+  // Function to handle phone number change and validation
+  const handlePhoneChange = (e) => {
+    const inputPhone = e.target.value;
+    setPhoneno(inputPhone);
+
+    // Regular expression to validate phone number format (10 digits)
+    const phoneRegex = /^\d{10}$/;
+    const isValidPhone = phoneRegex.test(inputPhone);
+    setIsValidPhone(isValidPhone);
   };
 
  
@@ -363,35 +386,33 @@ const CreateItem = () => {
 
       <br />
       <div className="labels">
-        <label>Email:</label>
-      </div>
-      <div className="input-tab">
-      <input
-      className="input-field"
-            type='text'
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="EMAIL"
-          required=""
-          autoFocus=""
-          />
-      </div>
+              <label>Email:</label>
+            </div>
+            <div className="input-tab">
+              <input
+                className="input-field"
+                type="text"
+                value={email}
+                onChange={handleEmailChange} // Call the validation function on input change
+                name="email"
+                placeholder="Email"
+              />
+               {!isValid && <p className="text-red-500 text-sm">Please enter a valid email address.</p>}
+            </div>
 
       <br />
       <div className="labels">
-        <label>phone no:</label>
+        <label>Phone no:</label>
       </div>
       <div className="input-tab">
-      <input
-      className="input-field"
-            type='text'
-            value={phoneno}
-            onChange={(e) => setPhoneno(e.target.value)}
-            placeholder="phone no"
-          required=""
-          autoFocus=""
-          
-          />
+        <input
+          className={`input-field ${!isValidPhone ? 'invalid' : ''}`}
+          type="text"
+          value={phoneno}
+          onChange={handlePhoneChange} // Call the validation function on input change
+          placeholder="Phone no"
+        />
+        {!isValidPhone && <p className="text-red-500 text-sm">Please enter a valid phone number (10 digits).</p>}
       </div>
 
             
