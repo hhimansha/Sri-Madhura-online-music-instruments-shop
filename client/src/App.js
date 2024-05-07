@@ -16,6 +16,13 @@ import Profile from './components/User/Profile';
 import Usermanage from './components/User/Usermanage';
 import RentalItemPage from './components/Rental/rentalItemPage';
 import RentalOrdersManage from './components/Rental/RentalOrdersManage';
+import RequestItem from './components/Personalizations/RequestItem/RequestItem';
+import MyItem from './components/Personalizations/MyItem/MyItem';
+import UpdateItem from './components/Personalizations/UpdateItem/UpdateItem';
+import PersonalizationsDash from './components/Personalizations/Admin/PersonalizationsDash/PersonalizationsDash';
+import ReplyStatus from './components/Personalizations/Admin/ReplyStatus/ReplyStatus';
+import AddItem from './components/Personalizations/Admin/AddItem/AddItem';
+import PersonalizationsHome from './components/Personalizations/PersonalizationsHome/PersonalizationsHome';
 
 function App() {
 
@@ -43,7 +50,13 @@ function App() {
 
           <Route path="/rentals/:id" element={<><TopNav/><RentalItemPage /><Footer/></>} />
 
-          
+          <Route path="/personalizationsHome" element={<><TopNav/><PersonalizationsHome /><Footer/></>} />
+          <Route path="/requestitem" element={<RequestItem />} />
+          <Route path="/myitem" element={<MyItem />} />
+          <Route path="/updatemyitem/:id" element={<UpdateItem />} />
+          <Route path="/admindash/personaldash" element={<><AdminDash /><PersonalizationsDash /></>} />
+          <Route path="/admindash/addstatus/:id" element={<><AdminDash /><ReplyStatus /></>} />
+          <Route path="/admindash/additem" element={<><AdminDash /><AddItem /></>} />
         </Routes>
       
 
