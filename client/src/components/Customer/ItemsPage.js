@@ -180,6 +180,7 @@ function ItemsPage() {
         const data = { rid, itemId, item, quantity, status, price, mail };
         try {
             await axios.put('http://localhost:5050/request/updateReq', data);
+            // window.location.href('/asdasd')
         } catch (error) {
             console.error(error.message);
         }
