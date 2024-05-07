@@ -16,6 +16,11 @@ import Profile from './components/User/Profile';
 import Usermanage from './components/User/Usermanage';
 import RentalItemPage from './components/Rental/rentalItemPage';
 import RentalOrdersManage from './components/Rental/RentalOrdersManage';
+import Cart from './components/sell/Cart'
+import OrderHandler from './components/Admin/orderHandler'
+import Productpage from './components/sell/productPage'
+import UserAddress from './components/sell/UserAddress'
+import Order from './components/sell/Order'
 
 function App() {
 
@@ -23,6 +28,17 @@ function App() {
     <Router>
       <div className="App">
         <Routes>
+        <Route
+                        path="/admindash/orders"
+                        element={user?.Admin ? (
+                            <>
+                                <AdminDash />
+                                <OrderHandler />
+                            </>
+                        ) : (
+                            <Navigate to="/" />
+                        )}
+                    />
           <Route path="/admindash/rentals/rentalcreate" element={<><AdminDash /><RentalItemCreate /></>} />
           <Route path="/admindash/rentals/update/:id" element={<><AdminDash /><UpdateRental /></>} />
           <Route path="/admindash/rentals" element={<><AdminDash /><RentalManage /></>} />
@@ -31,10 +47,16 @@ function App() {
 
           <Route path="/login" element={<User_login />} /> {/* New route for user login */}
           <Route path="/signup" element={<User_signup />} /> {/* New route for user signup */}
+          <Route path="/product/:proteinId" element={<Productpage />} />
           <Route path="/reset/:token" element={<Reset/>} /> 
           <Route path="/recover" element={<Recovery/>} />
           <Route path="/profile" element={<Profile/>} />
           <Route path="/" element={<><TopNav/><RentHome /><Footer/></>} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/user/address" element={user ? <UserAddress /> : <Navigate to="/" />}/>
+          <Route path="/place-order" element={user ? <Order /> : <Navigate to="/login" />}/>
+
+
           
 
 
