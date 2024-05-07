@@ -30,6 +30,7 @@ const CreateRequest = () => {
   const [status, setStatus] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const [isValid, setIsValid] = useState(true);
   const { enqueueSnackbar } = useSnackbar();
 
   const instrumentCategories = {
@@ -91,6 +92,15 @@ const CreateRequest = () => {
     setIssueType(selectedIssueType);
     setPrice(issuePrices[selectedIssueType] || 0);
   };
+  const handleEmailChange = (e) => {
+    const inputEmail = e.target.value;
+    setEmail(inputEmail);
+
+    // Regular expression to validate email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const isValidEmail = emailRegex.test(inputEmail);
+    setIsValid(isValidEmail);
+  };
   
 
   return (
@@ -125,19 +135,19 @@ const CreateRequest = () => {
     required
   />
   </div>
-            <div style={{ display: 'flex', alignItems: 'center', borderBottom: '1px solid #ccc', paddingBottom: '0.5rem' }}>
-              <FaEnvelope style={{ color: '#333', marginRight: '0.5rem', fontSize: '1.5rem' }} />
-              
-               <input
-    type="email"
-    value={email}
-    id="email" 
-    onChange={(e) => setEmail(e.target.value)}
-    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-    placeholder="Email"
-    required
-  />
-            </div>
+  <div style={{ display: 'flex', alignItems: 'center', borderBottom: '1px solid #ccc', paddingBottom: '0.5rem' }}>
+      <FaEnvelope style={{ color: '#333', marginRight: '0.5rem', fontSize: '1.5rem' }} />
+      <input
+        type="email"
+        value={email}
+        id="email" 
+        onChange={handleEmailChange} // Call the validation function on input change
+        className={`bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500 ${isValid ? '' : 'border-red-500'}`}
+        placeholder="Email"
+        required
+      />
+      {!isValid && <p className="text-red-500 text-sm">Please enter a valid email address.</p>}
+    </div>
             <div style={{ display: 'flex', alignItems: 'center', borderBottom: '1px solid #ccc', paddingBottom: '0.5rem' }}>
               <FaMapMarkerAlt style={{ color: '#333', marginRight: '0.5rem', fontSize: '1.5rem' }} />
              
@@ -305,7 +315,10 @@ const CreateRequest = () => {
                 position: 'relative', 
                 overflow: 'hidden', 
               }}
-              onClick={handleSaveRequest}
+              onClick={() => {
+                handleSaveRequest();
+                window.location.href = '/repair/RepairHome';
+              }}
               onMouseDown={(e) => {
                 
                 e.target.style.transform = 'scale(0.95)';

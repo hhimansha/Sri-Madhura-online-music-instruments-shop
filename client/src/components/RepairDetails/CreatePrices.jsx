@@ -133,7 +133,10 @@ const CreatePrices = () => {
                 position: 'relative', // Required for the animation
                 overflow: 'hidden', // Required for the animation
               }}
-              onClick={handleSavePrice}
+              onClick={() => {
+                handleSavePrice();
+                window.location.href = '/prices/DetailsHome';
+              }}
               onMouseDown={(e) => {
                 // Expand the button when clicked
                 e.target.style.transform = 'scale(0.95)';

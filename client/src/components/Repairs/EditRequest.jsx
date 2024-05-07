@@ -274,7 +274,10 @@ const EditRequest = () => {
               width: '520px',
               boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
             }}
-            onClick={handleEditRequest}
+            onClick={() => {
+              handleEditRequest();
+              window.location.href = '/repair/RepairHome';
+            }}
             onMouseDown={(e) => {
               e.target.style.transform = 'scale(0.95)';
               e.target.style.backgroundColor = '#2980b9';
