@@ -22,7 +22,8 @@ const CreateItem = () => {
   const [email, setEmail] = useState('');
   const [phoneno, setPhoneno] = useState('');
   const [orderstatus, setOrderStatus] = useState('pending');
-  const [simage, setSImage] = useState(null); // State to store the selected image file
+  const [Simage, setSImage] = useState(null); // State to hold the image file
+  const [SimageBase64, setSimageBase64] = useState(null);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
@@ -44,7 +45,8 @@ const CreateItem = () => {
     formData.append('email', email);
     formData.append('phoneno', phoneno);
     formData.append('orderstatus', orderstatus);
-    formData.append('simage', simage); // Append image file to FormData
+    formData.append('Simage', Simage); // Append image file to FormData
+    formData.append('filebase64', SimageBase64); 
 
     setLoading(true);
     axios
@@ -64,6 +66,14 @@ const CreateItem = () => {
         console.log(error);
       });
   };
+  const handleImageChanges = (e) => {
+    const file = e.target.files[0];
+    setSImage(file);
+    let reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = function () {setSimageBase64(reader.result);
+    };
+};
 
 
   const instrumentTypes = {
@@ -389,18 +399,12 @@ const CreateItem = () => {
       <br />
 
    
-      <div className="labels">
-            <label htmlFor="image">Image:</label>
-          </div>
-          <div className="input-tab">
-            <input
-              type="file"
-              id="simage"
-              name="simage"
-              onChange={(e) => setSImage(e.target.files[0])} // Capture selected image file
-              required=""
-            />
-          </div>
+      <div className='my-4'>
+              <label className='text-xl mr-4 text-gray-500'>Upload Image</label>
+              <input type='file' onChange={handleImageChanges} accept='image/*' style={{ padding: '0.5rem', fontSize: '1rem' }} />
+           
+</div>
+          
 
       
       <br />

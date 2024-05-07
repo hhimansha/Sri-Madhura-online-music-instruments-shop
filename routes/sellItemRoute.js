@@ -11,7 +11,7 @@ const storage = multer.diskStorage({
     cb(null, './uploads'); // Destination folder where files will be stored
   },
   filename: function (req, file, cb) {
-    cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname)); // File name
+    cb(null, `sellItem_${Date.now()}_${file.originalname}`);
   }
 });
 
@@ -21,7 +21,7 @@ const upload = multer({
 
 
 //Route for save a new book
-router.post('/', upload.single('simage'), async (request, response) => {
+router.post('/', upload.single('Simage'), async (request, response) => {
   try {
     if (
       !request.body.title ||
@@ -45,9 +45,30 @@ router.post('/', upload.single('simage'), async (request, response) => {
         message: 'Send all required fields: title, condition, price, and an image file.',
       });
     }
-    const newSellItem = {
+    // const newSellItem = {
+    //   title: request.body.title,
+    //   type: request.body.type,
+    //   condition: request.body.condition,
+    //   color: request.body.color,
+    //   brand: request.body.brand,
+    //   description: request.body.description,
+    //   price: request.body.price, 
+    //   quantity: request.body.quantity,
+    //   bank: request.body.bank,
+    //   accno: request.body.accno,
+    //   accname: request.body.accname,
+    //   name: request.body.name,
+    //   email: request.body.email,
+    //   phoneno: request.body.phoneno,
+    //   orderstatus: request.body.orderstatus,
+    //   simage: request.file.path.replace(/\\/g, '/') // Replace backslashes with forward slashes
+    // };
+
+    const newSellItem = new SellItem({
       title: request.body.title,
       type: request.body.type,
+      Simage: request.file.filename,
+	    SimageBase64: request.body.filebase64,
       condition: request.body.condition,
       color: request.body.color,
       brand: request.body.brand,
@@ -62,7 +83,7 @@ router.post('/', upload.single('simage'), async (request, response) => {
       phoneno: request.body.phoneno,
       orderstatus: request.body.orderstatus,
       simage: request.file.path.replace(/\\/g, '/') // Replace backslashes with forward slashes
-    };
+    })
     
 
     const sellItem = await SellItem.create(newSellItem);

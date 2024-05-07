@@ -38,6 +38,7 @@ const ItemTable = ({ sellitems }) => {
         <thead>
           <tr className="bg-black text-white">
             <th className='border border-black-600 py-3 px-4 w-10'>No</th>
+            <th className='border border-black-600 py-3 px-4'>Image</th>
             <th className='border border-black-600 py-3 px-4'>Instrument</th>
             <th className='border border-black-600 py-3 px-4'>Condition</th>
             <th className='border border-black-600 py-3 px-4'>Price</th>
@@ -62,6 +63,7 @@ const ItemTable = ({ sellitems }) => {
             <tr key={sellItem._id} className={index % 2 === 0 ? 'bg-gray-100' : 'bg-white'}>
               <td className='border border-gray-400 py-3 px-4 text-center'>{index + 1}</td>
               <td className='border border-gray-400 py-3 px-4'>{sellItem.title}</td>
+              <td className='border border-gray-400 py-3 px-4'><img src={`${sellItem.RimageBase64}`} className='h-10 w-10 object-cover' alt={`sellItem ${index + 1}`} /></td>
               <td className='border border-gray-400 py-3 px-4'>{sellItem.condition}</td>
               <td className='border border-gray-400 py-3 px-4'>{sellItem.price}</td>
               <td className='border border-gray-400 py-3 px-4'>{sellItem.type}</td>

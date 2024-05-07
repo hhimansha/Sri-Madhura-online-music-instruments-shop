@@ -12,6 +12,14 @@ const itemSchema = new Schema(
       type: String,
       required: true,
     },
+    Simage: {
+      type: String,
+      required: true,
+  },
+  SimageBase64: {
+      type: String,
+      required: true,
+  },
     condition: {
       type: String,
       required: true,
@@ -63,11 +71,7 @@ const itemSchema = new Schema(
     orderstatus: {
       type: String,
     },
-    simage: {
-      type: String,
-      required: true
-  
-  },
+    
     
   },
   {
