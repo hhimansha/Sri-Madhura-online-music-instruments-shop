@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import MainLogo from "../components/assets/MainLogo.png";
 import "./TopNav.css";
+import cart from "./sell/Cart";
 
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -63,6 +64,8 @@ function TopNav() {
             <img src={MainLogo} className="h-10" alt="Flowbite Logo" />
           </a>
 
+          
+
           <div className="flex items-center md:order-2 space-x-3 md:space-x-3 rtl:space-x-reverse relative">
             <button
               type="button"
@@ -71,6 +74,23 @@ function TopNav() {
             >
               Log Out
             </button>
+
+            <div className="relative">
+              <div className="flex flex-row cart-img  rounded-full items-center px-2 justify-center">
+                <Link to='/cart'>
+                <svg id='Shopping_Cart_24' width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'><rect width='24' height='24' stroke='none' fill='#000000' opacity='0'/>
+                  <g transform="matrix(1.53 0 0 1.53 12 12)" >
+                  <path transform=" translate(-7.55, -7.5)" d="M 1 0.992188 L 1 1.992188 L 3 1.992188 C 3.214844 1.992188 3.398438 2.132813 3.46875 2.335938 L 4.402344 10.667969 C 4.488281 11.421875 5.136719 12 5.894531 12 L 12 12 L 12 11 L 5.894531 11 C 5.636719 11 5.425781 10.8125 5.398438 10.558594 L 5.335938 10 L 11.679688 10 C 12.390625 10 13.011719 9.492188 13.152344 8.796875 L 14.109375 4 L 4.660156 4 L 4.445313 2.09375 L 4.429688 2.046875 C 4.238281 1.421875 3.65625 0.996094 3 0.992188 Z M 11 12 C 10.449219 12 10 12.449219 10 13 C 10 13.550781 10.449219 14 11 14 C 11.550781 14 12 13.550781 12 13 C 12 12.449219 11.550781 12 11 12 Z M 6 12 C 5.449219 12 5 12.449219 5 13 C 5 13.550781 5.449219 14 6 14 C 6.550781 14 7 13.550781 7 13 C 7 12.449219 6.550781 12 6 12 Z M 4.773438 5 L 12.890625 5 L 12.171875 8.597656 C 12.121094 8.835938 11.921875 9 11.679688 9 L 5.222656 9 Z" stroke-linecap="round" />
+                  </g>
+                  </svg>
+                </Link>
+              </div>
+              {cart.length > 0 && (
+                    <span className="absolute top-0 -right-2 bg-grey text-white rounded-full px-2 py-1 text-xs">
+                      {cart.length}
+                    </span>
+                  )}
+            </div>
 
             <button
               type="button"
