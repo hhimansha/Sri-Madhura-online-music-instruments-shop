@@ -39,7 +39,7 @@ router.post('/', upload.single('simage'), async (request, response) => {
       !request.body.email ||
       !request.body.phoneno ||
       !request.body.orderstatus ||
-      !request.simage
+      !request.file
     ) {
       return response.status(400).send({
         message: 'Send all required fields: title, condition, price, and an image file.',
@@ -126,7 +126,7 @@ router.put('/:id', upload.single('simage'), async(request, response) => {
         !body.email ||
         !body.phoneno ||
         !body.orderstatus ||
-        !body.simage
+        !body.file
       ) {
       return response.status(400).send({
         message: 'Send all required fields: title, condition, price...',
