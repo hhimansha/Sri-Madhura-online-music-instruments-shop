@@ -100,7 +100,7 @@ function BulkOrderRequestAdmin() {
                 confirmButtonText: "OK"
             });
             fetchDetails();
-        } catch (error) {
+        } catch (error) { 
             console.error('Error deleting Item:', error);
             Swal.fire({
                 title: "Error!",
