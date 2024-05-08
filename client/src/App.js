@@ -23,7 +23,7 @@ import User_signup from './components/User/User_signup'
 import Reset from './components/User/Reset'
 import Recovery from './components/User/Recovery'
 import Profile from './components/User/Profile'
-
+import Admindashh from './components/Admin/Admindashh';
 
 
 
@@ -47,8 +47,10 @@ function App() {
               <Route path="/rentals" element={<><TopNav/><RentHome /><RentalItemDisplay /><Footer/></>} />
               <Route path="/rentals/:id" element={<><TopNav/><RentHome /><Footer/></>} />
               <Route path="/admindash" element={<AdminDash />} />
+              <Route path="/admindash1" element={<Admindashh />} />
+              <Route path="/admindash/orders" element={<Admindashh />} />
 
-              <Route path="/login1" element={<User_login />} /> {/* New route for user login */}
+              <Route path="/login" element={<User_login />} /> {/* New route for user login */}
           <Route path="/signup" element={<User_signup />} /> {/* New route for user signup */}
           <Route path="/reset/:token" element={<Reset/>} /> 
           <Route path="/recover" element={<Recovery/>} />

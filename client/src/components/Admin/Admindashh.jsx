@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link} from 'react-router-dom';
-import img1 from '../images/headerLogoH.png';
+import img1 from '../assets/headerLogoH.png';
 import { useAuthContext } from '../../hooks/useAuthContext';
 import { useLogout } from '../../hooks/useLogout';
 
