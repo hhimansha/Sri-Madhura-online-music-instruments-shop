@@ -41,7 +41,7 @@ export const DeleteRequest = () => {
         <h1 className='text-3xl font-bold mb-6' style={{ color: '#fff' }}>Delete Request</h1>
         
         <div className='flex flex-col items-center rounded-xl w-[600px] p-8 mx-auto' style={{ background: 'white' }}>
-          <h3 className='text-2xl text-black mb-8'>Are you sure you want to delete this book?</h3>
+          <h3 className='text-2xl text-black mb-8'>Are you sure you want to delete this request?</h3>
           <button className='p-4 bg-red-600 text-white w-full' 
            onClick={() => {
             handleDeleteRequest();

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
+import TopNav from '../topNav';
+import Footer from '../Footer';
 import { Link } from 'react-router-dom';
 import { AiOutlineEdit } from 'react-icons/ai';
 import { BsInfoCircle } from 'react-icons/bs';
@@ -28,6 +29,7 @@ export const DetailsHomeUser = () => {
     }, []);
 
     return (<>
+    <TopNav/>
         
         <div className='p-4'>
             <div className='flex justify-center items-center gap-x-4'>
@@ -39,7 +41,8 @@ export const DetailsHomeUser = () => {
           
             {showType === 'card' ? <PricesTable prices={prices} /> : <PricesCard prices={prices} />}
         </div>
-       
+        <Footer/>
+        
         </>
     );
 };
