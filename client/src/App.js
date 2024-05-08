@@ -18,6 +18,8 @@ import RentalItemPage from './components/Rental/rentalItemPage';
 import RentalOrdersManage from './components/Rental/RentalOrdersManage';
 import RentalOrdersCheckout from './components/Rental/RentalOrdersCheckout';
 import BlogHome from './components/Blog/BlogHome';
+import BlogManage from './components/Blog/BlogManage';
+import BlogCreate from './components/Blog/BlogCreate';
 
 function App() {
 
@@ -34,15 +36,17 @@ function App() {
           <Route path="/rentals/:id" element={<><TopNav/><RentalItemPage /><Footer/></>} />
 
           <Route path="/blogs" element={<><TopNav/><BlogHome /><Footer/></>} />
+          <Route path="/admindash/blogs" element={<><AdminDash /><BlogManage /></>} />
+          <Route path="/admindash/blogs/create" element={<><AdminDash /><BlogCreate /></>} />
 
           <Route path="/login" element={<User_login />} /> {/* New route for user login */}
           <Route path="/signup" element={<User_signup />} /> {/* New route for user signup */}
           <Route path="/reset/:token" element={<Reset/>} /> 
           <Route path="/recover" element={<Recovery/>} />
-          <Route path="/profile" element={<Profile/>} />
+          <Route path="/profile" element={<><TopNav/><Profile/><Footer/></>} />
           <Route path="/" element={<><TopNav/><RentHome /><Footer/></>} />
+          <Route path="/Usermanage" element={<><AdminDash /><Usermanage /></>} />
           
-
 
           <Route path="/admindash" element={<AdminDash />} />
           

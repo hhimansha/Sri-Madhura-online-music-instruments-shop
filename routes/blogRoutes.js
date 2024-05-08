@@ -3,7 +3,7 @@ const router = express.Router();
 const Blog = require('../models/blogs');
 
 // Create a new blog
-router.post('/', async (req, res) => {
+router.post('/create', async (req, res) => {
     try {
         const { title, description, image } = req.body;
         const newBlog = new Blog({ title, description, image });
@@ -15,7 +15,7 @@ router.post('/', async (req, res) => {
 });
 
 // Read all blogs
-router.get('/', async (req, res) => {
+router.get('/all', async (req, res) => {
     try {
         const blogs = await Blog.find();
         res.json(blogs);
