@@ -67,6 +67,7 @@ function BulkOrderRequestAdmin() {
     const [price, setPrice] = useState('');
     const [details, setDetails] = useState([]);
     const [editvalue, setEditvalue] = useState(false);
+    const [searchQuery, setSearchQuery] = useState('');
     const form = useRef();
 
     useEffect(() => {
@@ -110,6 +111,15 @@ function BulkOrderRequestAdmin() {
             });
         }
     };
+    const handleSearch = (event) => {
+        setSearchQuery(event.target.value);
+    };
+
+    const filteredDetails = details.filter((detail) =>
+        detail.item.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        detail.mail.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+
 
     const handleEdit = (rid, itemId, item, quantity, status, price, mail) => {
         const editdata = { rid, itemId, item, quantity, status, price, mail };
@@ -215,6 +225,14 @@ function BulkOrderRequestAdmin() {
         <>
             <AdminNav />
             <div className={classes.root}>
+        
+            <TextField
+                label="Search"
+                variant="outlined"
+                value={searchQuery}
+                onChange={handleSearch}
+                style={{ marginBottom: '20px' }}
+            />
                 <div className={classes.header} style={{ backgroundColor: '#f0f0f0', padding: '10px', borderRadius: '5px', boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)' }}>
                     <Typography variant="h3" component="h1" style={{ color: '#333', fontWeight: 'bold', textAlign: 'center' }}>Request Management</Typography>
                 </div>
@@ -265,7 +283,8 @@ function BulkOrderRequestAdmin() {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                {details.map((details, index) => (
+                            {filteredDetails.map((details, index) => (
+                               
                                     <TableRow key={details.id} className={index % 2 === 0 ? classes.rowEven : classes.rowOdd}>
                                         <TableCell>{details.rid}</TableCell>
                                         <TableCell>{details.itemId}</TableCell>
