@@ -2,16 +2,18 @@ import React, { useState, useEffect } from 'react';
 import MainLogoW from '../assets/MainLogoW.png';
 import { Link } from 'react-router-dom';
 import RentalItemCreate from '../Rental/RentalItemCreate';
-import {jwtDecode} from "jwt-decode"; // Library to decode JWT
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import {jwtDecode} from 'jwt-decode';
 import Cookies from 'js-cookie';
+
 
 function AdminDash() {
   const [userId, setUserId] = useState(null);
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false); // Moved here
   const navigate = useNavigate();
 
 
@@ -67,8 +69,14 @@ function AdminDash() {
     }
   }, []); // Run once on component mount
 
+  if (loading) {
+    return <div>Loading...</div>; // Loading state
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>; // Error state
+  }
   
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -84,7 +92,7 @@ function AdminDash() {
       </button>
 
       <aside id="default-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
-        <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-black">
+        <div class="h-full px-3 py-4 overflow-y-auto bg-black">
           <ul class="space-y-2 font-medium">
             <li>
               <Link to='/'>
