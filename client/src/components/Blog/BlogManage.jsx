@@ -9,7 +9,7 @@ const BlogManage = () => {
     useEffect(() => {
         const fetchBlogs = async () => {
             try {
-                const response = await fetch('http://localhost:5050/blog');
+                const response = await fetch('http://localhost:5050/blog/all');
                 if (!response.ok) {
                     throw new Error('Failed to fetch blogs');
                 }
@@ -29,23 +29,24 @@ const BlogManage = () => {
         // Display confirmation dialog
         const confirmDelete = window.confirm("Are you sure you want to delete this blog?");
         if (!confirmDelete) return; // Cancel delete if user clicks "Cancel"
-
+    
         // Perform delete operation if user confirms
         try {
             const response = await fetch(`http://localhost:5050/blog/${id}`, {
                 method: 'DELETE',
             });
             if (!response.ok) {
-                throw new Error('Failed to delete blog');
+                const errorMessage = await response.text();
+                throw new Error(`Failed to delete blog: ${errorMessage}`);
             }
-
+    
             // Update state to reflect deletion
             setBlogs(blogs.filter(blog => blog._id !== id));
         } catch (error) {
             console.error('Error deleting blog:', error.message);
         }
     };
-
+    
     if (loading) {
         return <div>Loading...</div>;
     }
@@ -88,7 +89,7 @@ const BlogManage = () => {
                                         <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">{`...${blog._id.substring(blog._id.length - 3)}`}</td>
                                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-800">{blog.title}</td>
                                         <td className="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
-                                            <Link to={`/admin/edit-blog/${blog._id}`}>
+                                            <Link to={`/admindash/blogs/update/${blog._id}`}>
                                                 <button type="button" className="inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent text-white bg-dark p-1 px-2 disabled:opacity-50 disabled:pointer-events-none mr-4">Edit</button>
                                             </Link>
                                             <button type="button" className="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-red-500 p-1 px-2 text-red-500 hover:text-white hover:bg-red-600" onClick={() => handleDelete(blog._id)}>Delete</button>

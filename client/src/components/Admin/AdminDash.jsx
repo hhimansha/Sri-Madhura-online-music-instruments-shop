@@ -108,10 +108,7 @@ function AdminDash() {
               </a>
             </li>
           </ul>
-          <div className="mt-12">
-            <p className='text-gray-400 bg-gray-800 px-4 py-2 rounded-lg'>Hello@gmail.com</p>
-            <button className='bg-primary text-white px-3 py-2 rounded-lg mt-4 font-semibold w-full' type='submit'>Log Out</button>
-          </div>
+          
         </div>
       </aside>
 

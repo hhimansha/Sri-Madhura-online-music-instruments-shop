@@ -1,58 +1,77 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate from react-router-dom
+import React, { useState, useEffect } from "react";
 
-function BlogCreate() {
+function BlogUpdate({ match }) {
     const [formData, setFormData] = useState({
         title: "",
         description: "",
-        image: "",
+        image: ""
     });
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
-    // Get the navigate function
-    const navigate = useNavigate();
+    useEffect(() => {
+        const fetchBlog = async () => {
+            try {
+                const response = await fetch(`http://localhost:5050/blog/${match.params.id}`);
+                if (!response.ok) {
+                    throw new Error("Failed to fetch blog");
+                }
+                const data = await response.json();
+                setFormData({
+                    title: data.title,
+                    description: data.description,
+                    image: data.image
+                });
+                setLoading(false);
+            } catch (error) {
+                setError(error.message);
+                setLoading(false);
+            }
+        };
+
+        fetchBlog();
+    }, [match.params.id]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData((prevData) => ({
             ...prevData,
-            [name]: value,
+            [name]: value
         }));
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch("http://localhost:5050/blog/create", {
-                method: "POST",
+            const response = await fetch(`http://localhost:5050/blog/${match.params.id}`, {
+                method: "PATCH",
                 headers: {
-                    "Content-Type": "application/json",
+                    "Content-Type": "application/json"
                 },
-                body: JSON.stringify(formData),
+                body: JSON.stringify(formData)
             });
             if (!response.ok) {
-                throw new Error("Failed to create blog");
+                throw new Error("Failed to update blog");
             }
-            // Optionally, handle success response here
-            console.log("Blog created successfully");
-            // Navigate to the "/admindash/blogs" page
-            navigate("/admindash/blogs");
-            // Reset form fields
-            setFormData({
-                title: "",
-                description: "",
-                image: "",
-            });
+            console.log("Blog updated successfully");
         } catch (error) {
-            console.error("Error creating blog:", error.message);
-            // Optionally, handle error here
+            console.error("Error updating blog:", error.message);
         }
     };
+
+    if (loading) {
+        return <div>Loading...</div>;
+    }
+
+    if (error) {
+        return <div>Error: {error}</div>;
+    }
 
     return (
         <div className="sm:w-[38rem] mx-auto my-10 overflow-hidden rounded-2xl bg-white shadow-lg sm:max-w-lg">
             <div className="bg-primary px-10 py-10 text-center text-white">
-                <p className="text-2xl font-semibold">Submit your request</p>
-                <p className="text-center text-blue-100">Please keep it short and succinct</p>
+                <p className="text-2xl font-semibold">Update Blog</p>
+                <p className="text-center text-blue-100">Modify blog details below</p>
             </div>
             <div className="space-y-4 px-8 py-10">
                 <form onSubmit={handleSubmit}>
@@ -89,7 +108,7 @@ function BlogCreate() {
                         />
                     </label>
                     <button className="mt-4 rounded-full bg-black px-10 py-2 font-semibold text-white" type="submit">
-                        Submit
+                        Update
                     </button>
                 </form>
             </div>
@@ -97,4 +116,4 @@ function BlogCreate() {
     );
 }
 
-export default BlogCreate;
+export default BlogUpdate;

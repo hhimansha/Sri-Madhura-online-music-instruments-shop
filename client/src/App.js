@@ -20,6 +20,7 @@ import RentalOrdersCheckout from './components/Rental/RentalOrdersCheckout';
 import BlogHome from './components/Blog/BlogHome';
 import BlogManage from './components/Blog/BlogManage';
 import BlogCreate from './components/Blog/BlogCreate';
+import BlogUpdate from './components/Blog/BlogUpdate';
 
 function App() {
 
@@ -35,9 +36,7 @@ function App() {
           <Route path="/rentals/checkout-order" element={<><TopNav/><RentalOrdersCheckout/><Footer/></>} />
           <Route path="/rentals/:id" element={<><TopNav/><RentalItemPage /><Footer/></>} />
 
-          <Route path="/blogs" element={<><TopNav/><BlogHome /><Footer/></>} />
-          <Route path="/admindash/blogs" element={<><AdminDash /><BlogManage /></>} />
-          <Route path="/admindash/blogs/create" element={<><AdminDash /><BlogCreate /></>} />
+          
 
           <Route path="/login" element={<User_login />} /> {/* New route for user login */}
           <Route path="/signup" element={<User_signup />} /> {/* New route for user signup */}
