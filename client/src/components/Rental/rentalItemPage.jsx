@@ -5,9 +5,11 @@ import 'react-datepicker/dist/react-datepicker.css';
 import './custom-datepicker.css'; // Import your custom styles
 import { jwtDecode } from "jwt-decode";
 import Cookies from 'js-cookie';
+import { useNavigate } from 'react-router-dom';
 
 function RentalItemPage() {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [userId, setUserId] = useState(null);
   const [rentalItem, setRentalItem] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -113,27 +115,14 @@ function RentalItemPage() {
         orderDate: new Date() // Add order date
       };
 
-      // Send POST request to create rental order
-      const response = await fetch('http://localhost:5050/api/rental-orders/create', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
+      
+
+      navigate('/rentals/checkout-order', {
+        state: {
+          rentalOrder: rentalOrder, // Pass rentalOrder data
+          totalPrice: totalPrice, // Pass totalPrice data
         },
-        body: JSON.stringify(rentalOrder),
       });
-
-      if (!response.ok) {
-        throw new Error('Failed to create rental order');
-      }
-
-      // Clear form fields after successful submission
-      setQuantity(1);
-      setRentalDate(null);
-      setNumberOfDays(1);
-      setTotalPrice(null); // Clear total price
-
-      // Show success message or redirect user
-      alert('Rental order created successfully!');
     } catch (error) {
       // Handle errors
       console.error(error);

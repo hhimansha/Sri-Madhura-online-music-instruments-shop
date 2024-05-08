@@ -29,7 +29,7 @@ function App() {
           <Route path="/admindash/rentals" element={<><AdminDash /><RentalManage /></>} />
           <Route path="/admindash/rental-orders" element={<><AdminDash /><RentalOrdersManage /></>} />
           <Route path="/rentals" element={<><TopNav/><RentHome /><RentalItemDisplay /><Footer/></>} />
-          <Route path="/rentals/checkout-order/:id" element={<><TopNav/><RentalOrdersCheckout/><Footer/></>} />
+          <Route path="/rentals/checkout-order" element={<><TopNav/><RentalOrdersCheckout/><Footer/></>} />
           <Route path="/rentals/:id" element={<><TopNav/><RentalItemPage /><Footer/></>} />
 
           <Route path="/login" element={<User_login />} /> {/* New route for user login */}
