@@ -17,6 +17,7 @@ import Usermanage from './components/User/Usermanage';
 import RentalItemPage from './components/Rental/rentalItemPage';
 import RentalOrdersManage from './components/Rental/RentalOrdersManage';
 import RentalOrdersCheckout from './components/Rental/RentalOrdersCheckout';
+import BlogHome from './components/Blog/BlogHome';
 
 function App() {
 
@@ -31,6 +32,8 @@ function App() {
           <Route path="/rentals" element={<><TopNav/><RentHome /><RentalItemDisplay /><Footer/></>} />
           <Route path="/rentals/checkout-order" element={<><TopNav/><RentalOrdersCheckout/><Footer/></>} />
           <Route path="/rentals/:id" element={<><TopNav/><RentalItemPage /><Footer/></>} />
+
+          <Route path="/blogs" element={<><TopNav/><BlogHome /><Footer/></>} />
 
           <Route path="/login" element={<User_login />} /> {/* New route for user login */}
           <Route path="/signup" element={<User_signup />} /> {/* New route for user signup */}
