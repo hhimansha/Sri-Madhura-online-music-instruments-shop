@@ -1,15 +1,35 @@
 import React from "react";
 import { useLocation } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
+import SuccessAlert from "../AlertBoxes/SuccessAlert";
 
 const RentalOrdersCheckout = () => {
   const location = useLocation();
   const { rentalOrder, totalPrice } = location.state;
+  const [success, setSuccess] = useState(false);
+  const navigate = useNavigate();
+  const [imageUploaded, setImageUploaded] = useState(false); // State to track if image is uploaded
+
+
+  useEffect(() => {
+    if (success) {
+      const timer = setTimeout(() => {
+        setSuccess(false);
+        navigate('/rentals');
+      }, 3000); // Set timeout duration in milliseconds
+      return () => clearTimeout(timer); // Cleanup function to clear the timer
+    }
+  }, [success, navigate]);
 
   const handlePlaceOrder = async () => {
     try {
+
+      if (!imageUploaded) {
+        throw new Error('Please upload the bank payment slip');
+      }
       // Send POST request to create the order
-      // You can use fetch or any HTTP client library for this
-      // Example:
+    
       const response = await fetch('http://localhost:5050/api/rental-orders/create', {
         method: 'POST',
         headers: {
@@ -20,11 +40,21 @@ const RentalOrdersCheckout = () => {
       if (!response.ok) {
         throw new Error('Failed to place the order');
       }
-      alert('Order placed successfully!');
+      setSuccess(true);
+        setTimeout(() => {
+          setSuccess(false);
+        }, 3000);
     } catch (error) {
       console.error(error);
       // Handle error
     }
+
+    
+  };
+
+  const handleSuccessBoxClose = () => {
+    setSuccess(false);
+    navigate('/rentals');
   };
 
   return (
@@ -85,6 +115,8 @@ const RentalOrdersCheckout = () => {
                     <p className="text-xs text-gray-500 dark:text-gray-400">PNG or JPG (MAX. 5MB)</p>
                   </div>
                   <input id="dropzone-file" type="file" className="hidden" />
+                  {imageUploaded ? null : <p className="text-red-500">Please upload the bank payment slip</p>}
+
                 </label>
               </div>
               <div className="mt-8">
@@ -103,6 +135,7 @@ const RentalOrdersCheckout = () => {
           </div>
         </div>
       </div>
+      {success && <SuccessAlert onClose={handleSuccessBoxClose} />}
     </div>
   );
 };

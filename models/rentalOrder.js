@@ -31,7 +31,8 @@ const rentOrderSchema = new Schema({
     },
     bankSlip: {
         type: String,
-        required: false
+        required: true,
+        default: "https://makeenbooks.com/public/img/app/scan.png"
     },
     rentalDate: {
         type: Date,
