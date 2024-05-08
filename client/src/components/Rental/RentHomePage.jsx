@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import wide from '../assets/wideHero.png';
+import axios from 'axios';
 
 function RentHomePage() {
+
     return (
 
         
 <header> {/* Container */} <div className="mx-auto w-full max-w-7xl px-5 py-16 md:px-10 md:py-28 lg:py-28">
+
+
     <div className="mx-auto max-w-3xl text-center"> {/* Title */} <h1 className="mb-6 text-4xl font-bold md:text-6xl">Rent Your Path to<br/>Musical Excellence Today</h1>
       <p className="mb-6 text-sm text-[#636262] sm:text-xl lg:mb-8">Browse instruments, choose your favorite, and begin your musical journey today with our easy renting process. Start playing now!</p>
        {/* Button */} 
