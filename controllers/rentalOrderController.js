@@ -1,5 +1,8 @@
 const asyncHandler = require('express-async-handler');
 const RentalOrder = require('../models/rentalOrder');
+const nodemailer = require('nodemailer');
+const User = require('../models/user');
+
 
 //@desc Get all rental orders
 //@route GET /api/rental-orders
@@ -94,4 +97,43 @@ const deleteRentalOrder = asyncHandler(async (req, res) => {
     }
 });
 
-module.exports = { getRentalOrders, getRentalOrderById, createRentalOrder, updateRentalOrder, deleteRentalOrder };
+
+
+// Function to send acceptance email to the user
+const sendAcceptanceEmail = async (rentalOrder) => {
+    try {
+        // Retrieve user's email associated with the rental order
+        const user = await User.findById(rentalOrder.userId);
+        const userEmail = user.email;
+
+        // Create Nodemailer transporter
+        const transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: 'jecktopher685@gmail.com',
+                pass: 'lastseen2018.03.04'
+            }
+        });
+
+        // Email options
+        const mailOptions = {
+            from: 'jecktopher685@gmail.com',
+            to: 'himansha9966haritha@gmail.com',
+            subject: 'Your rental order has been accepted',
+            text: 'Your rental order has been accepted by the admin. You can view the details in your account.'
+        };
+
+        // Send email
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                console.error('Error sending acceptance email:', error);
+            } else {
+                console.log('Acceptance email sent successfully');
+            }
+        });
+    } catch (error) {
+        console.error('Error sending acceptance email:', error);
+    }
+};
+
+module.exports = { getRentalOrders, getRentalOrderById, createRentalOrder, updateRentalOrder, deleteRentalOrder, sendAcceptanceEmail };

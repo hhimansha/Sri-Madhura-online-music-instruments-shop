@@ -18,7 +18,7 @@ const upload = multer({
 });
 
 const { createRentItem, getRentals, getRentItem, updateRentItem, deleteRentItem } = require('../controllers/rentItemController');
-const { createRentalOrder, getRentalOrders, getRentalOrderById, updateRentalOrder, deleteRentalOrder } = require('../controllers/rentalOrderController');
+const { createRentalOrder, getRentalOrders, getRentalOrderById, updateRentalOrder, deleteRentalOrder, sendAcceptanceEmail } = require('../controllers/rentalOrderController');
 const { createRentalPayment, getRentalPaymentById, getRentalPaymentImage } = require('../controllers/rentalPaymentController');
 
 // Rental item routes
@@ -34,6 +34,7 @@ router.route('/rental-orders').get(getRentalOrders);
 router.route('/rental-orders/:id').get(getRentalOrderById);
 router.put('/rental-orders/update/:id', updateRentalOrder);
 router.route('/rental-orders/delete/:id').delete(deleteRentalOrder);
+router.post('/rental-orders/place', sendAcceptanceEmail);
 
 // Rental payment routes
 router.post('/rental-payments/create', upload.single('image'), createRentalPayment);
