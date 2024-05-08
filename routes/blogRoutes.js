@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const Blog = require('../models/Blog');
+const Blog = require('../models/blogs');
 
 // Create a new blog
-router.post('/blogs', async (req, res) => {
+router.post('/', async (req, res) => {
     try {
         const { title, description, image } = req.body;
         const newBlog = new Blog({ title, description, image });
@@ -15,7 +15,7 @@ router.post('/blogs', async (req, res) => {
 });
 
 // Read all blogs
-router.get('/blogs', async (req, res) => {
+router.get('/', async (req, res) => {
     try {
         const blogs = await Blog.find();
         res.json(blogs);
@@ -25,12 +25,12 @@ router.get('/blogs', async (req, res) => {
 });
 
 // Read a single blog
-router.get('/blogs/:id', getBlog, (req, res) => {
+router.get('/:id', getBlog, (req, res) => {
     res.json(res.blog);
 });
 
 // Update a blog
-router.patch('/blogs/:id', getBlog, async (req, res) => {
+router.patch('/:id', getBlog, async (req, res) => {
     if (req.body.title != null) {
         res.blog.title = req.body.title;
     }
@@ -49,7 +49,7 @@ router.patch('/blogs/:id', getBlog, async (req, res) => {
 });
 
 // Delete a blog
-router.delete('/blogs/:id', getBlog, async (req, res) => {
+router.delete('/:id', getBlog, async (req, res) => {
     try {
         await res.blog.remove();
         res.json({ message: 'Blog deleted' });

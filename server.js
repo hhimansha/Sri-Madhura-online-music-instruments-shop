@@ -55,6 +55,7 @@ app.use(express.json());
 app.use('/auth', UserRouter);
 app.use('/api/users', UserRouter);
 
+
 // start the Express server
 const URL = process.env.ATLAS_URI;
 mongoose.connect(URL, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -66,6 +67,9 @@ connection.once('open', () => {
 // Routes
 const rentItemsRoute = require("./routes/rentItemsRoute");
 app.use("/api", rentItemsRoute); // Change the route to /api
+
+const blogRoute = require("./routes/blogRoutes");
+app.use("/blog", blogRoute); // Change the route to /api
 
 
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
