@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import BackButton from '../SellInstrument/BackButton1';
-import Spinner from './Spinner1';
+import Spinner from '../SellInstrument/Spinner1';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
@@ -14,13 +14,7 @@ const EditItem = () => {
   const [brand, setBrand] = useState('');
   const [description, setDescription] = useState('');
   const [quantity, setQuantity] = useState('');
-  const [bank, setBank] = useState('');
-  const [accno, setAccno] = useState('');
-  const [accname, setAccname] = useState('');
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phoneno, setPhoneno] = useState('');
-  const [orderstatus, setOrderStatus] = useState("pending");
+  const [orderstatus, setOrderStatus] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const {id} = useParams();
@@ -38,12 +32,6 @@ const EditItem = () => {
         setBrand(response.data.brand)
         setDescription(response.data.description)
         setQuantity(response.data.quantity)
-        setBank(response.data.bank)
-        setAccno(response.data.accno)
-        setAccname(response.data.accname)
-        setName(response.data.name)
-        setEmail(response.data.email)
-        setPhoneno(response.data.phoneno)
         setOrderStatus(response.data.orderstatus);
         setLoading(false);
       }).catch((error) => {
@@ -63,12 +51,6 @@ const EditItem = () => {
       brand,
       description,
       quantity,
-      bank,
-      accno, 
-      accname,
-      name,
-      email,
-      phoneno,
       orderstatus,
     };
     setLoading(true);
@@ -193,7 +175,7 @@ const EditItem = () => {
             />
             <div className='my-4'>
             <label className='text-xl text-gray-700 mb-2 block'>Order Status</label>
-            <select value={orderstatus} onChange={handleStatusChange} className='border-2 border-gray-300 rounded px-4 py-2 w-full focus:outline-none focus:border-blue-400'>
+            <select value={orderstatus} onChange={ (e) => setOrderStatus(e.target.value)} className='border-2 border-gray-300 rounded px-4 py-2 w-full focus:outline-none focus:border-blue-400'>
              
         <option value="Pending">Pending</option>
         <option value="Accepted">Accept</option>
@@ -218,7 +200,7 @@ const EditItem = () => {
               width: '520px',
               boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
             }}
-            onClick={handleEditItem}
+            onClick={()=>{handleEditItem(); window.location.href='/sellItem/adminhome';}}
             onMouseDown={(e) => {
               e.target.style.transform = 'scale(0.95)';
               e.target.style.backgroundColor = '#2980b9';

@@ -38,8 +38,8 @@ const ItemTable = ({ sellitems }) => {
         <thead>
           <tr className="bg-black text-white">
             <th className='border border-black-600 py-3 px-4 w-10'>No</th>
-            <th className='border border-black-600 py-3 px-4'>Image</th>
             <th className='border border-black-600 py-3 px-4'>Instrument</th>
+            <th className='border border-black-600 py-3 px-4'>Image</th>
             <th className='border border-black-600 py-3 px-4'>Condition</th>
             <th className='border border-black-600 py-3 px-4'>Price</th>
             <th className='border border-black-600 py-3 px-4'>Type</th>
@@ -53,7 +53,6 @@ const ItemTable = ({ sellitems }) => {
             <th className='border border-black-600 py-3 px-4'>Name</th>
             <th className='border border-black-600 py-3 px-4'>Email</th>
             <th className='border border-black-600 py-3 px-4'>Phone No</th>
-            <th className='border border-black-600 py-3 px-4'>Image</th>
             <th className='border border-black-600 py-3 px-4'>Order Status</th>
             <th className='border border-black-600 py-3 px-4 w-20'>Operations</th> 
           </tr>
@@ -63,7 +62,7 @@ const ItemTable = ({ sellitems }) => {
             <tr key={sellItem._id} className={index % 2 === 0 ? 'bg-gray-100' : 'bg-white'}>
               <td className='border border-gray-400 py-3 px-4 text-center'>{index + 1}</td>
               <td className='border border-gray-400 py-3 px-4'>{sellItem.title}</td>
-              <td className='border border-gray-400 py-3 px-4'><img src={`${sellItem.RimageBase64}`} className='h-10 w-10 object-cover' alt={`sellItem ${index + 1}`} /></td>
+              <td className='border border-gray-400 py-3 px-4'><img src={`${sellItem.SimageBase64}`} className='h-10 w-10 object-cover' alt={`sellItem ${index + 1}`} /></td>
               <td className='border border-gray-400 py-3 px-4'>{sellItem.condition}</td>
               <td className='border border-gray-400 py-3 px-4'>{sellItem.price}</td>
               <td className='border border-gray-400 py-3 px-4'>{sellItem.type}</td>
@@ -77,9 +76,9 @@ const ItemTable = ({ sellitems }) => {
               <td className='border border-gray-400 py-3 px-4'>{sellItem.name}</td>
               <td className='border border-gray-400 py-3 px-4'>{sellItem.email}</td>
               <td className='border border-gray-400 py-3 px-4'>{sellItem.phoneno}</td>
-              <td className='border border-gray-400 py-3 px-4'>
+              {/* <td className='border border-gray-400 py-3 px-4'>
               <img src={`http://localhost:5050/uploads/${sellItem.simage}`} alt={sellItem.title} className="w-full h-64 object-cover" />
-              </td>
+              </td> */}
 
 
               <td className='border border-gray-400 py-3 px-4'>{sellItem.orderstatus}</td>

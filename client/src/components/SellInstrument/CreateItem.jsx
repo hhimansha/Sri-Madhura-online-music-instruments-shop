@@ -430,10 +430,11 @@ const CreateItem = () => {
       
       <br />
       <div className="btn">
-        <button id="submit" type="submit" onClick={handleSaveItem}>
-          Save
-        </button>
-      </div>
+  <button id="submit" type="submit"   onClick={()=>{handleSaveItem(); window.location.href='/sellItem/sellitemhome';}}>
+    Save
+  </button>
+</div>
+
     </form>
   </div>
     </>

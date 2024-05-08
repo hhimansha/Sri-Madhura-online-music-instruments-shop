@@ -38,7 +38,8 @@ const DeleteItem = () => {
 
         <button
           className='p-4 bg-red-600 text-white m-8 w-full'
-          onClick={handleDeleteItem}
+          onClick={()=>{handleDeleteItem(); window.location.href='/sellItem/adminhome';}}
+
         >
           Yes, Delete it
         </button>
