@@ -37,7 +37,7 @@ export default function LoginForm() {
                     toast.success("Login as Admin");
                     console.log('Login successful', response.data);
                     setTimeout(() => {
-                        navigate('/Usermanage'); // Redirect to user dashboard
+                        navigate('/admindash'); // Redirect to user dashboard
                       }, 3000);
                      // Redirect to admin dashboard
                 } else {

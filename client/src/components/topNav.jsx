@@ -67,6 +67,7 @@ function TopNav() {
           
 
           <div className="flex items-center md:order-2 space-x-3 md:space-x-3 rtl:space-x-reverse relative">
+          <Link to="login1" className="mx-2">
             <button
               type="button"
               onClick={handleLogout}
@@ -74,6 +75,7 @@ function TopNav() {
             >
               Log Out
             </button>
+            </Link>
 
             <div className="relative">
               <div className="flex flex-row cart-img  rounded-full items-center px-2 justify-center">

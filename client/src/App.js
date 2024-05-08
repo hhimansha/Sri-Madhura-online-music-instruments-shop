@@ -18,6 +18,14 @@ import UserAddress from './components/sell/UserAddress'
 import UpdateAddressinOrder from './components/sell/UpdateAddressinOrder'
 import { AuthContextProvider } from './context/AuthContext';
 import { CartProvider } from './context/CartContext'; // Import CartProvider
+import User_login from './components/User/User_login'
+import User_signup from './components/User/User_signup'
+import Reset from './components/User/Reset'
+import Recovery from './components/User/Recovery'
+import Profile from './components/User/Profile'
+
+
+
 
 function App() {
   return (
@@ -39,6 +47,13 @@ function App() {
               <Route path="/rentals" element={<><TopNav/><RentHome /><RentalItemDisplay /><Footer/></>} />
               <Route path="/rentals/:id" element={<><TopNav/><RentHome /><Footer/></>} />
               <Route path="/admindash" element={<AdminDash />} />
+
+              <Route path="/login1" element={<User_login />} /> {/* New route for user login */}
+          <Route path="/signup" element={<User_signup />} /> {/* New route for user signup */}
+          <Route path="/reset/:token" element={<Reset/>} /> 
+          <Route path="/recover" element={<Recovery/>} />
+          <Route path="/profile" element={<Profile/>} />
+          <Route path="/" element={<><TopNav/><RentHome /><Footer/></>} />
             </Routes>
           </div>
         </CartProvider>
