@@ -1,0 +1,78 @@
+/* Container for vertical item cards */
+.vertical-card-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Styling for each vertical item card */
+  .vertical-card {
+    width: 300px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden;
+  }
+  
+  /* Styling for item image */
+  .vertical-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px 8px 0 0;
+  }
+  
+  /* Styling for item details */
+  .vertical-card-details {
+    padding: 20px;
+  }
+  
+  /* Styling for item title */
+  .vertical-card-title {
+    font-size: 22px;
+    font-weight: bold;
+    color: #333333;
+    margin-bottom: 10px;
+  }
+  
+  /* Styling for item description */
+  .vertical-card-description {
+    font-size: 16px;
+    color: #666666;
+    margin-bottom: 20px;
+  }
+  
+  /* Styling for item price */
+  .vertical-card-price {
+    font-size: 18px;
+    font-weight: bold;
+    color: #007bff;
+    margin-bottom: 10px;
+  }
+  
+  /* Styling for item details */
+  .vertical-card-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  /* Styling for individual detail icons */
+  .vertical-card-icon {
+    font-size: 18px;
+    color: #777777;
+    margin-right: 5px;
+  }
+  
+  /* Styling for links */
+  .vertical-card-link {
+    text-decoration: none;
+    color: #007bff;
+    transition: color 0.3s ease;
+  }
+  
+  /* Styling for hover effect on links */
+  .vertical-card-link:hover {
+    color: #0056b3;
+  }
+  
