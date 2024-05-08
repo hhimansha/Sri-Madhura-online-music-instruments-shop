@@ -24,6 +24,10 @@ const rentOrderSchema = new Schema({
         type: Number,
         required: true
     },
+    bankSlip: {
+        type: String,
+        required: false
+    },
     rentalDate: {
         type: Date,
         required: true
@@ -32,7 +36,10 @@ const rentOrderSchema = new Schema({
         type: Number,
         required: true
     },
-    
+    orderDate: {
+        type: Date,
+        default: Date.now // Set default value to current date
+    },
     // Add more fields as needed
 });
 

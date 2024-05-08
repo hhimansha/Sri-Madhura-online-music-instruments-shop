@@ -1,10 +1,82 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import MainLogoW from '../assets/MainLogoW.png';
 import { Link } from 'react-router-dom';
 import RentalItemCreate from '../Rental/RentalItemCreate';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import {jwtDecode} from 'jwt-decode';
+import Cookies from 'js-cookie';
+
 
 function AdminDash() {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [userId, setUserId] = useState(null);
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false); // Moved here
+  const navigate = useNavigate();
+
+
+  // Function to get a specific cookie by name
+  function getCookie(name) {
+    const cookieValue = Cookies.get(name);
+    return cookieValue;
+  }
+
+  useEffect(() => {
+              // Retrieve token from local storage
+              const jwtToken = getCookie('jwt');
+
+          console.log('JWT Token:', jwtToken);
+
+    if (!jwtToken) {
+      setError("Token not found. Please log in.");
+      setLoading(false);
+      return;
+    }
+
+    try {
+      // Decode the JWT to get the payload
+      const decodedToken = jwtDecode(jwtToken);
+
+      // Decode the token to get the user ID
+      // Extract the user ID and other information
+          const user_id = decodedToken.id;
+          const userRole = decodedToken.role;
+
+          console.log('User ID:', user_id);
+          console.log('User Role:', userRole);
+      setUserId(user_id);
+      
+
+      //Fetch user data based on the user ID
+      const fetchUserData = async () => {
+        try {
+          const response = await axios.get(`http://localhost:5050/api/users/${user_id}`);
+          setUser(response.data); // Store user data
+          setLoading(false); // Update loading state
+        } catch (err) {
+          setError("Failed to fetch user data");
+          setLoading(false);
+        }
+      };
+
+      fetchUserData(); // Fetch user data
+
+    } catch (e) {
+      setError("Invalid token");
+      setLoading(false);
+    }
+  }, []); // Run once on component mount
+
+  if (loading) {
+    return <div>Loading...</div>; // Loading state
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>; // Error state
+  }
+  
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -107,7 +179,7 @@ function AdminDash() {
             </li>
           </ul>
           <div className="mt-12">
-            <p className='text-gray-400 bg-gray-800 px-4 py-2 rounded-lg'>Hello@gmail.com</p>
+            <p className='text-gray-400 bg-gray-800 px-4 py-2 rounded-lg'>{user.email}</p>
             <button className='bg-primary text-white px-3 py-2 rounded-lg mt-4 font-semibold w-full' type='submit'>Log Out</button>
           </div>
         </div>

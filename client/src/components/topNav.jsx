@@ -2,6 +2,12 @@ import React, { useState, useEffect, useRef } from "react";
 import MainLogo from "../components/assets/MainLogo.png";
 import "./TopNav.css";
 
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+
+import { Link } from 'react-router-dom';
+
+
 function TopNav() {
   const [showMenu, setShowMenu] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
@@ -29,6 +35,25 @@ function TopNav() {
   const toggleMenu = () => setShowMenu(!showMenu);
   const toggleDropdown = () => setShowDropdown((prev) => !prev);
   const toggleCategoryDropdown = () => setShowCategoryDropdown((prev) => !prev);
+  const navigate = useNavigate();
+  axios.defaults.withCredentials = true;
+  
+
+  const handleLogout = () => {
+    axios.get('http://localhost:3000/auth/logout')
+    .then(res => {
+      if(res.data.status){
+        console.log('Log out successful. Navigating to login page.');
+        setTimeout(() => {
+          navigate('/login')// Redirect to user dashboard
+        }, 3000);
+        
+      }
+    }).catch(err => {
+      console.log(err);
+      console.error('Error occurred during password reset:', err);
+    })
+  }
 
   return (
     <>
@@ -41,9 +66,10 @@ function TopNav() {
           <div className="flex items-center md:order-2 space-x-3 md:space-x-3 rtl:space-x-reverse relative">
             <button
               type="button"
+              onClick={handleLogout}
               className="px-4 py-1 mx-6 text-20 text-orange bg- font-semibold rounded-lg border border-grey transition duration-1000 ease-in-out bg-gray-900 text-white hover:text-white hover:bg-primary"
             >
-              Log In
+              Log Out
             </button>
 
             <button
@@ -164,6 +190,8 @@ function TopNav() {
               {/* the rest of main navigation links*/}
               <li><a href="#" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-primary md:p-0 dark:text-gray-900 md:dark:hover:bg-transparent">Personalizations</a></li>
               <li><a href="#" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-primary md:p-0 dark:text-gray-900 md:dark:hover:bg-transparent">Bulk Orders</a></li>
+              <li><Link to = {'/rentals'}><a href="#" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-primary md:p-0 dark:text-gray-900 md:dark:hover:bg-transparent">Rentals</a></Link></li>
+              <li><a href="#" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-primary md:p-0 dark:text-gray-900 md:dark:hover:bg-transparent">Repairs</a></li>
               <li><a href="#" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-primary md:p-0 dark:text-gray-900 md:dark:hover:bg-transparent">Rentals</a></li>
               <li><a href="/prices/DetailsHomeUser" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-primary md:p-0 dark:text-gray-900 md:dark:hover:bg-transparent">Repairs</a></li>
               <li><a href="#" className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-primary md:p-0 dark:text-gray-900 md:dark:hover:bg-transparent">Company</a></li>

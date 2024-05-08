@@ -102,7 +102,7 @@ const UpdateRental = () => {
                                     id="title"
                                     value={title}
                                     onChange={(e) => setTitle(e.target.value)}
-                                    className="block w-full flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                                    className="block w-full flex-1 border-0 bg-gray-100 py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                                     placeholder="Enter title"
                                 />
                             </div>
@@ -119,7 +119,7 @@ const UpdateRental = () => {
                                     value={description}
                                     onChange={(e) => setDescription(e.target.value)}
                                     rows={3}
-                                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                    className="block w-full rounded-md bg-gray-100 border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                     placeholder="Enter description"
                                 />
                             </div>
@@ -136,7 +136,7 @@ const UpdateRental = () => {
                                     id="category"
                                     value={category}
                                     onChange={(e) => setCategory(e.target.value)}
-                                    className="block w-full flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                                    className="block w-full flex-1 border-0 bg-gray-100 py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                                     placeholder="Enter category"
                                 />
                             </div>
@@ -153,7 +153,7 @@ const UpdateRental = () => {
                                     name="image"
                                     accept="image/*"
                                     onChange={handleImageChange}
-                                    className="block border-gray-300 rounded-md  focus:ring-primary focus:border-primary sm:text-sm"
+                                    className="block border-gray-300 bg-gray-100 rounded-md  focus:ring-primary focus:border-primary sm:text-sm"
                                 />
                                 <span className="text-sm text-gray-600">{imageName}</span>
                             </div>
@@ -170,7 +170,7 @@ const UpdateRental = () => {
                                     id="rentalPrice"
                                     value={rentalPrice}
                                     onChange={(e) => setRentalPrice(e.target.value)}
-                                    className="block w-full flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                                    className="block w-full flex-1 border-0 bg-gray-100 py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                                     placeholder="Enter rental price"
                                 />
                             </div>
@@ -187,7 +187,7 @@ const UpdateRental = () => {
                                     id="stockCount"
                                     value={stockCount}
                                     onChange={(e) => setStockCount(e.target.value)}
-                                    className="block w-full flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
+                                    className="block w-full flex-1 border-0 bg-gray-100 py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
                                     placeholder="Enter stock count"
                                 />
                             </div>

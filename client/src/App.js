@@ -21,8 +21,17 @@ import RentalItemCreate from './components/Rental/RentalItemCreate';
 import RentalItemDisplay from './components/Rental/RentalItemDisplay';
 import RentalManage from './components/Rental/RentalManage';
 import UpdateRental from './components/Rental/UpdateRental';
+import User_signup from './components/User/User_signup';
+import User_login from './components/User/User_login';
+import Reset from './components/User/Reset';
+import Recovery from './components/User/Recovery';
+import Profile from './components/User/Profile';
+import Usermanage from './components/User/Usermanage';
+import RentalItemPage from './components/Rental/rentalItemPage';
+import RentalOrdersManage from './components/Rental/RentalOrdersManage';
 
 function App() {
+
   return (
     <Router>
       <div className="App">
@@ -30,6 +39,7 @@ function App() {
           <Route path="/admindash/rentals/rentalcreate" element={<><AdminDash /><RentalItemCreate /></>} />
           <Route path="/admindash/rentals/update/:id" element={<><AdminDash /><UpdateRental /></>} />
           <Route path="/admindash/rentals" element={<><AdminDash /><RentalManage /></>} />
+          <Route path="/admindash/rental-orders" element={<><AdminDash /><RentalOrdersManage /></>} />
           <Route path="/rentals" element={<><TopNav/><RentHome /><RentalItemDisplay /><Footer/></>} />
           <Route path="/rentals/:id" element={<><TopNav/><RentHome /><Footer/></>} />
           <Route path="/rentalcreate" element={<><AdminDash /><RentalItemCreate /></>} />
@@ -48,10 +58,21 @@ function App() {
           <Route path='/prices/DetailsHome' element={<DetailsHome />} /> 
           <Route path="/send-email" element={<SendEmail />} />
 
-          <Route
-           path="/admindash"
-            element={<AdminDash />}
-          />
+          <Route path="/login" element={<User_login />} /> {/* New route for user login */}
+          <Route path="/signup" element={<User_signup />} /> {/* New route for user signup */}
+          <Route path="/reset/:token" element={<Reset/>} /> 
+          <Route path="/recover" element={<Recovery/>} />
+          <Route path="/profile" element={<Profile/>} />
+          <Route path="/" element={<><TopNav/><RentHome /><Footer/></>} />
+          
+
+
+          <Route path="/admindash" element={<AdminDash />} />
+          <Route path="/usermanage" element={<><AdminDash /> <Usermanage/></>} />
+
+          <Route path="/rentals/:id" element={<><TopNav/><RentalItemPage /><Footer/></>} />
+
+          
         </Routes>
       
 
