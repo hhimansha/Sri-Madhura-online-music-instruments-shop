@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import BackButton from '../SellInstrument/BackButton1';
-import Spinner from '../SellInstrument/Spinner1';
+import BackButton1 from '../SellInstrument/BackButton1';
+
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useSnackbar } from 'notistack';
@@ -14,7 +14,7 @@ const EditItem = () => {
   const [brand, setBrand] = useState('');
   const [description, setDescription] = useState('');
   const [quantity, setQuantity] = useState('');
-  const [orderstatus, setOrderStatus] = useState('');
+  const [orderstatus, setOrderStatus] = useState("pending");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const {id} = useParams();
@@ -25,7 +25,7 @@ const EditItem = () => {
     axios.get(`http://localhost:5050/sellItem/${id}`)
       .then((response) => {
         setCondition(response.data.condition);
-      setPrice(response.data.price)
+        setPrice(response.data.price)
         setTitle(response.data.title)
         setType(response.data.type)
         setColor(response.data.color)
@@ -85,9 +85,9 @@ const EditItem = () => {
     }}>
 
          <div style={{ maxWidth: '600px', margin: 'auto', marginTop: '4rem', padding: '1rem' }}>
-         <BackButton />
+         <BackButton1 />
         <h1 className='text-3xl font-bold mb-6' style={{ color: '#fff' }}>Edit Request</h1>
-        {loading && <Spinner />}
+        {loading}
       
         
         <div className='max-w-2xl mx-auto' style={{ backgroundColor: 'rgba(255, 255, 255, 0.8)', padding: '20px', borderRadius: '10px' }}>
@@ -175,7 +175,7 @@ const EditItem = () => {
             />
             <div className='my-4'>
             <label className='text-xl text-gray-700 mb-2 block'>Order Status</label>
-            <select value={orderstatus} onChange={ (e) => setOrderStatus(e.target.value)} className='border-2 border-gray-300 rounded px-4 py-2 w-full focus:outline-none focus:border-blue-400'>
+            <select value={orderstatus} onChange={handleStatusChange} className='border-2 border-gray-300 rounded px-4 py-2 w-full focus:outline-none focus:border-blue-400'>
              
         <option value="Pending">Pending</option>
         <option value="Accepted">Accept</option>

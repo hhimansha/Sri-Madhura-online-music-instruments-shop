@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Spinner from '../SellInstrument/Spinner1';
 import ItemTable from './home/ItemTable';
+import TopNav from '../topNav';
+import Footer from '../Footer';
 
 
 const Home = () => {
@@ -24,6 +26,7 @@ const Home = () => {
 
   return (
     <>
+    <TopNav/>
       <div className='p-4'>
         <div className='flex justify-center items-center gap-x-4'>
           <button className='bg-sky-300 hover:bg-sky-600 px-4 py-1 rounded-lg'>Admin</button>
@@ -37,6 +40,7 @@ const Home = () => {
           <ItemTable sellitems={sellItem} />
         )}
       </div>
+      <Footer/>
     </>
   );
 };

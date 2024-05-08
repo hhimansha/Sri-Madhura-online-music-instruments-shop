@@ -127,7 +127,7 @@ const EditOrder = () => {
             className='border-2 border-gray-500 px-4 py-2 w-full'
           />
         </div>
-        <button className='p-2 bg-orange-500 m-8' onClick={handleEditOrder}>
+        <button className='p-2 bg-orange-500 m-8' onClick={()=>{handleEditOrder(); window.location.href='/suprequest/suphome';}}>
           Save
         </button>
       </div>

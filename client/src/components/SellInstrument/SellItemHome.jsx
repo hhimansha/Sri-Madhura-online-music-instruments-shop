@@ -3,6 +3,8 @@ import axios from 'axios';
 import Spinner from './Spinner1';
 import { Link } from 'react-router-dom';
 import ItemCard from './home/ItemCard';
+import TopNav from '../topNav';
+import Footer from '../Footer';
 
 const Home = () => {
   const [sellItem, setSellItem] = useState([]);
@@ -24,6 +26,7 @@ const Home = () => {
 
   return (
     <>
+    <TopNav/>
       <div className='p-4'>
         <div className='flex justify-between items-center'>
           <h1 className='text-3xl my-8'>Selling Instruments Dashboard</h1>
@@ -34,6 +37,7 @@ const Home = () => {
           <ItemCard sellitems={sellItem} />
         )}
       </div>
+      <Footer/>
     </>
   );
 };

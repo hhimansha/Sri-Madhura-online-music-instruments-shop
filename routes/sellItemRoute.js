@@ -127,68 +127,35 @@ router.get('/:id', async (request, response) => {
 });
 
 //Route for update a book
-router.put('/:id', upload.single('simage'), async(request, response) => {
+router.put('/:id', async (request, response) => {
   try {
     const { id } = request.params;
-    const { body, file } = request;
+    const { body } = request;
 
-    if (!body.title ||
-        !body.type ||
-        !body.condition ||
-        !body.color ||
-        !body.brand ||
-        !body.description ||
-        !body.price ||
-        !body.quantity ||
-        !body.bank ||
-        !body.accno ||
-        !body.accname ||
-        !body.name ||
-        !body.email ||
-        !body.phoneno ||
-        !body.orderstatus ||
-        !body.file
-      ) {
+    // Check if orderstatus is provided
+    if (!body.orderstatus) {
       return response.status(400).send({
-        message: 'Send all required fields: title, condition, price...',
+        message: 'Order status is required',
       });
     }
 
     const updateData = {
-      title: body.title,
-      type: body.type,
-      condition: body.condition,
-      color: body.color,
-      brand: body.brand,
-      description: body.description,
-      price: body.price, 
-      quantity: body.quantity,
-      bank: body.bank,
-      accno: body.accno,
-      accname: body.accname,
-      name: body.name,
-      email: body.email,
-      phoneno: body.phoneno,
-      simage: body.simage,
       orderstatus: body.orderstatus,
     };
-
-    if (file) {
-      updateData.simage = file.path; // Update image path if new image is provided
-    }
 
     const result = await SellItem.findByIdAndUpdate(id, updateData);
 
     if (!result) {
-      return response.status(404).json({ message: 'Item not found'});
+      return response.status(404).json({ message: 'Item not found' });
     }
 
-    return response.status(200).send({ message: 'Item updated successfully'});
+    return response.status(200).send({ message: 'Order status updated successfully' });
   } catch (error) {
     console.log(error.message);
-    response.status(500).send({ message: error.message});
+    response.status(500).send({ message: error.message });
   }
 });
+
 
 //Route for Delete a book
 router.delete('/:id', async(request, response) => {
