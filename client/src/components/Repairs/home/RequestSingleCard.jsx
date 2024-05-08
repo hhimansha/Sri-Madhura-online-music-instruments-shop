@@ -10,6 +10,7 @@ import { FaMusic } from 'react-icons/fa';
 
 
 
+
 const RequestSingleCard = ({ request }) => {
   const [showModal, setShowModal] = useState(false);
   
@@ -86,10 +87,13 @@ const RequestSingleCard = ({ request }) => {
   </a>
   <br></br>
       
-      <a href="#" class="hover:border-white/40 flex items-center justify-center rounded-md border border-transparent bg-blue-600 px-5 py-2.5 text-center text-sm font-medium text-white focus:outline-none focus:ring-4 focus:ring-blue-300">
-        
-        Upload slip</a
-      >
+  <Link
+  to="/payment" 
+  className="hover:border-white/40 flex items-center justify-center rounded-md border border-transparent bg-blue-600 px-5 py-2.5 text-center text-sm font-medium text-white focus:outline-none focus:ring-4 focus:ring-blue-300"
+>
+  Upload slip
+</Link>
+
     </div>
   </div>
 </div>

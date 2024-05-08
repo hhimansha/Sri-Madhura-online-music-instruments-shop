@@ -21,6 +21,7 @@ import RentalItemCreate from './components/Rental/RentalItemCreate';
 import RentalItemDisplay from './components/Rental/RentalItemDisplay';
 import RentalManage from './components/Rental/RentalManage';
 import UpdateRental from './components/Rental/UpdateRental';
+import payment from './components/Repairs/payment'
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
           <Route path='/repair/edit/:id' element={<EditRequest />} />
           <Route path='/repair/delete/:id' element={<DeleteRequest />} />
           <Route path = '/repair/details/:id' element={<ShowRequest />} />
+          <Route path = '/repair/payment' element={<payment />} />
           <Route path='/prices/create' element={<CreatePrices />} />
           <Route path='/prices/edit/:id' element={<EditPrice />} />
           <Route path='/prices/delete/:id' element={<DeletePrice />} />
