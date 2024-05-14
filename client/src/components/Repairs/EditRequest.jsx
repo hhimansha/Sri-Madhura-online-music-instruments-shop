@@ -104,7 +104,7 @@ const EditRequest = () => {
       justifyContent: 'center' 
     }}>
          <div style={{ maxWidth: '600px', margin: 'auto', marginTop: '4rem', padding: '1rem' }}>
-        <BackButton />
+        
         <h1 className='text-3xl font-bold mb-6' style={{ color: '#fff' }}>Edit Request</h1>
        
         
@@ -261,7 +261,7 @@ const EditRequest = () => {
           <button
             type='button'
             style={{
-              backgroundColor: '#3498db',
+              backgroundColor: '#de6418',
               color: '#fff',
               padding: '0.5rem',
               borderRadius: '0.25rem',

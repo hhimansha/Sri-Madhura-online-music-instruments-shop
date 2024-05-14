@@ -69,7 +69,7 @@ doc.text(20, 200, `Issue Description: ${request.issueDescription}`);
       padding: '20px' 
     }}>
       <div className='max-w-2xl mx-auto' style={{ backgroundColor: 'rgba(255, 255, 255, 0.8)', padding: '20px', borderRadius: '10px' }}>
-        <BackButton />
+     
         <h1 className='text-3xl font-bold mb-6' style={{ color: '#000' }}>Show Request</h1>
   
         <div>

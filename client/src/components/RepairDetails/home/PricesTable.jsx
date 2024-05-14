@@ -72,8 +72,7 @@ const PricesTable = ({ prices }) => {
   </button>
 </div>
 
-            <br></br>
-            <br></br>
+            
             <table className='w-full border-separate border-spacing-2'>
                 <thead>
                     <tr>

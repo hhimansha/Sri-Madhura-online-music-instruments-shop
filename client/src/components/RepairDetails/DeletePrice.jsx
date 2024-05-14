@@ -37,8 +37,8 @@ export const DeletePrice = () => {
     }}>
     
     <div className='p-4'>
-        <Back />
-        <h1 className='text-3xl  mb-6' style={{ color: '#fff' }}>Delete Detail</h1>
+        
+        <h1 className='text-3xl bold  mb-6' style={{ color: '#fff' }}>Delete Price</h1>
         
         <div className='flex flex-col items-center rounded-xl w-[600px] p-8 mx-auto' style={{ background: 'white' }}>
           <h3 className='text-2xl text-black mb-8'>Are you sure you want to delete this price?</h3>

@@ -80,13 +80,13 @@ const EditPrice = () => {
       alignItems: 'center', 
       justifyContent: 'center' 
     }}>
-   <div style={{ maxWidth: '600px', margin: 'auto', marginTop: '4rem', padding: '1rem' }}>
-        <Back />
-        <h1 className='text-3xl font-bold mb-6' style={{ color: '#fff' }}>Edit Request</h1>
+   <div style={{ maxWidth: '600px', margin: 'auto', marginTop: '1rem', padding: '1rem' }}>
         
-        <div className='max-w-2xl mx-auto' style={{ backgroundColor: 'rgba(255, 255, 255, 0.8)', padding: '20px', borderRadius: '10px' }}>
-        <div className='my-4'>
-          <label className='text-xl text-gray-700 mb-2 block'>Instrument </label>
+        <h2 className='text-3xl font-bold mb-6' style={{ color: '#fff' }}>Edit Request</h2>
+        
+        <div className='max-w-1xl mx-auto' style={{ backgroundColor: 'rgba(255, 255, 255, 0.8)', padding: '20px', borderRadius: '10px' }}>
+        
+          <label className='text-xl text-gray-700 mb-1 block'>Instrument </label>
           <input
             type='text'
             value={Ninstrument}
@@ -94,10 +94,10 @@ const EditPrice = () => {
             className='border-2 border-gray-300 rounded px-4 py-2 w-full focus:outline-none focus:border-blue-400'
             
           />
-        </div>
+        
  
-      <div className='my-4'>
-            <label className='text-xl text-gray-700 mb-2 block'>Issue Type</label>
+      
+            <label className='text-xl text-gray-700 mb-1 block'>Issue Type</label>
             <input
               type='text'
               value={issueType2}
@@ -105,12 +105,12 @@ const EditPrice = () => {
               className='border-2 border-gray-300 rounded px-4 py-2 w-full focus:outline-none focus:border-blue-400'
               
             />
-          </div>
+          
 
 
 
-<div className='my-4'>
-            <label className='text-xl text-gray-700 mb-2 block'>Price</label>
+
+            <label className='text-xl text-gray-700 mb-1 block'>Price</label>
             <input
               type='text'
               value={fprice}
@@ -118,11 +118,11 @@ const EditPrice = () => {
               className='border-2 border-gray-300 rounded px-4 py-2 w-full focus:outline-none focus:border-blue-400'
             
             />
-          </div>
+        
 
  
- <div className='my-4'>
-            <label className='text-xl text-gray-700 mb-2 block'>Issue Details</label>
+
+            <label className='text-xl text-gray-700 mb-1 block'>Issue Details</label>
             <input
               type='text'
               value={issueDetail}
@@ -130,27 +130,27 @@ const EditPrice = () => {
               className='border-2 border-gray-300 rounded px-4 py-2 w-full focus:outline-none focus:border-blue-400'
               
             />
-          </div>
+      
         
-        <div className='my-4'>
-            <label className='text-xl text-gray-700 mb-2 block'>Image</label>
+   
+            <label className='text-xl text-gray-700 mb-1 block'>Image</label>
             <input
               type='file'
               onChange={handleImageChange} 
               accept='image/*' 
-              className='border-2 border-gray-300 rounded px-4 py-2 w-full focus:outline-none focus:border-blue-400'
+              className='border-2 border-gray-300 rounded px-2 py-1 w-full focus:outline-none focus:border-blue-400'
             />
-          </div>
+          
      
           {RimageBase64 && (
-            <img src={RimageBase64} className='mt-4 h-40 w-auto object-cover' alt='Price Image' />
+            <img src={RimageBase64} className='mt-4 h-20 w-auto object-cover' alt='Price Image' />
           )}
         
         <br></br>
         <button
             type='button'
             style={{
-              backgroundColor: '#3498db',
+              backgroundColor: '#de6418',
               color: '#fff',
               padding: '0.5rem',
               borderRadius: '0.25rem',
