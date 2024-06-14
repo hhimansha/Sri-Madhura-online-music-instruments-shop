@@ -31,7 +31,7 @@ function AddProducts() {
     const protein = { title, company, imageSrc, description, price, category }; // Include category in the protein object
 
     const response = await fetch(
-      "http://localhost:9092/api/proteins/admindash/products",
+      "http://localhost:5050/api/proteins/admindash/products",
       {
         method: "POST",
         body: JSON.stringify(protein),
@@ -65,7 +65,7 @@ function AddProducts() {
   useEffect(() => {
     const fetchProteins = async () => {
       try {
-        const response = await fetch("http://localhost:9092/api/proteins/");
+        const response = await fetch("http://localhost:5050/api/proteins/admindash/products");
         forceUpdate();
         if (response.ok) {
           const json = await response.json();
